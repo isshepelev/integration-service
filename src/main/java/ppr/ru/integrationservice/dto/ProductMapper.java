@@ -2,14 +2,16 @@ package ppr.ru.integrationservice.dto;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.Named;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 import ppr.ru.integrationservice.model.jpa.Product;
 import ppr.ru.integrationservice.model.jpa.ProductAvailability;
 
 import java.util.Collections;
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface ProductMapper {
 
     @Mapping(target = "availabilities", ignore = true)
@@ -29,4 +31,12 @@ public interface ProductMapper {
     }
 
     ProductDTO.AvailabilityDTO toAvailabilityDTO(ProductAvailability availability);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "availabilities", ignore = true)
+    Product toEntity(CreateProductRequest request);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "availabilities", ignore = true)
+    void updateEntity(UpdateProductRequest request, @MappingTarget Product product);
 }
