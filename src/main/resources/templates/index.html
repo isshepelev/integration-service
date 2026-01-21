@@ -56,6 +56,7 @@
                         <p>High-performance RPC framework with Protocol Buffers.</p>
                         <div class="card-links">
                             <a href="#grpc-info" class="btn btn-primary" onclick="toggleGrpcInfo()">Connection Info</a>
+                            <a th:href="@{/grpc-examples}" class="btn btn-secondary">Examples</a>
                         </div>
                         <div class="endpoint-info">
                             <code th:text="'localhost:' + ${grpcPort}">localhost:9090</code>
@@ -109,6 +110,7 @@ grpcurl -plaintext -d '{}' \
                             <li><a th:href="@{/graphql-playground}">GraphQL Playground</a></li>
                             <li><a th:href="@{/graphql-examples}">GraphQL Examples</a></li>
                             <li><a th:href="@{/graphiql}">GraphiQL IDE</a></li>
+                            <li><a th:href="@{/grpc-examples}">gRPC Examples</a></li>
                             <li><a th:href="@{/ws/products.wsdl}">WSDL Schema</a></li>
                         </ul>
                     </div>

@@ -32,4 +32,10 @@ public class HomeController {
     public String graphqlExamples() {
         return "graphql-examples";
     }
+
+    @GetMapping("/grpc-examples")
+    public String grpcExamples(Model model) {
+        model.addAttribute("grpcPort", grpcPort);
+        return "grpc-examples";
+    }
 }

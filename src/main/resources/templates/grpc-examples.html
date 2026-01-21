@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gRPC Examples - 2050 Edition</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/grpc-examples.css}">
+</head>
+<body class="futuristic-body">
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+    <div class="floating-particles" id="particles"></div>
+    <div class="holographic-overlay"></div>
+
+    <div class="container futuristic-container">
+        <header class="futuristic-header">
+            <div class="header-nav">
+                <a th:href="@{/}" class="nav-link hologram-text">&larr; PORTAL</a>
+                <span class="nav-link grpc-badge">PORT <span th:text="${grpcPort}">9090</span></span>
+            </div>
+            <div class="header-title">
+                <div class="glitch-wrapper">
+                    <h1 class="glitch" data-text="gRPC">gRPC</h1>
+                </div>
+                <p class="neon-subtitle">RPC EXAMPLES // YEAR 2050</p>
+                <div class="scan-line"></div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-value neon-cyan">4</span>
+                    <span class="stat-label">METHODS</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value neon-pink">9</span>
+                    <span class="stat-label">MESSAGES</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value neon-green">ACTIVE</span>
+                    <span class="stat-label">STATUS</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="futuristic-main">
+            <!-- Proto Definition Section -->
+            <section class="schema-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> SERVICE DEFINITION</h2>
+                    <div class="status-badge online">PROTO3</div>
+                </div>
+                <div class="schema-grid">
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">S</span>
+                            <span class="type-name">ProductService</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>GetProducts</code> <span class="return-type">GetProductsResponse</span></li>
+                            <li><code>GetProductById</code> <span class="return-type">ProductResponse</span></li>
+                            <li><code>GetProductBySku</code> <span class="return-type">ProductResponse</span></li>
+                            <li><code>GetProductsByCategory</code> <span class="return-type">GetProductsResponse</span></li>
+                        </ul>
+                    </div>
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">M</span>
+                            <span class="type-name">Product</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>id</code> <span class="return-type">int64</span></li>
+                            <li><code>name</code> <span class="return-type">string</span></li>
+                            <li><code>description</code> <span class="return-type">string</span></li>
+                            <li><code>price</code> <span class="return-type">double</span></li>
+                            <li><code>sku</code> <span class="return-type">string</span></li>
+                            <li><code>category</code> <span class="return-type">string</span></li>
+                            <li><code>availabilities</code> <span class="return-type">repeated Availability</span></li>
+                        </ul>
+                    </div>
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">M</span>
+                            <span class="type-name">Availability</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>id</code> <span class="return-type">int64</span></li>
+                            <li><code>quantity</code> <span class="return-type">int32</span></li>
+                            <li><code>warehouse</code> <span class="return-type">string</span></li>
+                            <li><code>last_updated</code> <span class="return-type">string</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Connection Info Section -->
+            <section class="connection-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> CONNECTION INFO</h2>
+                </div>
+                <div class="connection-grid">
+                    <div class="connection-item">
+                        <span class="connection-label">Host</span>
+                        <code class="connection-value">localhost</code>
+                    </div>
+                    <div class="connection-item">
+                        <span class="connection-label">Port</span>
+                        <code class="connection-value" th:text="${grpcPort}">9090</code>
+                    </div>
+                    <div class="connection-item">
+                        <span class="connection-label">Service</span>
+                        <code class="connection-value">product.ProductService</code>
+                    </div>
+                    <div class="connection-item">
+                        <span class="connection-label">Transport</span>
+                        <code class="connection-value">Plaintext (dev)</code>
+                    </div>
+                    <div class="connection-item full-path-item">
+                        <span class="connection-label">Full Path</span>
+                        <code class="connection-value">localhost:<span th:text="${grpcPort}">9090</span>/product.ProductService</code>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tabbed Examples Section -->
+            <section class="examples-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> RPC EXAMPLES</h2>
+                </div>
+
+                <!-- Tabs Navigation -->
+                <div class="tabs-container">
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="tab1">
+                            <span class="tab-number">01</span>
+                            <span class="tab-title">List Services</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab2">
+                            <span class="tab-number">02</span>
+                            <span class="tab-title">Get All Products</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab3">
+                            <span class="tab-number">03</span>
+                            <span class="tab-title">With Availability</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab4">
+                            <span class="tab-number">04</span>
+                            <span class="tab-title">By ID</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab5">
+                            <span class="tab-number">05</span>
+                            <span class="tab-title">By SKU</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab6">
+                            <span class="tab-number">06</span>
+                            <span class="tab-title">By Category</span>
+                        </button>
+                    </div>
+
+                    <!-- Tab Contents -->
+                    <div class="tabs-content">
+                        <!-- Tab 1: List Services -->
+                        <div class="tab-panel active" id="tab1">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>List Available Services</h3>
+                                    <span class="category-badge basic">DISCOVERY</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>GRPCURL COMMAND</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>grpcurl -plaintext localhost:<span th:text="${grpcPort}">9090</span> list</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>grpc.health.v1.Health
+grpc.reflection.v1.ServerReflection
+grpc.reflection.v1alpha.ServerReflection
+product.ProductService</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-note">
+                                    <span class="note-icon">&#9432;</span>
+                                    Use <code>grpcurl</code> to discover available services via gRPC reflection.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: Get All Products -->
+                        <div class="tab-panel" id="tab2">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Get All Products</h3>
+                                    <span class="category-badge basic">BASIC</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>GRPCURL COMMAND</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>grpcurl -plaintext \
+  -d '{"include_availability": false}' \
+  localhost:<span th:text="${grpcPort}">9090</span> \
+  product.ProductService/GetProducts</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "products": [
+    {
+      "id": "1",
+      "name": "Samsung Galaxy S24",
+      "description": "Flagship smartphone with AI features",
+      "price": 89990,
+      "sku": "SAM-S24-BLK",
+      "category": "Electronics"
+    },
+    {
+      "id": "2",
+      "name": "iPhone 15 Pro",
+      "description": "Premium Apple smartphone",
+      "price": 129990,
+      "sku": "APL-IP15-SLV",
+      "category": "Electronics"
+    }
+  ]
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="proto-definition">
+                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <pre><code>message GetProductsRequest {
+    bool include_availability = 1;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 3: Products with Availability -->
+                        <div class="tab-panel" id="tab3">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Products with Availability</h3>
+                                    <span class="category-badge basic">BASIC</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>GRPCURL COMMAND</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>grpcurl -plaintext \
+  -d '{"include_availability": true}' \
+  localhost:<span th:text="${grpcPort}">9090</span> \
+  product.ProductService/GetProducts</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "products": [
+    {
+      "id": "1",
+      "name": "Samsung Galaxy S24",
+      "description": "Flagship smartphone with AI features",
+      "price": 89990,
+      "sku": "SAM-S24-BLK",
+      "category": "Electronics",
+      "availabilities": [
+        {
+          "id": "1",
+          "quantity": 150,
+          "warehouse": "Moscow-1",
+          "lastUpdated": "2025-01-15"
+        },
+        {
+          "id": "2",
+          "quantity": 75,
+          "warehouse": "SPB-2",
+          "lastUpdated": "2025-01-14"
+        }
+      ]
+    }
+  ]
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-note">
+                                    <span class="note-icon">&#9432;</span>
+                                    Set <code>include_availability: true</code> to fetch stock information from MongoDB.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 4: Get Product by ID -->
+                        <div class="tab-panel" id="tab4">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Get Product by ID</h3>
+                                    <span class="category-badge filtered">FILTERED</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>GRPCURL COMMAND</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>grpcurl -plaintext \
+  -d '{"id": 1, "include_availability": true}' \
+  localhost:<span th:text="${grpcPort}">9090</span> \
+  product.ProductService/GetProductById</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "product": {
+    "id": "1",
+    "name": "Samsung Galaxy S24",
+    "description": "Flagship smartphone with AI features",
+    "price": 89990,
+    "sku": "SAM-S24-BLK",
+    "category": "Electronics",
+    "availabilities": [
+      {
+        "id": "1",
+        "quantity": 150,
+        "warehouse": "Moscow-1",
+        "lastUpdated": "2025-01-15"
+      }
+    ]
+  },
+  "found": true
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="proto-definition">
+                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <pre><code>message GetProductByIdRequest {
+    int64 id = 1;
+    bool include_availability = 2;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 5: Get Product by SKU -->
+                        <div class="tab-panel" id="tab5">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Get Product by SKU</h3>
+                                    <span class="category-badge filtered">FILTERED</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>GRPCURL COMMAND</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>grpcurl -plaintext \
+  -d '{"sku": "SAM-S24-BLK", "include_availability": false}' \
+  localhost:<span th:text="${grpcPort}">9090</span> \
+  product.ProductService/GetProductBySku</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "product": {
+    "id": "1",
+    "name": "Samsung Galaxy S24",
+    "description": "Flagship smartphone with AI features",
+    "price": 89990,
+    "sku": "SAM-S24-BLK",
+    "category": "Electronics"
+  },
+  "found": true
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="proto-definition">
+                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <pre><code>message GetProductBySkuRequest {
+    string sku = 1;
+    bool include_availability = 2;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 6: Get Products by Category -->
+                        <div class="tab-panel" id="tab6">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Get Products by Category</h3>
+                                    <span class="category-badge filtered">FILTERED</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>GRPCURL COMMAND</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>grpcurl -plaintext \
+  -d '{"category": "Electronics", "include_availability": true}' \
+  localhost:<span th:text="${grpcPort}">9090</span> \
+  product.ProductService/GetProductsByCategory</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "products": [
+    {
+      "id": "1",
+      "name": "Samsung Galaxy S24",
+      "price": 89990,
+      "sku": "SAM-S24-BLK",
+      "category": "Electronics",
+      "availabilities": [
+        {"quantity": 150, "warehouse": "Moscow-1"}
+      ]
+    },
+    {
+      "id": "2",
+      "name": "iPhone 15 Pro",
+      "price": 129990,
+      "sku": "APL-IP15-SLV",
+      "category": "Electronics",
+      "availabilities": [
+        {"quantity": 85, "warehouse": "Moscow-1"}
+      ]
+    }
+  ]
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="proto-definition">
+                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <pre><code>message GetProductsByCategoryRequest {
+    string category = 1;
+    bool include_availability = 2;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Proto File Section -->
+            <section class="proto-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> PROTO DEFINITION</h2>
+                    <div class="proto-actions">
+                        <button class="copy-btn" onclick="copyProto(this)">
+                            <span class="copy-icon">&#x2398;</span> COPY PROTO
+                        </button>
+                        <button class="copy-btn download-btn" onclick="downloadProto()">
+                            <span class="download-icon">&#x2193;</span> DOWNLOAD
+                        </button>
+                    </div>
+                </div>
+                <div class="proto-file">
+                    <pre><code id="proto-content">syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ppr.ru.integrationservice.grpc.generated";
+option java_outer_classname = "ProductProto";
+
+package product;
+
+service ProductService {
+    rpc GetProducts(GetProductsRequest) returns (GetProductsResponse);
+    rpc GetProductById(GetProductByIdRequest) returns (ProductResponse);
+    rpc GetProductBySku(GetProductBySkuRequest) returns (ProductResponse);
+    rpc GetProductsByCategory(GetProductsByCategoryRequest) returns (GetProductsResponse);
+}
+
+message GetProductsRequest {
+    bool include_availability = 1;
+}
+
+message GetProductByIdRequest {
+    int64 id = 1;
+    bool include_availability = 2;
+}
+
+message GetProductBySkuRequest {
+    string sku = 1;
+    bool include_availability = 2;
+}
+
+message GetProductsByCategoryRequest {
+    string category = 1;
+    bool include_availability = 2;
+}
+
+message GetProductsResponse {
+    repeated Product products = 1;
+}
+
+message ProductResponse {
+    Product product = 1;
+    bool found = 2;
+}
+
+message Product {
+    int64 id = 1;
+    string name = 2;
+    string description = 3;
+    double price = 4;
+    string sku = 5;
+    string category = 6;
+    repeated Availability availabilities = 7;
+}
+
+message Availability {
+    int64 id = 1;
+    int32 quantity = 2;
+    string warehouse = 3;
+    string last_updated = 4;
+}</code></pre>
+                </div>
+            </section>
+        </main>
+
+        <footer class="futuristic-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="neon-text">INTEGRATION SERVICE</span>
+                    <span class="version">v1.0.0</span>
+                </div>
+                <div class="footer-links">
+                    <a th:href="@{/}" class="footer-link">PORTAL</a>
+                    <a th:href="@{/graphql-examples}" class="footer-link">GraphQL Examples</a>
+                    <a th:href="@{/swagger-ui.html}" class="footer-link">Swagger UI</a>
+                </div>
+                <div class="footer-status">
+                    <span class="status-dot"></span>
+                    <span>ALL SYSTEMS OPERATIONAL</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Particle animation
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (5 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active from all tabs and panels
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+
+                // Add active to clicked tab and corresponding panel
+                btn.classList.add('active');
+                const tabId = btn.dataset.tab;
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Copy to clipboard
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-block') || btn.closest('.section-header');
+            const code = codeBlock.querySelector('code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<span class="copy-icon">&#x2713;</span> COPIED';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Copy proto file
+        function copyProto(btn) {
+            const code = document.getElementById('proto-content').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<span class="copy-icon">&#x2713;</span> COPIED';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Download proto file
+        function downloadProto() {
+            const code = document.getElementById('proto-content').textContent;
+            const blob = new Blob([code], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'product.proto';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
