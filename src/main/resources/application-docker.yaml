@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://postgres:5432/postgres
+
+  data:
+    mongodb:
+      host: mongodb
+      port: 27017
+      database: mydatabase

@@ -18,6 +18,9 @@ spring:
 
   data:
     mongodb:
+      host: localhost
+      port: 27017
+      database: mydatabase
       auto-index-creation: true
 
   graphql:
@@ -27,8 +30,6 @@ spring:
       locations: classpath:graphql/
     http:
       path: /graphql
-  mongodb:
-    uri: mongodb://localhost:27017/mydatabase
 
 grpc:
   server:
