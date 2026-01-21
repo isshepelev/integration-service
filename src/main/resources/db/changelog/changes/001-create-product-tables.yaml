@@ -1,0 +1,100 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-products-table
+      author: integration-service
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: price
+                  type: decimal(19,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sku
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: category
+                  type: varchar(100)
+
+  - changeSet:
+      id: 002-create-product-availability-table
+      author: integration-service
+      changes:
+        - createTable:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: product_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: warehouse
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_updated
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+        - addForeignKeyConstraint:
+            baseTableName: product_availability
+            baseColumnNames: product_id
+            constraintName: fk_product_availability_product
+            referencedTableName: products
+            referencedColumnNames: id
+
+  - changeSet:
+      id: 003-create-indexes
+      author: integration-service
+      changes:
+        - createIndex:
+            indexName: idx_products_sku
+            tableName: products
+            columns:
+              - column:
+                  name: sku
+        - createIndex:
+            indexName: idx_products_category
+            tableName: products
+            columns:
+              - column:
+                  name: category
+        - createIndex:
+            indexName: idx_product_availability_product_id
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id

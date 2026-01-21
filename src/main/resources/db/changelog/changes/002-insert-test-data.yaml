@@ -1,0 +1,497 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-insert-products
+      author: integration-service
+      comment: Добавление тестовых продуктов
+      changes:
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: name
+                  value: "Смартфон Samsung Galaxy S24"
+              - column:
+                  name: description
+                  value: "Флагманский смартфон с AI функциями, 8/256 ГБ, AMOLED 6.2\", 50 МП камера"
+              - column:
+                  name: price
+                  valueNumeric: 89990.00
+              - column:
+                  name: sku
+                  value: "SAM-S24-BLK"
+              - column:
+                  name: category
+                  value: "Электроника"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: name
+                  value: "Ноутбук Apple MacBook Pro 14"
+              - column:
+                  name: description
+                  value: "Профессиональный ноутбук с чипом M3 Pro, 18 ГБ RAM, 512 ГБ SSD, Retina дисплей"
+              - column:
+                  name: price
+                  valueNumeric: 199990.00
+              - column:
+                  name: sku
+                  value: "APP-MBP14-SLV"
+              - column:
+                  name: category
+                  value: "Электроника"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 3
+              - column:
+                  name: name
+                  value: "Наушники Sony WH-1000XM5"
+              - column:
+                  name: description
+                  value: "Беспроводные наушники с шумоподавлением, 30 часов работы, Hi-Res Audio"
+              - column:
+                  name: price
+                  valueNumeric: 34990.00
+              - column:
+                  name: sku
+                  value: "SONY-WH1000-BLK"
+              - column:
+                  name: category
+                  value: "Электроника"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 4
+              - column:
+                  name: name
+                  value: "Кофемашина DeLonghi Magnifica S"
+              - column:
+                  name: description
+                  value: "Автоматическая кофемашина с капучинатором, 15 бар, 1.8 л резервуар"
+              - column:
+                  name: price
+                  valueNumeric: 54990.00
+              - column:
+                  name: sku
+                  value: "DLG-MAG-BLK"
+              - column:
+                  name: category
+                  value: "Бытовая техника"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 5
+              - column:
+                  name: name
+                  value: "Пылесос Dyson V15 Detect"
+              - column:
+                  name: description
+                  value: "Беспроводной пылесос с лазерным обнаружением пыли, 60 минут работы"
+              - column:
+                  name: price
+                  valueNumeric: 69990.00
+              - column:
+                  name: sku
+                  value: "DYS-V15-GLD"
+              - column:
+                  name: category
+                  value: "Бытовая техника"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 6
+              - column:
+                  name: name
+                  value: "Телевизор LG OLED 55\""
+              - column:
+                  name: description
+                  value: "4K OLED телевизор, 120 Гц, Dolby Vision, webOS 24, диагональ 55 дюймов"
+              - column:
+                  name: price
+                  valueNumeric: 129990.00
+              - column:
+                  name: sku
+                  value: "LG-OLED55-BLK"
+              - column:
+                  name: category
+                  value: "Электроника"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 7
+              - column:
+                  name: name
+                  value: "Игровая консоль Sony PlayStation 5"
+              - column:
+                  name: description
+                  value: "Игровая приставка нового поколения, SSD 825 ГБ, 4K/120fps, Ray Tracing"
+              - column:
+                  name: price
+                  valueNumeric: 59990.00
+              - column:
+                  name: sku
+                  value: "SONY-PS5-WHT"
+              - column:
+                  name: category
+                  value: "Игры и развлечения"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 8
+              - column:
+                  name: name
+                  value: "Умные часы Apple Watch Ultra 2"
+              - column:
+                  name: description
+                  value: "Премиальные смарт-часы для спорта, титановый корпус, GPS, 36 часов работы"
+              - column:
+                  name: price
+                  valueNumeric: 79990.00
+              - column:
+                  name: sku
+                  value: "APP-AWU2-TIT"
+              - column:
+                  name: category
+                  value: "Электроника"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 9
+              - column:
+                  name: name
+                  value: "Холодильник Samsung Side-by-Side"
+              - column:
+                  name: description
+                  value: "Двухдверный холодильник, 617 л, No Frost, инверторный компрессор, Wi-Fi"
+              - column:
+                  name: price
+                  valueNumeric: 149990.00
+              - column:
+                  name: sku
+                  value: "SAM-SBS-SLVR"
+              - column:
+                  name: category
+                  value: "Бытовая техника"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 10
+              - column:
+                  name: name
+                  value: "Электросамокат Xiaomi Electric Scooter 4 Pro"
+              - column:
+                  name: description
+                  value: "Электросамокат, 25 км/ч, запас хода 45 км, мотор 700 Вт"
+              - column:
+                  name: price
+                  valueNumeric: 49990.00
+              - column:
+                  name: sku
+                  value: "XIA-ES4P-BLK"
+              - column:
+                  name: category
+                  value: "Транспорт"
+
+  - changeSet:
+      id: 005-insert-product-availability
+      author: integration-service
+      comment: Добавление данных о наличии товаров на складах
+      changes:
+        # Samsung Galaxy S24
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 1
+              - column:
+                  name: quantity
+                  valueNumeric: 50
+              - column:
+                  name: warehouse
+                  value: "Москва-Центр"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-15T10:30:00"
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 1
+              - column:
+                  name: quantity
+                  valueNumeric: 30
+              - column:
+                  name: warehouse
+                  value: "Санкт-Петербург"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-15T11:00:00"
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 1
+              - column:
+                  name: quantity
+                  valueNumeric: 25
+              - column:
+                  name: warehouse
+                  value: "Новосибирск"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-14T16:45:00"
+        # MacBook Pro
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 2
+              - column:
+                  name: quantity
+                  valueNumeric: 15
+              - column:
+                  name: warehouse
+                  value: "Москва-Центр"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-15T09:00:00"
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 2
+              - column:
+                  name: quantity
+                  valueNumeric: 8
+              - column:
+                  name: warehouse
+                  value: "Санкт-Петербург"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-15T09:15:00"
+        # Sony WH-1000XM5
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 3
+              - column:
+                  name: quantity
+                  valueNumeric: 100
+              - column:
+                  name: warehouse
+                  value: "Москва-Центр"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-15T08:00:00"
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 3
+              - column:
+                  name: quantity
+                  valueNumeric: 45
+              - column:
+                  name: warehouse
+                  value: "Екатеринбург"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-14T14:30:00"
+        # DeLonghi
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 4
+              - column:
+                  name: quantity
+                  valueNumeric: 20
+              - column:
+                  name: warehouse
+                  value: "Москва-Центр"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-15T07:30:00"
+        # Dyson V15
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 5
+              - column:
+                  name: quantity
+                  valueNumeric: 35
+              - column:
+                  name: warehouse
+                  value: "Москва-Центр"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-15T12:00:00"
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 5
+              - column:
+                  name: quantity
+                  valueNumeric: 12
+              - column:
+                  name: warehouse
+                  value: "Казань"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-14T18:00:00"
+        # LG OLED
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 6
+              - column:
+                  name: quantity
+                  valueNumeric: 10
+              - column:
+                  name: warehouse
+                  value: "Москва-Центр"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-15T10:00:00"
+        # PlayStation 5
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 7
+              - column:
+                  name: quantity
+                  valueNumeric: 40
+              - column:
+                  name: warehouse
+                  value: "Москва-Центр"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-15T11:30:00"
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 7
+              - column:
+                  name: quantity
+                  valueNumeric: 25
+              - column:
+                  name: warehouse
+                  value: "Санкт-Петербург"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-15T11:45:00"
+        # Apple Watch Ultra 2
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 8
+              - column:
+                  name: quantity
+                  valueNumeric: 18
+              - column:
+                  name: warehouse
+                  value: "Москва-Центр"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-15T09:30:00"
+        # Samsung холодильник
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 9
+              - column:
+                  name: quantity
+                  valueNumeric: 5
+              - column:
+                  name: warehouse
+                  value: "Москва-Склад"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-14T15:00:00"
+        # Xiaomi самокат
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 10
+              - column:
+                  name: quantity
+                  valueNumeric: 60
+              - column:
+                  name: warehouse
+                  value: "Москва-Центр"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-15T13:00:00"
+        - insert:
+            tableName: product_availability
+            columns:
+              - column:
+                  name: product_id
+                  valueNumeric: 10
+              - column:
+                  name: quantity
+                  valueNumeric: 30
+              - column:
+                  name: warehouse
+                  value: "Краснодар"
+              - column:
+                  name: last_updated
+                  valueDate: "2024-01-14T17:00:00"
+
+  - changeSet:
+      id: 006-reset-sequences
+      author: integration-service
+      comment: Сброс последовательностей после вставки данных с явными ID
+      changes:
+        - sql:
+            sql: SELECT setval('products_id_seq', (SELECT MAX(id) FROM products));
+        - sql:
+            sql: SELECT setval('product_availability_id_seq', (SELECT MAX(id) FROM product_availability));

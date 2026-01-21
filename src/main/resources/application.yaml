@@ -1,1 +1,33 @@
-spring.application.name=integration-service
+spring:
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    driverClassName: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/mydatabase
+      auto-index-creation: true
+
+  graphql:
+    graphiql:
+      enabled: true
+    path: /graphql
+    schema:
+      locations: classpath:graphql/
+
+grpc:
+  server:
+    port: 9090

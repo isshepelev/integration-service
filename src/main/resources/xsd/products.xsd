@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://integrationservice.ru.ppr/soap/products"
+           targetNamespace="http://integrationservice.ru.ppr/soap/products"
+           elementFormDefault="qualified">
+
+    <!-- Request/Response Elements -->
+    <xs:element name="getProductsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="includeAvailability" type="xs:boolean" minOccurs="0" default="false"/>
+                <xs:element name="category" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getProductsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="product" type="tns:product" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getProductByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="includeAvailability" type="xs:boolean" minOccurs="0" default="false"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getProductBySkuRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sku" type="xs:string"/>
+                <xs:element name="includeAvailability" type="xs:boolean" minOccurs="0" default="false"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getProductResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="product" type="tns:product" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Complex Types -->
+    <xs:complexType name="product">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="description" type="xs:string" minOccurs="0"/>
+            <xs:element name="price" type="xs:decimal"/>
+            <xs:element name="sku" type="xs:string"/>
+            <xs:element name="category" type="xs:string" minOccurs="0"/>
+            <xs:element name="availability" type="tns:productAvailability" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="productAvailability">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="quantity" type="xs:int"/>
+            <xs:element name="warehouse" type="xs:string"/>
+            <xs:element name="lastUpdated" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

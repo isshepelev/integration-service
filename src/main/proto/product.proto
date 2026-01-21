@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "ppr.ru.integrationservice.grpc.generated";
+option java_outer_classname = "ProductProto";
+
+package product;
+
+service ProductService {
+    rpc GetProducts(GetProductsRequest) returns (GetProductsResponse);
+    rpc GetProductById(GetProductByIdRequest) returns (ProductResponse);
+    rpc GetProductBySku(GetProductBySkuRequest) returns (ProductResponse);
+    rpc GetProductsByCategory(GetProductsByCategoryRequest) returns (GetProductsResponse);
+}
+
+message GetProductsRequest {
+    bool include_availability = 1;
+}
+
+message GetProductByIdRequest {
+    int64 id = 1;
+    bool include_availability = 2;
+}
+
+message GetProductBySkuRequest {
+    string sku = 1;
+    bool include_availability = 2;
+}
+
+message GetProductsByCategoryRequest {
+    string category = 1;
+    bool include_availability = 2;
+}
+
+message GetProductsResponse {
+    repeated Product products = 1;
+}
+
+message ProductResponse {
+    Product product = 1;
+    bool found = 2;
+}
+
+message Product {
+    int64 id = 1;
+    string name = 2;
+    string description = 3;
+    double price = 4;
+    string sku = 5;
+    string category = 6;
+    repeated Availability availabilities = 7;
+}
+
+message Availability {
+    int64 id = 1;
+    int32 quantity = 2;
+    string warehouse = 3;
+    string last_updated = 4;
+}

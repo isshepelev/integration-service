@@ -1,0 +1,24 @@
+type Query {
+    products: [Product!]!
+    productsWithAvailability: [Product!]!
+    product(id: ID!): Product
+    productBySku(sku: String!): Product
+    productsByCategory(category: String!): [Product!]!
+}
+
+type Product {
+    id: ID!
+    name: String!
+    description: String
+    price: Float!
+    sku: String!
+    category: String
+    availabilities: [Availability!]
+}
+
+type Availability {
+    id: ID!
+    quantity: Int!
+    warehouse: String!
+    lastUpdated: String
+}
