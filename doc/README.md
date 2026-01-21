@@ -20,6 +20,8 @@ Integration Service — это микросервис на базе Spring Boot 
 | Миграции | Liquibase |
 | Маппинг DTO | MapStruct 1.5.5 |
 | gRPC | grpc-java 1.58.0 |
+| API Документация | SpringDoc OpenAPI 2.3.0 (Swagger UI) |
+| Шаблонизатор | Thymeleaf |
 | Сборка | Maven |
 
 ## Структура проекта
@@ -78,11 +80,22 @@ docker run -d --name mongodb -p 27017:27017 mongo:7
 
 ### Проверка работоспособности
 
-После запуска доступны следующие эндпоинты:
+После запуска откройте в браузере главную страницу:
 
-| Протокол | URL | Описание |
-|----------|-----|----------|
-| REST | http://localhost:8080/api/products | Список продуктов |
+```
+http://localhost:8080/
+```
+
+На главной странице доступны кнопки для перехода ко всей документации API.
+
+### Доступные эндпоинты
+
+| Компонент | URL | Описание |
+|-----------|-----|----------|
+| **Главная страница** | http://localhost:8080/ | Веб-интерфейс с навигацией |
+| **Swagger UI** | http://localhost:8080/swagger-ui.html | Интерактивная документация REST API |
+| **OpenAPI JSON** | http://localhost:8080/v3/api-docs | OpenAPI спецификация |
+| REST API | http://localhost:8080/api/products | Список продуктов |
 | GraphiQL | http://localhost:8080/graphiql | GraphQL IDE |
 | WSDL | http://localhost:8080/ws/products.wsdl | SOAP описание |
 | gRPC | localhost:9090 | gRPC сервер |
@@ -90,6 +103,7 @@ docker run -d --name mongodb -p 27017:27017 mongo:7
 ## Документация
 
 - [API документация](API.md) — описание всех API эндпоинтов
+- [GraphQL запросы](GRAPHQL_QUERIES.md) — примеры GraphQL запросов
 - [Структура БД](DATABASE.md) — схема базы данных
 - [Установка и настройка](SETUP.md) — подробные инструкции по развертыванию
 

@@ -2,10 +2,38 @@
 
 ## Содержание
 
-1. [REST API](#rest-api)
-2. [GraphQL API](#graphql-api)
-3. [gRPC API](#grpc-api)
-4. [SOAP API](#soap-api)
+1. [Главная страница и OpenAPI](#главная-страница-и-openapi)
+2. [REST API](#rest-api)
+3. [GraphQL API](#graphql-api)
+4. [gRPC API](#grpc-api)
+5. [SOAP API](#soap-api)
+
+---
+
+## Главная страница и OpenAPI
+
+### Веб-интерфейс
+
+После запуска приложения откройте в браузере:
+
+```
+http://localhost:8080/
+```
+
+На главной странице доступны кнопки для перехода к документации всех API.
+
+### OpenAPI / Swagger
+
+| URL | Описание |
+|-----|----------|
+| http://localhost:8080/swagger-ui.html | Swagger UI — интерактивная документация |
+| http://localhost:8080/v3/api-docs | OpenAPI спецификация (JSON) |
+| http://localhost:8080/v3/api-docs.yaml | OpenAPI спецификация (YAML) |
+
+**Swagger UI** позволяет:
+- Просматривать все REST эндпоинты
+- Тестировать запросы прямо из браузера
+- Видеть модели данных и примеры
 
 ---
 

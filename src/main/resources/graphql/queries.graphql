@@ -1,0 +1,203 @@
+# ============================================
+# Integration Service - Standard GraphQL Queries
+# ============================================
+# Use these queries in GraphiQL: http://localhost:8080/graphiql
+# ============================================
+
+# --------------------------------------------
+# BASIC QUERIES - Products List
+# --------------------------------------------
+
+# Get all products (basic info only)
+query GetAllProducts {
+  products {
+    id
+    name
+    price
+    sku
+    category
+  }
+}
+
+# Get all products with full details
+query GetAllProductsFull {
+  products {
+    id
+    name
+    description
+    price
+    sku
+    category
+  }
+}
+
+# Get all products with availability information
+query GetAllProductsWithAvailability {
+  productsWithAvailability {
+    id
+    name
+    price
+    sku
+    category
+    availabilities {
+      id
+      quantity
+      warehouse
+      lastUpdated
+    }
+  }
+}
+
+# --------------------------------------------
+# SINGLE PRODUCT QUERIES
+# --------------------------------------------
+
+# Get product by ID
+query GetProductById($id: ID!) {
+  product(id: $id) {
+    id
+    name
+    description
+    price
+    sku
+    category
+    availabilities {
+      id
+      quantity
+      warehouse
+      lastUpdated
+    }
+  }
+}
+
+# Get product by SKU
+query GetProductBySku($sku: String!) {
+  productBySku(sku: $sku) {
+    id
+    name
+    description
+    price
+    sku
+    category
+    availabilities {
+      id
+      quantity
+      warehouse
+      lastUpdated
+    }
+  }
+}
+
+# --------------------------------------------
+# FILTERED QUERIES
+# --------------------------------------------
+
+# Get products by category
+query GetProductsByCategory($category: String!) {
+  productsByCategory(category: $category) {
+    id
+    name
+    description
+    price
+    sku
+    category
+    availabilities {
+      id
+      quantity
+      warehouse
+      lastUpdated
+    }
+  }
+}
+
+# --------------------------------------------
+# PARTIAL FIELD QUERIES (Optimized)
+# --------------------------------------------
+
+# Get only product names and prices
+query GetProductNamesAndPrices {
+  products {
+    name
+    price
+  }
+}
+
+# Get products with stock summary
+query GetProductsStockSummary {
+  productsWithAvailability {
+    name
+    sku
+    availabilities {
+      warehouse
+      quantity
+    }
+  }
+}
+
+# Get product IDs and SKUs only
+query GetProductIdentifiers {
+  products {
+    id
+    sku
+  }
+}
+
+# --------------------------------------------
+# COMBINED QUERIES (Multiple queries in one request)
+# --------------------------------------------
+
+# Get electronics and home appliances at once
+query GetMultipleCategories {
+  electronics: productsByCategory(category: "Электроника") {
+    id
+    name
+    price
+    sku
+  }
+  homeAppliances: productsByCategory(category: "Бытовая техника") {
+    id
+    name
+    price
+    sku
+  }
+}
+
+# Get specific products by ID
+query GetSpecificProducts {
+  product1: product(id: "1") {
+    name
+    price
+    sku
+  }
+  product2: product(id: "2") {
+    name
+    price
+    sku
+  }
+  product3: product(id: "3") {
+    name
+    price
+    sku
+  }
+}
+
+# ============================================
+# QUERY VARIABLES EXAMPLES
+# ============================================
+#
+# For GetProductById:
+# {
+#   "id": "1"
+# }
+#
+# For GetProductBySku:
+# {
+#   "sku": "SAM-S24-BLK"
+# }
+#
+# For GetProductsByCategory:
+# {
+#   "category": "Электроника"
+# }
+#
+# ============================================

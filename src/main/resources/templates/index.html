@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integration Service - API Portal</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Integration Service</h1>
+            <p class="subtitle">Multi-Protocol API Portal</p>
+        </header>
+
+        <main>
+            <section class="api-section">
+                <h2>API Documentation</h2>
+                <p>Choose a protocol to view documentation or interact with the API:</p>
+
+                <div class="cards">
+                    <!-- REST / OpenAPI -->
+                    <div class="card rest">
+                        <div class="card-icon">REST</div>
+                        <h3>REST API</h3>
+                        <p>OpenAPI 3.0 specification with Swagger UI for interactive exploration.</p>
+                        <div class="card-links">
+                            <a th:href="@{/swagger-ui.html}" class="btn btn-primary">Swagger UI</a>
+                            <a th:href="@{/v3/api-docs}" class="btn btn-secondary" target="_blank">OpenAPI JSON</a>
+                            <a th:href="@{/v3/api-docs.yaml}" class="btn btn-secondary" target="_blank">OpenAPI YAML</a>
+                        </div>
+                        <div class="endpoint-info">
+                            <code>GET /api/products</code>
+                        </div>
+                    </div>
+
+                    <!-- GraphQL -->
+                    <div class="card graphql">
+                        <div class="card-icon">GraphQL</div>
+                        <h3>GraphQL API</h3>
+                        <p>Flexible query language with built-in GraphiQL IDE for testing.</p>
+                        <div class="card-links">
+                            <a th:href="@{/graphql-playground}" class="btn btn-primary">Playground</a>
+                            <a th:href="@{/graphql-examples}" class="btn btn-secondary">Examples</a>
+                            <a th:href="@{/graphiql}" class="btn btn-secondary">GraphiQL IDE</a>
+                        </div>
+                        <div class="endpoint-info">
+                            <code>POST /graphql</code>
+                        </div>
+                    </div>
+
+                    <!-- gRPC -->
+                    <div class="card grpc">
+                        <div class="card-icon">gRPC</div>
+                        <h3>gRPC API</h3>
+                        <p>High-performance RPC framework with Protocol Buffers.</p>
+                        <div class="card-links">
+                            <a href="#grpc-info" class="btn btn-primary" onclick="toggleGrpcInfo()">Connection Info</a>
+                        </div>
+                        <div class="endpoint-info">
+                            <code th:text="'localhost:' + ${grpcPort}">localhost:9090</code>
+                        </div>
+                        <div id="grpc-info" class="grpc-details" style="display: none;">
+                            <h4>Usage with grpcurl:</h4>
+                            <pre>
+# List services
+grpcurl -plaintext localhost:<span th:text="${grpcPort}">9090</span> list
+
+# Get products
+grpcurl -plaintext -d '{}' \
+  localhost:<span th:text="${grpcPort}">9090</span> \
+  product.ProductService/GetProducts</pre>
+                        </div>
+                    </div>
+
+                    <!-- SOAP -->
+                    <div class="card soap">
+                        <div class="card-icon">SOAP</div>
+                        <h3>SOAP Web Service</h3>
+                        <p>XML-based protocol for enterprise integration.</p>
+                        <div class="card-links">
+                            <a th:href="@{/ws/products.wsdl}" class="btn btn-primary" target="_blank">WSDL</a>
+                        </div>
+                        <div class="endpoint-info">
+                            <code>POST /ws</code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="quick-links">
+                <h2>Quick Links</h2>
+                <div class="links-grid">
+                    <div class="link-group">
+                        <h4>API Endpoints</h4>
+                        <ul>
+                            <li><a th:href="@{/api/products}">GET /api/products</a></li>
+                            <li><a th:href="@{/api/products?includeAvailability=true}">GET /api/products?includeAvailability=true</a></li>
+                            <li><a th:href="@{/api/products/1}">GET /api/products/1</a></li>
+                            <li><a th:href="@{/api/products/sku/SAM-S24-BLK}">GET /api/products/sku/SAM-S24-BLK</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Documentation</h4>
+                        <ul>
+                            <li><a th:href="@{/swagger-ui.html}">Swagger UI</a></li>
+                            <li><a th:href="@{/v3/api-docs}">OpenAPI Spec (JSON)</a></li>
+                            <li><a th:href="@{/v3/api-docs.yaml}">OpenAPI Spec (YAML)</a></li>
+                            <li><a th:href="@{/graphql-playground}">GraphQL Playground</a></li>
+                            <li><a th:href="@{/graphql-examples}">GraphQL Examples</a></li>
+                            <li><a th:href="@{/graphiql}">GraphiQL IDE</a></li>
+                            <li><a th:href="@{/ws/products.wsdl}">WSDL Schema</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Server Info</h4>
+                        <ul>
+                            <li>HTTP Port: <code th:text="${serverPort}">8080</code></li>
+                            <li>gRPC Port: <code th:text="${grpcPort}">9090</code></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Integration Service v1.0.0 | Spring Boot 4.0.1</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleGrpcInfo() {
+            var info = document.getElementById('grpc-info');
+            if (info.style.display === 'none') {
+                info.style.display = 'block';
+            } else {
+                info.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

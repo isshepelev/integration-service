@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL Examples - 2050 Edition</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/graphql-examples.css}">
+</head>
+<body class="futuristic-body">
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+    <div class="floating-particles" id="particles"></div>
+    <div class="holographic-overlay"></div>
+
+    <div class="container futuristic-container">
+        <header class="futuristic-header">
+            <div class="header-nav">
+                <a th:href="@{/}" class="nav-link hologram-text">&larr; PORTAL</a>
+                <a th:href="@{/graphql-playground}" class="nav-link hologram-text">PLAYGROUND &rarr;</a>
+            </div>
+            <div class="header-title">
+                <div class="glitch-wrapper">
+                    <h1 class="glitch" data-text="GraphQL">GraphQL</h1>
+                </div>
+                <p class="neon-subtitle">QUERY EXAMPLES // YEAR 2050</p>
+                <div class="scan-line"></div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-value neon-cyan">8</span>
+                    <span class="stat-label">QUERIES</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value neon-pink">3</span>
+                    <span class="stat-label">TYPES</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value neon-green">ACTIVE</span>
+                    <span class="stat-label">STATUS</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="futuristic-main">
+            <!-- Schema Section -->
+            <section class="schema-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> SCHEMA OVERVIEW</h2>
+                    <div class="status-badge online">SYNCHRONIZED</div>
+                </div>
+                <div class="schema-grid">
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">Q</span>
+                            <span class="type-name">Query</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>products</code> <span class="return-type">[Product!]!</span></li>
+                            <li><code>productsWithAvailability</code> <span class="return-type">[Product!]!</span></li>
+                            <li><code>product(id: ID!)</code> <span class="return-type">Product</span></li>
+                            <li><code>productBySku(sku: String!)</code> <span class="return-type">Product</span></li>
+                            <li><code>productsByCategory(category: String!)</code> <span class="return-type">[Product!]!</span></li>
+                        </ul>
+                    </div>
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">T</span>
+                            <span class="type-name">Product</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>id</code> <span class="return-type">ID!</span></li>
+                            <li><code>name</code> <span class="return-type">String!</span></li>
+                            <li><code>description</code> <span class="return-type">String</span></li>
+                            <li><code>price</code> <span class="return-type">Float!</span></li>
+                            <li><code>sku</code> <span class="return-type">String!</span></li>
+                            <li><code>category</code> <span class="return-type">String</span></li>
+                            <li><code>availabilities</code> <span class="return-type">[Availability!]</span></li>
+                        </ul>
+                    </div>
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">T</span>
+                            <span class="type-name">Availability</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>id</code> <span class="return-type">ID!</span></li>
+                            <li><code>quantity</code> <span class="return-type">Int!</span></li>
+                            <li><code>warehouse</code> <span class="return-type">String!</span></li>
+                            <li><code>lastUpdated</code> <span class="return-type">String</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tabbed Examples Section -->
+            <section class="examples-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> QUERY DATABASE</h2>
+                </div>
+
+                <!-- Tabs Navigation -->
+                <div class="tabs-container">
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="tab1">
+                            <span class="tab-number">01</span>
+                            <span class="tab-title">All Products</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab2">
+                            <span class="tab-number">02</span>
+                            <span class="tab-title">With Availability</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab3">
+                            <span class="tab-number">03</span>
+                            <span class="tab-title">By ID</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab4">
+                            <span class="tab-number">04</span>
+                            <span class="tab-title">By SKU</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab5">
+                            <span class="tab-number">05</span>
+                            <span class="tab-title">By Category</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab6">
+                            <span class="tab-number">06</span>
+                            <span class="tab-title">Partial Fields</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab7">
+                            <span class="tab-number">07</span>
+                            <span class="tab-title">Multi-Query</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab8">
+                            <span class="tab-number">08</span>
+                            <span class="tab-title">Stock Summary</span>
+                        </button>
+                    </div>
+
+                    <!-- Tab Contents -->
+                    <div class="tabs-content">
+                        <!-- Tab 1: Get All Products -->
+                        <div class="tab-panel active" id="tab1">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Get All Products</h3>
+                                    <span class="category-badge basic">BASIC</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>query GetAllProducts {
+  products {
+    id
+    name
+    price
+    sku
+    category
+  }
+}</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "products": [
+      {
+        "id": "1",
+        "name": "Samsung Galaxy S24",
+        "price": 89990.0,
+        "sku": "SAM-S24-BLK",
+        "category": "Electronics"
+      },
+      {
+        "id": "2",
+        "name": "iPhone 15 Pro",
+        "price": 129990.0,
+        "sku": "APL-IP15-SLV",
+        "category": "Electronics"
+      }
+    ]
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: Products with Availability -->
+                        <div class="tab-panel" id="tab2">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Products with Availability</h3>
+                                    <span class="category-badge basic">BASIC</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>query GetAllProductsWithAvailability {
+  productsWithAvailability {
+    id
+    name
+    price
+    sku
+    availabilities {
+      quantity
+      warehouse
+      lastUpdated
+    }
+  }
+}</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "productsWithAvailability": [
+      {
+        "id": "1",
+        "name": "Samsung Galaxy S24",
+        "price": 89990.0,
+        "sku": "SAM-S24-BLK",
+        "availabilities": [
+          {
+            "quantity": 150,
+            "warehouse": "Moscow-1",
+            "lastUpdated": "2025-01-15"
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 3: Product by ID -->
+                        <div class="tab-panel" id="tab3">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Product by ID</h3>
+                                    <span class="category-badge filtered">FILTERED</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>query GetProductById($id: ID!) {
+  product(id: $id) {
+    id
+    name
+    description
+    price
+    sku
+    category
+    availabilities {
+      quantity
+      warehouse
+    }
+  }
+}
+
+# Variables:
+# { "id": "1" }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "product": {
+      "id": "1",
+      "name": "Samsung Galaxy S24",
+      "description": "Flagship smartphone",
+      "price": 89990.0,
+      "sku": "SAM-S24-BLK",
+      "category": "Electronics",
+      "availabilities": [
+        {
+          "quantity": 150,
+          "warehouse": "Moscow-1"
+        }
+      ]
+    }
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 4: Product by SKU -->
+                        <div class="tab-panel" id="tab4">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Product by SKU</h3>
+                                    <span class="category-badge filtered">FILTERED</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>query GetProductBySku($sku: String!) {
+  productBySku(sku: $sku) {
+    id
+    name
+    description
+    price
+    sku
+    category
+  }
+}
+
+# Variables:
+# { "sku": "SAM-S24-BLK" }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "productBySku": {
+      "id": "1",
+      "name": "Samsung Galaxy S24",
+      "description": "Flagship smartphone",
+      "price": 89990.0,
+      "sku": "SAM-S24-BLK",
+      "category": "Electronics"
+    }
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 5: Products by Category -->
+                        <div class="tab-panel" id="tab5">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Products by Category</h3>
+                                    <span class="category-badge filtered">FILTERED</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>query GetProductsByCategory($category: String!) {
+  productsByCategory(category: $category) {
+    id
+    name
+    price
+    sku
+    category
+  }
+}
+
+# Variables:
+# { "category": "Electronics" }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "productsByCategory": [
+      {
+        "id": "1",
+        "name": "Samsung Galaxy S24",
+        "price": 89990.0,
+        "sku": "SAM-S24-BLK",
+        "category": "Electronics"
+      },
+      {
+        "id": "2",
+        "name": "iPhone 15 Pro",
+        "price": 129990.0,
+        "sku": "APL-IP15-SLV",
+        "category": "Electronics"
+      }
+    ]
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 6: Partial Fields -->
+                        <div class="tab-panel" id="tab6">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Partial Fields (Optimized)</h3>
+                                    <span class="category-badge advanced">ADVANCED</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>query GetProductNamesAndPrices {
+  products {
+    name
+    price
+  }
+}</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "products": [
+      {
+        "name": "Samsung Galaxy S24",
+        "price": 89990.0
+      },
+      {
+        "name": "iPhone 15 Pro",
+        "price": 129990.0
+      }
+    ]
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 7: Multiple Queries -->
+                        <div class="tab-panel" id="tab7">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Multiple Queries (Single Request)</h3>
+                                    <span class="category-badge advanced">ADVANCED</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>query GetMultipleCategories {
+  electronics: productsByCategory(category: "Electronics") {
+    id
+    name
+    price
+  }
+  homeAppliances: productsByCategory(category: "Home Appliances") {
+    id
+    name
+    price
+  }
+}</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "electronics": [
+      { "id": "1", "name": "Samsung Galaxy S24", "price": 89990.0 },
+      { "id": "2", "name": "iPhone 15 Pro", "price": 129990.0 }
+    ],
+    "homeAppliances": [
+      { "id": "5", "name": "Robot Vacuum", "price": 45990.0 }
+    ]
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 8: Stock Summary -->
+                        <div class="tab-panel" id="tab8">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Stock Summary</h3>
+                                    <span class="category-badge advanced">ADVANCED</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>query GetProductsStockSummary {
+  productsWithAvailability {
+    name
+    sku
+    availabilities {
+      warehouse
+      quantity
+    }
+  }
+}</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "productsWithAvailability": [
+      {
+        "name": "Samsung Galaxy S24",
+        "sku": "SAM-S24-BLK",
+        "availabilities": [
+          { "warehouse": "Moscow-1", "quantity": 150 },
+          { "warehouse": "SPB-2", "quantity": 75 }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="futuristic-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="neon-text">INTEGRATION SERVICE</span>
+                    <span class="version">v1.0.0</span>
+                </div>
+                <div class="footer-links">
+                    <a th:href="@{/graphql}" class="footer-link">ENDPOINT</a>
+                    <a th:href="@{/graphiql}" class="footer-link">GraphiQL</a>
+                    <a th:href="@{/graphql-playground}" class="footer-link">PLAYGROUND</a>
+                </div>
+                <div class="footer-status">
+                    <span class="status-dot"></span>
+                    <span>ALL SYSTEMS OPERATIONAL</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Particle animation
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (5 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active from all tabs and panels
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+
+                // Add active to clicked tab and corresponding panel
+                btn.classList.add('active');
+                const tabId = btn.dataset.tab;
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Copy to clipboard
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-block');
+            const code = codeBlock.querySelector('code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<span class="copy-icon">&#x2713;</span> COPIED';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
