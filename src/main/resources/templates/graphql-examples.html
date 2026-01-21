@@ -93,6 +93,35 @@
                 </div>
             </section>
 
+            <!-- Connection Info Section -->
+            <section class="connection-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> CONNECTION INFO</h2>
+                </div>
+                <div class="connection-grid">
+                    <div class="connection-item">
+                        <span class="connection-label">Host</span>
+                        <code class="connection-value">localhost</code>
+                    </div>
+                    <div class="connection-item">
+                        <span class="connection-label">Port</span>
+                        <code class="connection-value">8080</code>
+                    </div>
+                    <div class="connection-item">
+                        <span class="connection-label">Endpoint</span>
+                        <code class="connection-value">/graphql</code>
+                    </div>
+                    <div class="connection-item">
+                        <span class="connection-label">Transport</span>
+                        <code class="connection-value">HTTP POST</code>
+                    </div>
+                    <div class="connection-item full-path-item">
+                        <span class="connection-label">Full URL</span>
+                        <code class="connection-value">http://localhost:8080/graphql</code>
+                    </div>
+                </div>
+            </section>
+
             <!-- Tabbed Examples Section -->
             <section class="examples-section glass-panel">
                 <div class="section-header">
@@ -609,7 +638,7 @@
                     <span class="version">v1.0.0</span>
                 </div>
                 <div class="footer-links">
-                    <a th:href="@{/graphql}" class="footer-link">ENDPOINT</a>
+                    <a th:href="@{/}" class="footer-link">PORTAL</a>
                     <a th:href="@{/graphiql}" class="footer-link">GraphiQL</a>
                     <a th:href="@{/graphql-playground}" class="footer-link">PLAYGROUND</a>
                 </div>
