@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOAP Examples - 2050 Edition</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/soap-examples.css}">
+</head>
+<body class="futuristic-body">
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+    <div class="floating-particles" id="particles"></div>
+    <div class="holographic-overlay"></div>
+
+    <div class="container futuristic-container">
+        <header class="futuristic-header">
+            <div class="header-nav">
+                <a th:href="@{/}" class="nav-link hologram-text">&larr; PORTAL</a>
+                <a th:href="@{/ws/products.wsdl}" class="nav-link hologram-text" target="_blank">WSDL &rarr;</a>
+            </div>
+            <div class="header-title">
+                <div class="glitch-wrapper">
+                    <h1 class="glitch" data-text="SOAP">SOAP</h1>
+                </div>
+                <p class="neon-subtitle">XML EXAMPLES // YEAR 2050</p>
+                <div class="scan-line"></div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-value neon-cyan">3</span>
+                    <span class="stat-label">OPERATIONS</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value neon-pink">2</span>
+                    <span class="stat-label">TYPES</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value neon-green">ACTIVE</span>
+                    <span class="stat-label">STATUS</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="futuristic-main">
+            <!-- Schema Section -->
+            <section class="schema-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> WSDL SCHEMA OVERVIEW</h2>
+                    <div class="status-badge online">SYNCHRONIZED</div>
+                </div>
+                <div class="schema-grid">
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">O</span>
+                            <span class="type-name">Operations</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>getProductsRequest</code> <span class="return-type">getProductsResponse</span></li>
+                            <li><code>getProductByIdRequest</code> <span class="return-type">getProductResponse</span></li>
+                            <li><code>getProductBySkuRequest</code> <span class="return-type">getProductResponse</span></li>
+                        </ul>
+                    </div>
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">T</span>
+                            <span class="type-name">Product</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>id</code> <span class="return-type">xs:long</span></li>
+                            <li><code>name</code> <span class="return-type">xs:string</span></li>
+                            <li><code>description</code> <span class="return-type">xs:string?</span></li>
+                            <li><code>price</code> <span class="return-type">xs:decimal</span></li>
+                            <li><code>sku</code> <span class="return-type">xs:string</span></li>
+                            <li><code>category</code> <span class="return-type">xs:string?</span></li>
+                            <li><code>availability</code> <span class="return-type">[Availability]</span></li>
+                        </ul>
+                    </div>
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">T</span>
+                            <span class="type-name">ProductAvailability</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>id</code> <span class="return-type">xs:long</span></li>
+                            <li><code>quantity</code> <span class="return-type">xs:int</span></li>
+                            <li><code>warehouse</code> <span class="return-type">xs:string</span></li>
+                            <li><code>lastUpdated</code> <span class="return-type">xs:string?</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Connection Info Section -->
+            <section class="connection-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> CONNECTION INFO</h2>
+                </div>
+                <div class="connection-grid">
+                    <div class="connection-item">
+                        <span class="connection-label">Host</span>
+                        <code class="connection-value">localhost</code>
+                    </div>
+                    <div class="connection-item">
+                        <span class="connection-label">Port</span>
+                        <code class="connection-value" th:text="${serverPort}">8080</code>
+                    </div>
+                    <div class="connection-item">
+                        <span class="connection-label">Endpoint</span>
+                        <code class="connection-value">/ws</code>
+                    </div>
+                    <div class="connection-item">
+                        <span class="connection-label">Transport</span>
+                        <code class="connection-value">HTTP POST</code>
+                    </div>
+                    <div class="connection-item full-path-item">
+                        <span class="connection-label">Namespace</span>
+                        <code class="connection-value">http://integrationservice.ru.ppr/soap/products</code>
+                    </div>
+                    <div class="connection-item full-path-item">
+                        <span class="connection-label">WSDL URL</span>
+                        <code class="connection-value" th:text="'http://localhost:' + ${serverPort} + '/ws/products.wsdl'">http://localhost:8080/ws/products.wsdl</code>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tabbed Examples Section -->
+            <section class="examples-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> REQUEST DATABASE</h2>
+                </div>
+
+                <!-- Tabs Navigation -->
+                <div class="tabs-container">
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="tab1">
+                            <span class="tab-number">01</span>
+                            <span class="tab-title">All Products</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab2">
+                            <span class="tab-number">02</span>
+                            <span class="tab-title">With Availability</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab3">
+                            <span class="tab-number">03</span>
+                            <span class="tab-title">By Category</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab4">
+                            <span class="tab-number">04</span>
+                            <span class="tab-title">By ID</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab5">
+                            <span class="tab-number">05</span>
+                            <span class="tab-title">By ID + Availability</span>
+                        </button>
+                        <button class="tab-btn" data-tab="tab6">
+                            <span class="tab-number">06</span>
+                            <span class="tab-title">By SKU</span>
+                        </button>
+                    </div>
+
+                    <!-- Tab Contents -->
+                    <div class="tabs-content">
+                        <!-- Tab 1: Get All Products -->
+                        <div class="tab-panel active" id="tab1">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Get All Products</h3>
+                                    <span class="category-badge basic">BASIC</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;prod:getProductsRequest&gt;
+         &lt;prod:includeAvailability&gt;false&lt;/prod:includeAvailability&gt;
+      &lt;/prod:getProductsRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:getProductsResponse
+          xmlns:ns2="http://integrationservice.ru.ppr/soap/products"&gt;
+         &lt;ns2:product&gt;
+            &lt;ns2:id&gt;1&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;Samsung Galaxy S24&lt;/ns2:name&gt;
+            &lt;ns2:description&gt;Flagship smartphone&lt;/ns2:description&gt;
+            &lt;ns2:price&gt;89990.00&lt;/ns2:price&gt;
+            &lt;ns2:sku&gt;SAM-S24-BLK&lt;/ns2:sku&gt;
+            &lt;ns2:category&gt;Electronics&lt;/ns2:category&gt;
+         &lt;/ns2:product&gt;
+         &lt;ns2:product&gt;
+            &lt;ns2:id&gt;2&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;iPhone 15 Pro&lt;/ns2:name&gt;
+            &lt;ns2:description&gt;Premium smartphone&lt;/ns2:description&gt;
+            &lt;ns2:price&gt;129990.00&lt;/ns2:price&gt;
+            &lt;ns2:sku&gt;APL-IP15-SLV&lt;/ns2:sku&gt;
+            &lt;ns2:category&gt;Electronics&lt;/ns2:category&gt;
+         &lt;/ns2:product&gt;
+      &lt;/ns2:getProductsResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <div class="curl-command">
+                                        <span class="curl-label">cURL:</span>
+                                        <code>curl -X POST -H "Content-Type: text/xml" -d @request.xml http://localhost:8080/ws</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: Products with Availability -->
+                        <div class="tab-panel" id="tab2">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Products with Availability</h3>
+                                    <span class="category-badge basic">BASIC</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;prod:getProductsRequest&gt;
+         &lt;prod:includeAvailability&gt;true&lt;/prod:includeAvailability&gt;
+      &lt;/prod:getProductsRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:getProductsResponse
+          xmlns:ns2="http://integrationservice.ru.ppr/soap/products"&gt;
+         &lt;ns2:product&gt;
+            &lt;ns2:id&gt;1&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;Samsung Galaxy S24&lt;/ns2:name&gt;
+            &lt;ns2:description&gt;Flagship smartphone&lt;/ns2:description&gt;
+            &lt;ns2:price&gt;89990.00&lt;/ns2:price&gt;
+            &lt;ns2:sku&gt;SAM-S24-BLK&lt;/ns2:sku&gt;
+            &lt;ns2:category&gt;Electronics&lt;/ns2:category&gt;
+            &lt;ns2:availability&gt;
+               &lt;ns2:id&gt;1&lt;/ns2:id&gt;
+               &lt;ns2:quantity&gt;150&lt;/ns2:quantity&gt;
+               &lt;ns2:warehouse&gt;Moscow-1&lt;/ns2:warehouse&gt;
+               &lt;ns2:lastUpdated&gt;2025-01-15&lt;/ns2:lastUpdated&gt;
+            &lt;/ns2:availability&gt;
+            &lt;ns2:availability&gt;
+               &lt;ns2:id&gt;2&lt;/ns2:id&gt;
+               &lt;ns2:quantity&gt;75&lt;/ns2:quantity&gt;
+               &lt;ns2:warehouse&gt;SPB-2&lt;/ns2:warehouse&gt;
+               &lt;ns2:lastUpdated&gt;2025-01-14&lt;/ns2:lastUpdated&gt;
+            &lt;/ns2:availability&gt;
+         &lt;/ns2:product&gt;
+      &lt;/ns2:getProductsResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <div class="curl-command">
+                                        <span class="curl-label">cURL:</span>
+                                        <code>curl -X POST -H "Content-Type: text/xml" -d @request.xml http://localhost:8080/ws</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 3: Products by Category -->
+                        <div class="tab-panel" id="tab3">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Products by Category</h3>
+                                    <span class="category-badge filtered">FILTERED</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;prod:getProductsRequest&gt;
+         &lt;prod:includeAvailability&gt;false&lt;/prod:includeAvailability&gt;
+         &lt;prod:category&gt;Electronics&lt;/prod:category&gt;
+      &lt;/prod:getProductsRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:getProductsResponse
+          xmlns:ns2="http://integrationservice.ru.ppr/soap/products"&gt;
+         &lt;ns2:product&gt;
+            &lt;ns2:id&gt;1&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;Samsung Galaxy S24&lt;/ns2:name&gt;
+            &lt;ns2:description&gt;Flagship smartphone&lt;/ns2:description&gt;
+            &lt;ns2:price&gt;89990.00&lt;/ns2:price&gt;
+            &lt;ns2:sku&gt;SAM-S24-BLK&lt;/ns2:sku&gt;
+            &lt;ns2:category&gt;Electronics&lt;/ns2:category&gt;
+         &lt;/ns2:product&gt;
+         &lt;ns2:product&gt;
+            &lt;ns2:id&gt;2&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;iPhone 15 Pro&lt;/ns2:name&gt;
+            &lt;ns2:description&gt;Premium smartphone&lt;/ns2:description&gt;
+            &lt;ns2:price&gt;129990.00&lt;/ns2:price&gt;
+            &lt;ns2:sku&gt;APL-IP15-SLV&lt;/ns2:sku&gt;
+            &lt;ns2:category&gt;Electronics&lt;/ns2:category&gt;
+         &lt;/ns2:product&gt;
+      &lt;/ns2:getProductsResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <div class="curl-command">
+                                        <span class="curl-label">cURL:</span>
+                                        <code>curl -X POST -H "Content-Type: text/xml" -d @request.xml http://localhost:8080/ws</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 4: Product by ID -->
+                        <div class="tab-panel" id="tab4">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Product by ID</h3>
+                                    <span class="category-badge filtered">FILTERED</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;prod:getProductByIdRequest&gt;
+         &lt;prod:id&gt;1&lt;/prod:id&gt;
+         &lt;prod:includeAvailability&gt;false&lt;/prod:includeAvailability&gt;
+      &lt;/prod:getProductByIdRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:getProductResponse
+          xmlns:ns2="http://integrationservice.ru.ppr/soap/products"&gt;
+         &lt;ns2:product&gt;
+            &lt;ns2:id&gt;1&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;Samsung Galaxy S24&lt;/ns2:name&gt;
+            &lt;ns2:description&gt;Flagship smartphone&lt;/ns2:description&gt;
+            &lt;ns2:price&gt;89990.00&lt;/ns2:price&gt;
+            &lt;ns2:sku&gt;SAM-S24-BLK&lt;/ns2:sku&gt;
+            &lt;ns2:category&gt;Electronics&lt;/ns2:category&gt;
+         &lt;/ns2:product&gt;
+      &lt;/ns2:getProductResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <div class="curl-command">
+                                        <span class="curl-label">cURL:</span>
+                                        <code>curl -X POST -H "Content-Type: text/xml" -d @request.xml http://localhost:8080/ws</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 5: Product by ID with Availability -->
+                        <div class="tab-panel" id="tab5">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Product by ID with Availability</h3>
+                                    <span class="category-badge advanced">ADVANCED</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;prod:getProductByIdRequest&gt;
+         &lt;prod:id&gt;1&lt;/prod:id&gt;
+         &lt;prod:includeAvailability&gt;true&lt;/prod:includeAvailability&gt;
+      &lt;/prod:getProductByIdRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:getProductResponse
+          xmlns:ns2="http://integrationservice.ru.ppr/soap/products"&gt;
+         &lt;ns2:product&gt;
+            &lt;ns2:id&gt;1&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;Samsung Galaxy S24&lt;/ns2:name&gt;
+            &lt;ns2:description&gt;Flagship smartphone&lt;/ns2:description&gt;
+            &lt;ns2:price&gt;89990.00&lt;/ns2:price&gt;
+            &lt;ns2:sku&gt;SAM-S24-BLK&lt;/ns2:sku&gt;
+            &lt;ns2:category&gt;Electronics&lt;/ns2:category&gt;
+            &lt;ns2:availability&gt;
+               &lt;ns2:id&gt;1&lt;/ns2:id&gt;
+               &lt;ns2:quantity&gt;150&lt;/ns2:quantity&gt;
+               &lt;ns2:warehouse&gt;Moscow-1&lt;/ns2:warehouse&gt;
+               &lt;ns2:lastUpdated&gt;2025-01-15&lt;/ns2:lastUpdated&gt;
+            &lt;/ns2:availability&gt;
+            &lt;ns2:availability&gt;
+               &lt;ns2:id&gt;2&lt;/ns2:id&gt;
+               &lt;ns2:quantity&gt;75&lt;/ns2:quantity&gt;
+               &lt;ns2:warehouse&gt;SPB-2&lt;/ns2:warehouse&gt;
+               &lt;ns2:lastUpdated&gt;2025-01-14&lt;/ns2:lastUpdated&gt;
+            &lt;/ns2:availability&gt;
+         &lt;/ns2:product&gt;
+      &lt;/ns2:getProductResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <div class="curl-command">
+                                        <span class="curl-label">cURL:</span>
+                                        <code>curl -X POST -H "Content-Type: text/xml" -d @request.xml http://localhost:8080/ws</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 6: Product by SKU -->
+                        <div class="tab-panel" id="tab6">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Product by SKU</h3>
+                                    <span class="category-badge filtered">FILTERED</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;prod:getProductBySkuRequest&gt;
+         &lt;prod:sku&gt;SAM-S24-BLK&lt;/prod:sku&gt;
+         &lt;prod:includeAvailability&gt;false&lt;/prod:includeAvailability&gt;
+      &lt;/prod:getProductBySkuRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:getProductResponse
+          xmlns:ns2="http://integrationservice.ru.ppr/soap/products"&gt;
+         &lt;ns2:product&gt;
+            &lt;ns2:id&gt;1&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;Samsung Galaxy S24&lt;/ns2:name&gt;
+            &lt;ns2:description&gt;Flagship smartphone&lt;/ns2:description&gt;
+            &lt;ns2:price&gt;89990.00&lt;/ns2:price&gt;
+            &lt;ns2:sku&gt;SAM-S24-BLK&lt;/ns2:sku&gt;
+            &lt;ns2:category&gt;Electronics&lt;/ns2:category&gt;
+         &lt;/ns2:product&gt;
+      &lt;/ns2:getProductResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <div class="curl-command">
+                                        <span class="curl-label">cURL:</span>
+                                        <code>curl -X POST -H "Content-Type: text/xml" -d @request.xml http://localhost:8080/ws</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="futuristic-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="neon-text">INTEGRATION SERVICE</span>
+                    <span class="version">v1.0.0</span>
+                </div>
+                <div class="footer-links">
+                    <a th:href="@{/}" class="footer-link">PORTAL</a>
+                    <a th:href="@{/ws/products.wsdl}" class="footer-link" target="_blank">WSDL</a>
+                </div>
+                <div class="footer-status">
+                    <span class="status-dot"></span>
+                    <span>ALL SYSTEMS OPERATIONAL</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Particle animation
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (5 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active from all tabs and panels
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+
+                // Add active to clicked tab and corresponding panel
+                btn.classList.add('active');
+                const tabId = btn.dataset.tab;
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Copy to clipboard
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-block');
+            const code = codeBlock.querySelector('code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<span class="copy-icon">&#x2713;</span> COPIED';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

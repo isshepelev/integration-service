@@ -38,4 +38,10 @@ public class HomeController {
         model.addAttribute("grpcPort", grpcPort);
         return "grpc-examples";
     }
+
+    @GetMapping("/soap-examples")
+    public String soapExamples(Model model) {
+        model.addAttribute("serverPort", serverPort);
+        return "soap-examples";
+    }
 }
