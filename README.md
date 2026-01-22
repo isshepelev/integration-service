@@ -32,6 +32,11 @@
 ```bash
   docker-compose up -d
 ```
+В случае новой версии приложения необходимо использовать следующую команду:
+
+```bash
+  docker compose up -d --build --no-cache
+```
 
 ## Требования
 
