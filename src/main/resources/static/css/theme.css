@@ -1,0 +1,590 @@
+/* ============================================
+   THEME.CSS - 2090 Futuristic Design System
+   ============================================ */
+
+:root {
+  /* === 2090 Color Palette === */
+
+  /* Primary Accent Colors */
+  --color-primary-cyan: #00ffff;
+  --color-primary-pink: #e535ab;
+  --color-primary-green: #00ff88;
+  --color-primary-purple: #a855f7;
+  --color-primary-orange: #ffc107;
+  --color-primary-blue: #4d4dff;
+
+  /* Background Layers (Dark Theme Default) */
+  --bg-base: #0a0a0f;
+  --bg-base-gradient: linear-gradient(135deg, #0a0a0f 0%, #12121a 50%, #1a1a2e 100%);
+  --bg-elevated: rgba(255, 255, 255, 0.02);
+  --bg-glass: rgba(255, 255, 255, 0.05);
+  --bg-code: rgba(0, 0, 0, 0.4);
+  --bg-overlay: rgba(0, 0, 0, 0.6);
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-hover: rgba(255, 255, 255, 0.08);
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #888888;
+  --text-subtle: rgba(255, 255, 255, 0.5);
+  --text-link: #00d9ff;
+  --text-link-hover: #00ff88;
+
+  /* Border Colors */
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-medium: rgba(255, 255, 255, 0.2);
+  --border-accent: rgba(0, 255, 255, 0.3);
+  --border-glow: rgba(0, 255, 255, 0.5);
+
+  /* Glow Effects */
+  --glow-cyan: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3), 0 0 30px rgba(0, 255, 255, 0.1);
+  --glow-pink: 0 0 10px rgba(229, 53, 171, 0.5), 0 0 20px rgba(229, 53, 171, 0.3), 0 0 30px rgba(229, 53, 171, 0.1);
+  --glow-green: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.3), 0 0 30px rgba(0, 255, 136, 0.1);
+  --glow-purple: 0 0 10px rgba(168, 85, 247, 0.5), 0 0 20px rgba(168, 85, 247, 0.3);
+  --glow-orange: 0 0 10px rgba(255, 193, 7, 0.5), 0 0 20px rgba(255, 193, 7, 0.3);
+
+  /* Holographic Gradient */
+  --gradient-holographic: linear-gradient(135deg,
+    rgba(229, 53, 171, 0.15) 0%,
+    rgba(0, 255, 255, 0.15) 25%,
+    rgba(0, 255, 136, 0.15) 50%,
+    rgba(168, 85, 247, 0.15) 75%,
+    rgba(229, 53, 171, 0.15) 100%
+  );
+
+  --gradient-neon: linear-gradient(90deg,
+    var(--color-primary-cyan),
+    var(--color-primary-pink),
+    var(--color-primary-green),
+    var(--color-primary-cyan)
+  );
+
+  /* Glass Morphism */
+  --glass-blur: 12px;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  /* Neomorphism Shadows */
+  --neo-shadow-light: -5px -5px 15px rgba(255, 255, 255, 0.02);
+  --neo-shadow-dark: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  --neo-inset: inset 2px 2px 5px rgba(0, 0, 0, 0.3), inset -2px -2px 5px rgba(255, 255, 255, 0.02);
+
+  /* Micro-Shadows with Tints */
+  --shadow-cyan-tint: 0 4px 20px rgba(0, 255, 255, 0.2);
+  --shadow-pink-tint: 0 4px 20px rgba(229, 53, 171, 0.2);
+  --shadow-green-tint: 0 4px 20px rgba(0, 255, 136, 0.2);
+  --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.3);
+  --shadow-elevated: 0 20px 60px rgba(0, 0, 0, 0.4);
+
+  /* Animation Timings */
+  --transition-fast: 150ms ease;
+  --transition-medium: 300ms ease;
+  --transition-slow: 500ms ease;
+  --transition-bounce: 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-smooth: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* Font Sizes */
+  --font-xs: 0.65rem;
+  --font-sm: 0.75rem;
+  --font-base: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 1.5rem;
+  --font-2xl: 2rem;
+  --font-3xl: 3rem;
+  --font-4xl: 4rem;
+
+  /* Focus Ring */
+  --focus-ring: 0 0 0 2px var(--bg-base), 0 0 0 4px var(--color-primary-cyan);
+  --focus-ring-offset: 2px;
+
+  /* Skeleton Loading */
+  --skeleton-base: rgba(255, 255, 255, 0.05);
+  --skeleton-shine: rgba(255, 255, 255, 0.1);
+
+  /* Z-Index Scale */
+  --z-base: 0;
+  --z-elevated: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 300;
+  --z-tooltip: 400;
+}
+
+/* ============================================
+   LIGHT THEME OVERRIDE
+   ============================================ */
+
+[data-theme="light"] {
+  /* Background Layers */
+  --bg-base: #f0f4f8;
+  --bg-base-gradient: linear-gradient(135deg, #f0f4f8 0%, #e8eef5 50%, #ffffff 100%);
+  --bg-elevated: rgba(0, 0, 0, 0.02);
+  --bg-glass: rgba(255, 255, 255, 0.7);
+  --bg-code: rgba(0, 0, 0, 0.05);
+  --bg-overlay: rgba(255, 255, 255, 0.9);
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --bg-hover: rgba(0, 0, 0, 0.05);
+
+  /* Text Colors */
+  --text-primary: #1a1a2e;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+  --text-subtle: rgba(0, 0, 0, 0.5);
+  --text-link: #0077cc;
+  --text-link-hover: #059669;
+
+  /* Border Colors */
+  --border-subtle: rgba(0, 0, 0, 0.1);
+  --border-medium: rgba(0, 0, 0, 0.2);
+  --border-accent: rgba(0, 119, 204, 0.3);
+  --border-glow: rgba(0, 119, 204, 0.5);
+
+  /* Glass Morphism - Light */
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+  /* Neomorphism - Light */
+  --neo-shadow-light: -5px -5px 15px rgba(255, 255, 255, 0.8);
+  --neo-shadow-dark: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  --neo-inset: inset 2px 2px 5px rgba(0, 0, 0, 0.05), inset -2px -2px 5px rgba(255, 255, 255, 0.8);
+
+  /* Shadows - Light */
+  --shadow-cyan-tint: 0 4px 20px rgba(0, 119, 204, 0.15);
+  --shadow-pink-tint: 0 4px 20px rgba(219, 39, 119, 0.15);
+  --shadow-green-tint: 0 4px 20px rgba(5, 150, 105, 0.15);
+  --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.08);
+  --shadow-elevated: 0 20px 60px rgba(0, 0, 0, 0.12);
+
+  /* Skeleton - Light */
+  --skeleton-base: rgba(0, 0, 0, 0.05);
+  --skeleton-shine: rgba(0, 0, 0, 0.1);
+
+  /* Adjusted Primary Colors for Light Theme Visibility */
+  --color-primary-cyan: #0891b2;
+  --color-primary-pink: #db2777;
+  --color-primary-green: #059669;
+  --color-primary-purple: #7c3aed;
+  --color-primary-orange: #d97706;
+
+  /* Adjusted Glows for Light Theme */
+  --glow-cyan: 0 0 10px rgba(8, 145, 178, 0.3), 0 0 20px rgba(8, 145, 178, 0.15);
+  --glow-pink: 0 0 10px rgba(219, 39, 119, 0.3), 0 0 20px rgba(219, 39, 119, 0.15);
+  --glow-green: 0 0 10px rgba(5, 150, 105, 0.3), 0 0 20px rgba(5, 150, 105, 0.15);
+}
+
+/* ============================================
+   NEOMORPHIC GLASS CARD
+   ============================================ */
+
+.neo-glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    var(--neo-shadow-light),
+    var(--neo-shadow-dark),
+    var(--glass-shadow);
+  transition: all var(--transition-medium);
+}
+
+.neo-glass-card:hover {
+  box-shadow:
+    var(--neo-shadow-light),
+    var(--neo-shadow-dark),
+    var(--shadow-cyan-tint);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   HOLOGRAPHIC ACCENT BORDER
+   ============================================ */
+
+.holo-border {
+  position: relative;
+}
+
+.holo-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--gradient-holographic);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ============================================
+   FUTURISTIC INPUT FIELD
+   ============================================ */
+
+.input-2090 {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-code);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--font-base);
+  transition: all var(--transition-medium);
+}
+
+.input-2090:focus {
+  outline: none;
+  border-color: var(--color-primary-cyan);
+  box-shadow:
+    0 0 0 3px rgba(0, 255, 255, 0.1),
+    var(--glow-cyan);
+}
+
+.input-2090::placeholder {
+  color: var(--text-muted);
+}
+
+/* ============================================
+   FUTURISTIC BUTTON
+   ============================================ */
+
+.btn-2090 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  background: linear-gradient(135deg, var(--color-primary-cyan), var(--color-primary-pink));
+  border: none;
+  border-radius: var(--radius-md);
+  color: white;
+  font-weight: 600;
+  font-size: var(--font-base);
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-2090:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-cyan-tint);
+}
+
+.btn-2090:active {
+  transform: scale(0.98);
+}
+
+.btn-2090.btn-secondary {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.btn-2090.btn-secondary:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-accent);
+}
+
+/* ============================================
+   THEME TOGGLE BUTTON
+   ============================================ */
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--color-primary-cyan);
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: var(--color-primary-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.theme-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition-medium);
+}
+
+.theme-toggle-btn:hover svg {
+  transform: rotate(15deg);
+}
+
+.theme-toggle-btn .icon-sun,
+.theme-toggle-btn .icon-moon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   CODE BLOCK 2090
+   ============================================ */
+
+.code-block-2090 {
+  position: relative;
+  background: var(--bg-code);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.code-block-2090::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-neon);
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ============================================
+   TAB BUTTON 2090
+   ============================================ */
+
+.tab-btn-2090 {
+  position: relative;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  overflow: hidden;
+}
+
+.tab-btn-2090::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary-cyan);
+  transition: all var(--transition-medium);
+  transform: translateX(-50%);
+}
+
+.tab-btn-2090:hover,
+.tab-btn-2090.active {
+  border-color: var(--color-primary-cyan);
+  color: var(--color-primary-cyan);
+}
+
+.tab-btn-2090.active::after {
+  width: 80%;
+}
+
+/* ============================================
+   STATUS BADGES 2090
+   ============================================ */
+
+.badge-2090 {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.badge-2090.success {
+  background: rgba(0, 255, 136, 0.15);
+  border-color: rgba(0, 255, 136, 0.3);
+  color: var(--color-primary-green);
+}
+
+.badge-2090.warning {
+  background: rgba(255, 193, 7, 0.15);
+  border-color: rgba(255, 193, 7, 0.3);
+  color: var(--color-primary-orange);
+}
+
+.badge-2090.error {
+  background: rgba(255, 82, 82, 0.15);
+  border-color: rgba(255, 82, 82, 0.3);
+  color: #ff5252;
+}
+
+.badge-2090.info {
+  background: rgba(0, 255, 255, 0.15);
+  border-color: rgba(0, 255, 255, 0.3);
+  color: var(--color-primary-cyan);
+}
+
+/* ============================================
+   PROTOCOL-SPECIFIC COLORS
+   ============================================ */
+
+.protocol-rest {
+  --protocol-color: var(--color-primary-cyan);
+  --protocol-glow: var(--glow-cyan);
+  --protocol-shadow: var(--shadow-cyan-tint);
+}
+
+.protocol-graphql {
+  --protocol-color: var(--color-primary-pink);
+  --protocol-glow: var(--glow-pink);
+  --protocol-shadow: var(--shadow-pink-tint);
+}
+
+.protocol-grpc {
+  --protocol-color: var(--color-primary-green);
+  --protocol-glow: var(--glow-green);
+  --protocol-shadow: var(--shadow-green-tint);
+}
+
+.protocol-soap {
+  --protocol-color: var(--color-primary-orange);
+  --protocol-glow: var(--glow-orange);
+  --protocol-shadow: 0 4px 20px rgba(255, 193, 7, 0.2);
+}
+
+/* ============================================
+   NEON TEXT EFFECTS
+   ============================================ */
+
+.neon-text-cyan {
+  color: var(--color-primary-cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+.neon-text-pink {
+  color: var(--color-primary-pink);
+  text-shadow: var(--glow-pink);
+}
+
+.neon-text-green {
+  color: var(--color-primary-green);
+  text-shadow: var(--glow-green);
+}
+
+/* ============================================
+   GRADIENT TEXT
+   ============================================ */
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--color-primary-cyan), var(--color-primary-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-holo {
+  background: linear-gradient(90deg,
+    var(--color-primary-cyan),
+    var(--color-primary-pink),
+    var(--color-primary-green)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-accent);
+}
+
+/* ============================================
+   SELECTION STYLING
+   ============================================ */
+
+::selection {
+  background: rgba(0, 255, 255, 0.3);
+  color: var(--text-primary);
+}
+
+::-moz-selection {
+  background: rgba(0, 255, 255, 0.3);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px currentColor;
+}
+
+.border-glow {
+  box-shadow: 0 0 10px var(--border-glow);
+}

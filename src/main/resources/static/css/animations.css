@@ -1,0 +1,848 @@
+/* ============================================
+   ANIMATIONS.CSS - 2090 Animation Library
+   ============================================ */
+
+/* ============================================
+   ENTRANCE ANIMATIONS
+   ============================================ */
+
+/* Fade + Slide Up */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade + Slide Down */
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade + Slide Left */
+@keyframes fadeSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade + Slide Right */
+@keyframes fadeSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade + Scale */
+@keyframes fadeScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Holographic Entrance */
+@keyframes holoEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) rotateX(10deg);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+  }
+}
+
+/* Cyber Scan Line Entrance */
+@keyframes scanEntrance {
+  0% {
+    opacity: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  100% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* Animation Classes - Entrance */
+.animate-fade-up {
+  animation: fadeSlideUp var(--transition-medium, 300ms) ease forwards;
+}
+
+.animate-fade-down {
+  animation: fadeSlideDown var(--transition-medium, 300ms) ease forwards;
+}
+
+.animate-fade-left {
+  animation: fadeSlideLeft var(--transition-medium, 300ms) ease forwards;
+}
+
+.animate-fade-right {
+  animation: fadeSlideRight var(--transition-medium, 300ms) ease forwards;
+}
+
+.animate-scale {
+  animation: fadeScale var(--transition-medium, 300ms) ease forwards;
+}
+
+.animate-holo {
+  animation: holoEntrance var(--transition-slow, 500ms) ease forwards;
+}
+
+.animate-scan {
+  animation: scanEntrance var(--transition-slow, 500ms) ease forwards;
+}
+
+/* Staggered Animation Delays */
+.animate-delay-1 { animation-delay: 100ms; }
+.animate-delay-2 { animation-delay: 200ms; }
+.animate-delay-3 { animation-delay: 300ms; }
+.animate-delay-4 { animation-delay: 400ms; }
+.animate-delay-5 { animation-delay: 500ms; }
+
+/* ============================================
+   RIPPLE EFFECT
+   ============================================ */
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.4) 0%, transparent 70%);
+  transform: scale(0);
+  animation: ripple 600ms ease-out forwards;
+  pointer-events: none;
+}
+
+/* Protocol-specific ripple colors */
+.ripple-pink {
+  background: radial-gradient(circle, rgba(229, 53, 171, 0.4) 0%, transparent 70%);
+}
+
+.ripple-green {
+  background: radial-gradient(circle, rgba(0, 255, 136, 0.4) 0%, transparent 70%);
+}
+
+.ripple-orange {
+  background: radial-gradient(circle, rgba(255, 193, 7, 0.4) 0%, transparent 70%);
+}
+
+/* ============================================
+   FLOATING LABEL ANIMATION
+   ============================================ */
+
+@keyframes labelFloat {
+  from {
+    transform: translateY(0);
+    font-size: var(--font-base, 0.875rem);
+    color: var(--text-muted, #888888);
+  }
+  to {
+    transform: translateY(-1.5rem);
+    font-size: var(--font-sm, 0.75rem);
+    color: var(--color-primary-cyan, #00ffff);
+  }
+}
+
+.floating-label-container {
+  position: relative;
+}
+
+.floating-label {
+  position: absolute;
+  left: var(--space-md, 1rem);
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all var(--transition-medium, 300ms);
+  pointer-events: none;
+  color: var(--text-muted, #888888);
+  font-size: var(--font-base, 0.875rem);
+}
+
+.floating-label.active,
+.floating-label-container input:focus + .floating-label,
+.floating-label-container input:not(:placeholder-shown) + .floating-label,
+.floating-label-container textarea:focus + .floating-label,
+.floating-label-container textarea:not(:placeholder-shown) + .floating-label {
+  transform: translateY(-2.25rem);
+  font-size: var(--font-sm, 0.75rem);
+  color: var(--color-primary-cyan, #00ffff);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* ============================================
+   FOCUS GRADIENT HIGHLIGHT
+   ============================================ */
+
+@keyframes focusGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.focus-gradient-border {
+  position: relative;
+}
+
+.focus-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(90deg,
+    var(--color-primary-cyan, #00ffff),
+    var(--color-primary-pink, #e535ab),
+    var(--color-primary-green, #00ff88),
+    var(--color-primary-cyan, #00ffff)
+  );
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--transition-medium, 300ms);
+  pointer-events: none;
+}
+
+.focus-gradient-border:focus-within::before {
+  opacity: 1;
+  animation: focusGradient 3s ease infinite;
+}
+
+/* ============================================
+   NEON PULSE ON FOCUS
+   ============================================ */
+
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 5px var(--color-primary-cyan, #00ffff),
+      0 0 10px var(--color-primary-cyan, #00ffff),
+      0 0 15px var(--color-primary-cyan, #00ffff);
+  }
+  50% {
+    box-shadow:
+      0 0 10px var(--color-primary-cyan, #00ffff),
+      0 0 20px var(--color-primary-cyan, #00ffff),
+      0 0 30px var(--color-primary-cyan, #00ffff),
+      0 0 40px var(--color-primary-cyan, #00ffff);
+  }
+}
+
+@keyframes neonPulsePink {
+  0%, 100% {
+    box-shadow:
+      0 0 5px var(--color-primary-pink, #e535ab),
+      0 0 10px var(--color-primary-pink, #e535ab);
+  }
+  50% {
+    box-shadow:
+      0 0 10px var(--color-primary-pink, #e535ab),
+      0 0 20px var(--color-primary-pink, #e535ab),
+      0 0 30px var(--color-primary-pink, #e535ab);
+  }
+}
+
+@keyframes neonPulseGreen {
+  0%, 100% {
+    box-shadow:
+      0 0 5px var(--color-primary-green, #00ff88),
+      0 0 10px var(--color-primary-green, #00ff88);
+  }
+  50% {
+    box-shadow:
+      0 0 10px var(--color-primary-green, #00ff88),
+      0 0 20px var(--color-primary-green, #00ff88),
+      0 0 30px var(--color-primary-green, #00ff88);
+  }
+}
+
+.neon-focus:focus {
+  outline: none;
+  animation: neonPulse 1.5s ease-in-out infinite;
+}
+
+.neon-focus-pink:focus {
+  outline: none;
+  animation: neonPulsePink 1.5s ease-in-out infinite;
+}
+
+.neon-focus-green:focus {
+  outline: none;
+  animation: neonPulseGreen 1.5s ease-in-out infinite;
+}
+
+/* ============================================
+   SKELETON LOADING
+   ============================================ */
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-base, rgba(255, 255, 255, 0.05)) 0%,
+    var(--skeleton-shine, rgba(255, 255, 255, 0.1)) 50%,
+    var(--skeleton-base, rgba(255, 255, 255, 0.05)) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md, 8px);
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: var(--space-sm, 0.5rem);
+}
+
+.skeleton-text-sm {
+  height: 0.75em;
+  width: 60%;
+}
+
+.skeleton-text-lg {
+  height: 1.5em;
+  width: 80%;
+}
+
+.skeleton-button {
+  height: 2.5rem;
+  width: 120px;
+  border-radius: var(--radius-md, 8px);
+}
+
+.skeleton-card {
+  height: 200px;
+  border-radius: var(--radius-lg, 12px);
+}
+
+.skeleton-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full, 9999px);
+}
+
+/* ============================================
+   HOVER EFFECTS
+   ============================================ */
+
+/* Scale + Glow */
+.hover-scale-glow {
+  transition: transform var(--transition-medium, 300ms), box-shadow var(--transition-medium, 300ms);
+}
+
+.hover-scale-glow:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-cyan-tint, 0 4px 20px rgba(0, 255, 255, 0.2));
+}
+
+/* Shadow Shift */
+@keyframes shadowShift {
+  0%, 100% {
+    box-shadow:
+      0 4px 20px rgba(0, 255, 255, 0.2),
+      0 0 0 rgba(229, 53, 171, 0);
+  }
+  50% {
+    box-shadow:
+      0 4px 20px rgba(229, 53, 171, 0.2),
+      0 0 0 rgba(0, 255, 255, 0);
+  }
+}
+
+.hover-shadow-shift:hover {
+  animation: shadowShift 2s ease infinite;
+}
+
+/* Lift Effect */
+.hover-lift {
+  transition: transform var(--transition-medium, 300ms), box-shadow var(--transition-medium, 300ms);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    var(--neo-shadow-dark, 5px 5px 15px rgba(0, 0, 0, 0.5)),
+    0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Glow Pulse on Hover */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
+
+.hover-glow-pulse:hover {
+  animation: glowPulse 1s ease-in-out infinite;
+}
+
+/* Border Glow Hover */
+.hover-border-glow {
+  transition: border-color var(--transition-medium, 300ms), box-shadow var(--transition-medium, 300ms);
+}
+
+.hover-border-glow:hover {
+  border-color: var(--color-primary-cyan, #00ffff);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+/* ============================================
+   VALIDATION ANIMATIONS
+   ============================================ */
+
+@keyframes validationShake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes validationSuccess {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes validationPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
+}
+
+.validation-error {
+  animation: validationShake 0.5s ease;
+  border-color: #ff5252 !important;
+  box-shadow: 0 0 10px rgba(255, 82, 82, 0.5);
+}
+
+.validation-success {
+  animation: validationSuccess 0.3s ease, validationPulse 1s ease;
+  border-color: var(--color-primary-green, #00ff88) !important;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.validation-warning {
+  border-color: var(--color-primary-orange, #ffc107) !important;
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+/* ============================================
+   GLITCH EFFECT
+   ============================================ */
+
+@keyframes glitch-anim-1 {
+  0% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, 2px); }
+  20% { clip-path: inset(60% 0 20% 0); transform: translate(2px, -2px); }
+  40% { clip-path: inset(40% 0 40% 0); transform: translate(-2px, 2px); }
+  60% { clip-path: inset(80% 0 10% 0); transform: translate(2px, -2px); }
+  80% { clip-path: inset(10% 0 80% 0); transform: translate(-2px, 2px); }
+  100% { clip-path: inset(50% 0 30% 0); transform: translate(0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(60% 0 20% 0); transform: translate(2px, -2px); }
+  20% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, 2px); }
+  40% { clip-path: inset(80% 0 10% 0); transform: translate(2px, -2px); }
+  60% { clip-path: inset(40% 0 40% 0); transform: translate(-2px, 2px); }
+  80% { clip-path: inset(10% 0 80% 0); transform: translate(2px, -2px); }
+  100% { clip-path: inset(30% 0 50% 0); transform: translate(0); }
+}
+
+.glitch-text {
+  position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-text::before {
+  color: var(--color-primary-cyan, #00ffff);
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  color: var(--color-primary-pink, #e535ab);
+  animation: glitch-anim-2 2s infinite linear alternate-reverse;
+}
+
+/* ============================================
+   HOLOGRAPHIC SHIMMER
+   ============================================ */
+
+@keyframes holoShimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.holo-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.holo-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(0, 255, 255, 0.15) 50%,
+    rgba(229, 53, 171, 0.1) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: holoShimmer 3s linear infinite;
+  pointer-events: none;
+}
+
+/* ============================================
+   TAB TRANSITIONS
+   ============================================ */
+
+.tab-panel {
+  animation: fadeSlideUp var(--transition-medium, 300ms) ease forwards;
+}
+
+.tab-panel-exit {
+  animation: fadeSlideDown var(--transition-fast, 150ms) ease forwards reverse;
+}
+
+/* ============================================
+   BUTTON PRESS EFFECT
+   ============================================ */
+
+.btn-press {
+  transition: transform 100ms ease;
+}
+
+.btn-press:active {
+  transform: scale(0.97);
+}
+
+/* ============================================
+   THEME TRANSITION
+   ============================================ */
+
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition:
+    background-color 400ms ease,
+    background 400ms ease,
+    color 400ms ease,
+    border-color 400ms ease,
+    box-shadow 400ms ease,
+    fill 400ms ease,
+    stroke 400ms ease !important;
+}
+
+/* ============================================
+   FLOAT / LEVITATE ANIMATION
+   ============================================ */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+/* ============================================
+   SPIN / ROTATE
+   ============================================ */
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+/* ============================================
+   PARTICLE FLOAT (for background particles)
+   ============================================ */
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--particle-x, 100px), var(--particle-y, -100px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--color-primary-cyan, #00ffff);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particleFloat 10s ease-in-out infinite;
+}
+
+/* ============================================
+   SCAN LINE EFFECT
+   ============================================ */
+
+@keyframes scanLine {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.scan-line-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-line-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--color-primary-cyan, #00ffff),
+    transparent
+  );
+  animation: scanLine 3s linear infinite;
+  pointer-events: none;
+}
+
+/* ============================================
+   TYPING ANIMATION
+   ============================================ */
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: var(--color-primary-cyan, #00ffff); }
+}
+
+.typing-text {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--color-primary-cyan, #00ffff);
+  animation:
+    typing 3s steps(40) forwards,
+    blink 0.75s step-end infinite;
+}
+
+/* ============================================
+   COPY BUTTON SUCCESS ANIMATION
+   ============================================ */
+
+@keyframes copySuccess {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+    background: var(--color-primary-green, #00ff88);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.copy-success {
+  animation: copySuccess 0.5s ease;
+}
+
+/* ============================================
+   LOADING DOTS
+   ============================================ */
+
+@keyframes loadingDots {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.loading-dots {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.loading-dots span {
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary-cyan, #00ffff);
+  border-radius: 50%;
+  animation: loadingDots 1.4s ease-in-out infinite;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: 0s; }
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+/* ============================================
+   PROGRESS BAR GLOW
+   ============================================ */
+
+@keyframes progressGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--color-primary-cyan, #00ffff);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--color-primary-cyan, #00ffff), 0 0 30px var(--color-primary-cyan, #00ffff);
+  }
+}
+
+.progress-bar-glow {
+  animation: progressGlow 2s ease-in-out infinite;
+}
+
+/* ============================================
+   CARD REVEAL
+   ============================================ */
+
+@keyframes cardReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.card-reveal {
+  animation: cardReveal var(--transition-slow, 500ms) ease forwards;
+}
+
+.card-reveal:nth-child(1) { animation-delay: 0ms; }
+.card-reveal:nth-child(2) { animation-delay: 100ms; }
+.card-reveal:nth-child(3) { animation-delay: 200ms; }
+.card-reveal:nth-child(4) { animation-delay: 300ms; }

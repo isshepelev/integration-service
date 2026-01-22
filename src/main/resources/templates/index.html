@@ -1,16 +1,45 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0a0f">
     <title>Integration Service - API Portal</title>
+    <!-- Theme System -->
+    <link rel="stylesheet" th:href="@{/css/theme.css}">
+    <link rel="stylesheet" th:href="@{/css/animations.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/theme-switcher.js}" defer></script>
 </head>
-<body>
+<body class="futuristic-body">
     <div class="container">
-        <header>
-            <h1>Integration Service</h1>
-            <p class="subtitle">Multi-Protocol API Portal</p>
+        <header class="main-header">
+            <div class="header-content">
+                <div class="header-title">
+                    <h1 class="gradient-text-holo">Integration Service</h1>
+                    <p class="subtitle">Multi-Protocol API Portal</p>
+                </div>
+                <button class="theme-toggle-btn ripple-container" data-theme-toggle aria-label="Switch theme" title="Switch theme">
+                    <span class="icon-sun">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                    </span>
+                    <span class="icon-moon" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
         </header>
 
         <main>
@@ -20,48 +49,48 @@
 
                 <div class="cards">
                     <!-- REST / OpenAPI -->
-                    <div class="card rest">
+                    <div class="card rest protocol-rest neo-glass-card card-reveal hover-lift">
                         <div class="card-icon">REST</div>
                         <h3>REST API</h3>
                         <p>OpenAPI 3.0 specification with Swagger UI for interactive exploration.</p>
                         <div class="card-links">
-                            <a th:href="@{/swagger-ui.html}" class="btn btn-primary">Swagger UI</a>
-                            <a th:href="@{/v3/api-docs}" class="btn btn-secondary" target="_blank">OpenAPI JSON</a>
-                            <a th:href="@{/v3/api-docs.yaml}" class="btn btn-secondary" target="_blank">OpenAPI YAML</a>
+                            <a th:href="@{/swagger-ui.html}" class="btn btn-primary btn-press ripple-container">Swagger UI</a>
+                            <a th:href="@{/v3/api-docs}" class="btn btn-secondary btn-press ripple-container" target="_blank">OpenAPI JSON</a>
+                            <a th:href="@{/v3/api-docs.yaml}" class="btn btn-secondary btn-press ripple-container" target="_blank">OpenAPI YAML</a>
                         </div>
                         <div class="endpoint-info">
-                            <code>GET /api/products</code>
+                            <code class="neon-text-cyan">GET /api/products</code>
                         </div>
                     </div>
 
                     <!-- GraphQL -->
-                    <div class="card graphql">
+                    <div class="card graphql protocol-graphql neo-glass-card card-reveal hover-lift">
                         <div class="card-icon">GraphQL</div>
                         <h3>GraphQL API</h3>
                         <p>Flexible query language with built-in GraphiQL IDE for testing.</p>
                         <div class="card-links">
-                            <a th:href="@{/graphql-playground}" class="btn btn-primary">Playground</a>
-                            <a th:href="@{/graphql-examples}" class="btn btn-secondary">Examples</a>
-                            <a th:href="@{/graphiql}" class="btn btn-secondary">GraphiQL IDE</a>
+                            <a th:href="@{/graphql-playground}" class="btn btn-primary btn-press ripple-container">Playground</a>
+                            <a th:href="@{/graphql-examples}" class="btn btn-secondary btn-press ripple-container">Examples</a>
+                            <a th:href="@{/graphiql}" class="btn btn-secondary btn-press ripple-container">GraphiQL IDE</a>
                         </div>
                         <div class="endpoint-info">
-                            <code>POST /graphql</code>
+                            <code class="neon-text-pink">POST /graphql</code>
                         </div>
                     </div>
 
                     <!-- gRPC -->
-                    <div class="card grpc">
+                    <div class="card grpc protocol-grpc neo-glass-card card-reveal hover-lift">
                         <div class="card-icon">gRPC</div>
                         <h3>gRPC API</h3>
                         <p>High-performance RPC framework with Protocol Buffers.</p>
                         <div class="card-links">
-                            <a href="#grpc-info" class="btn btn-primary" onclick="toggleGrpcInfo()">Connection Info</a>
-                            <a th:href="@{/grpc-examples}" class="btn btn-secondary">Examples</a>
+                            <a href="#grpc-info" class="btn btn-primary btn-press ripple-container" onclick="toggleGrpcInfo()">Connection Info</a>
+                            <a th:href="@{/grpc-examples}" class="btn btn-secondary btn-press ripple-container">Examples</a>
                         </div>
                         <div class="endpoint-info">
-                            <code th:text="'localhost:' + ${grpcPort}">localhost:9090</code>
+                            <code class="neon-text-green" th:text="'localhost:' + ${grpcPort}">localhost:9090</code>
                         </div>
-                        <div id="grpc-info" class="grpc-details" style="display: none;">
+                        <div id="grpc-info" class="grpc-details code-block-2090" style="display: none;">
                             <h4>Usage with grpcurl:</h4>
                             <pre>
 # List services
@@ -75,22 +104,22 @@ grpcurl -plaintext -d '{}' \
                     </div>
 
                     <!-- SOAP -->
-                    <div class="card soap">
+                    <div class="card soap protocol-soap neo-glass-card card-reveal hover-lift">
                         <div class="card-icon">SOAP</div>
                         <h3>SOAP Web Service</h3>
                         <p>XML-based protocol for enterprise integration.</p>
                         <div class="card-links">
-                            <a th:href="@{/ws/integration.wsdl}" class="btn btn-primary" target="_blank">WSDL</a>
-                            <a th:href="@{/soap-examples}" class="btn btn-secondary">Examples</a>
+                            <a th:href="@{/ws/integration.wsdl}" class="btn btn-primary btn-press ripple-container" target="_blank">WSDL</a>
+                            <a th:href="@{/soap-examples}" class="btn btn-secondary btn-press ripple-container">Examples</a>
                         </div>
                         <div class="endpoint-info">
-                            <code>POST /ws</code>
+                            <code class="neon-text-orange">POST /ws</code>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="quick-links">
+            <section class="quick-links neo-glass-card animate-fade-up">
                 <h2>Quick Links</h2>
                 <div class="links-grid">
                     <div class="link-group">
@@ -127,10 +156,14 @@ grpcurl -plaintext -d '{}' \
             </section>
         </main>
 
-        <footer>
+        <footer class="main-footer">
             <p>Integration Service v1.0.0 | Spring Boot 4.0.1</p>
         </footer>
     </div>
+
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
 
     <script>
         function toggleGrpcInfo() {
@@ -141,6 +174,24 @@ grpcurl -plaintext -d '{}' \
                 info.style.display = 'none';
             }
         }
+
+        // Add ripple effect to buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            var buttons = document.querySelectorAll('.ripple-container');
+            buttons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    var rect = this.getBoundingClientRect();
+                    var ripple = document.createElement('span');
+                    ripple.className = 'ripple';
+                    var size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                    ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                    this.appendChild(ripple);
+                    setTimeout(function() { ripple.remove(); }, 600);
+                });
+            });
+        });
     </script>
 </body>
 </html>
