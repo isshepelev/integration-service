@@ -220,19 +220,27 @@ product.ProductService</code></pre>
   "products": [
     {
       "id": "1",
-      "name": "Samsung Galaxy S24",
-      "description": "Flagship smartphone with AI features",
+      "name": "Смартфон Samsung Galaxy S24",
+      "description": "Флагманский смартфон с AI функциями, 8/256 ГБ, AMOLED 6.2\", 50 МП камера",
       "price": 89990,
       "sku": "SAM-S24-BLK",
-      "category": "Electronics"
+      "category": "Электроника"
     },
     {
       "id": "2",
-      "name": "iPhone 15 Pro",
-      "description": "Premium Apple smartphone",
-      "price": 129990,
-      "sku": "APL-IP15-SLV",
-      "category": "Electronics"
+      "name": "Ноутбук Apple MacBook Pro 14",
+      "description": "Профессиональный ноутбук с чипом M3 Pro, 18 ГБ RAM, 512 ГБ SSD",
+      "price": 199990,
+      "sku": "APP-MBP14-SLV",
+      "category": "Электроника"
+    },
+    {
+      "id": "3",
+      "name": "Наушники Sony WH-1000XM5",
+      "description": "Беспроводные наушники с шумоподавлением, 30 часов работы",
+      "price": 34990,
+      "sku": "SONY-WH1000-BLK",
+      "category": "Электроника"
     }
   ]
 }</code></pre>
@@ -240,8 +248,8 @@ product.ProductService</code></pre>
                                 </div>
                                 <div class="proto-definition">
                                     <div class="proto-label">REQUEST MESSAGE</div>
-                                    <pre><code>message GetProductsRequest {
-    bool include_availability = 1;
+                                    <pre><code>{
+  "include_availability": false
 }</code></pre>
                                 </div>
                             </div>
@@ -275,23 +283,29 @@ product.ProductService</code></pre>
   "products": [
     {
       "id": "1",
-      "name": "Samsung Galaxy S24",
-      "description": "Flagship smartphone with AI features",
+      "name": "Смартфон Samsung Galaxy S24",
+      "description": "Флагманский смартфон с AI функциями, 8/256 ГБ, AMOLED 6.2\", 50 МП камера",
       "price": 89990,
       "sku": "SAM-S24-BLK",
-      "category": "Electronics",
+      "category": "Электроника",
       "availabilities": [
         {
           "id": "1",
-          "quantity": 150,
-          "warehouse": "Moscow-1",
-          "lastUpdated": "2025-01-15"
+          "quantity": 50,
+          "warehouse": "Москва-Центр",
+          "lastUpdated": "2024-01-15T10:30:00"
         },
         {
           "id": "2",
-          "quantity": 75,
-          "warehouse": "SPB-2",
-          "lastUpdated": "2025-01-14"
+          "quantity": 30,
+          "warehouse": "Санкт-Петербург",
+          "lastUpdated": "2024-01-15T11:00:00"
+        },
+        {
+          "id": "3",
+          "quantity": 25,
+          "warehouse": "Новосибирск",
+          "lastUpdated": "2024-01-14T16:45:00"
         }
       ]
     }
@@ -299,9 +313,11 @@ product.ProductService</code></pre>
 }</code></pre>
                                     </div>
                                 </div>
-                                <div class="example-note">
-                                    <span class="note-icon">&#9432;</span>
-                                    Set <code>include_availability: true</code> to fetch stock information from MongoDB.
+                                <div class="proto-definition">
+                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <pre><code>{
+  "include_availability": true
+}</code></pre>
                                 </div>
                             </div>
                         </div>
@@ -333,17 +349,23 @@ product.ProductService</code></pre>
                                         <pre><code>{
   "product": {
     "id": "1",
-    "name": "Samsung Galaxy S24",
-    "description": "Flagship smartphone with AI features",
+    "name": "Смартфон Samsung Galaxy S24",
+    "description": "Флагманский смартфон с AI функциями, 8/256 ГБ, AMOLED 6.2\", 50 МП камера",
     "price": 89990,
     "sku": "SAM-S24-BLK",
-    "category": "Electronics",
+    "category": "Электроника",
     "availabilities": [
       {
         "id": "1",
-        "quantity": 150,
-        "warehouse": "Moscow-1",
-        "lastUpdated": "2025-01-15"
+        "quantity": 50,
+        "warehouse": "Москва-Центр",
+        "lastUpdated": "2024-01-15T10:30:00"
+      },
+      {
+        "id": "2",
+        "quantity": 30,
+        "warehouse": "Санкт-Петербург",
+        "lastUpdated": "2024-01-15T11:00:00"
       }
     ]
   },
@@ -353,9 +375,9 @@ product.ProductService</code></pre>
                                 </div>
                                 <div class="proto-definition">
                                     <div class="proto-label">REQUEST MESSAGE</div>
-                                    <pre><code>message GetProductByIdRequest {
-    int64 id = 1;
-    bool include_availability = 2;
+                                    <pre><code>{
+  "id": 1,
+  "include_availability": true
 }</code></pre>
                                 </div>
                             </div>
@@ -388,11 +410,11 @@ product.ProductService</code></pre>
                                         <pre><code>{
   "product": {
     "id": "1",
-    "name": "Samsung Galaxy S24",
-    "description": "Flagship smartphone with AI features",
+    "name": "Смартфон Samsung Galaxy S24",
+    "description": "Флагманский смартфон с AI функциями, 8/256 ГБ, AMOLED 6.2\", 50 МП камера",
     "price": 89990,
     "sku": "SAM-S24-BLK",
-    "category": "Electronics"
+    "category": "Электроника"
   },
   "found": true
 }</code></pre>
@@ -400,9 +422,9 @@ product.ProductService</code></pre>
                                 </div>
                                 <div class="proto-definition">
                                     <div class="proto-label">REQUEST MESSAGE</div>
-                                    <pre><code>message GetProductBySkuRequest {
-    string sku = 1;
-    bool include_availability = 2;
+                                    <pre><code>{
+  "sku": "SAM-S24-BLK",
+  "include_availability": false
 }</code></pre>
                                 </div>
                             </div>
@@ -424,7 +446,7 @@ product.ProductService</code></pre>
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
-  -d '{"category": "Electronics", "include_availability": true}' \
+  -d '{"category": "Электроника", "include_availability": true}' \
   localhost:<span th:text="${grpcPort}">9090</span> \
   product.ProductService/GetProductsByCategory</code></pre>
                                     </div>
@@ -436,22 +458,35 @@ product.ProductService</code></pre>
   "products": [
     {
       "id": "1",
-      "name": "Samsung Galaxy S24",
+      "name": "Смартфон Samsung Galaxy S24",
       "price": 89990,
       "sku": "SAM-S24-BLK",
-      "category": "Electronics",
+      "category": "Электроника",
       "availabilities": [
-        {"quantity": 150, "warehouse": "Moscow-1"}
+        {"quantity": 50, "warehouse": "Москва-Центр"},
+        {"quantity": 30, "warehouse": "Санкт-Петербург"}
       ]
     },
     {
       "id": "2",
-      "name": "iPhone 15 Pro",
-      "price": 129990,
-      "sku": "APL-IP15-SLV",
-      "category": "Electronics",
+      "name": "Ноутбук Apple MacBook Pro 14",
+      "price": 199990,
+      "sku": "APP-MBP14-SLV",
+      "category": "Электроника",
       "availabilities": [
-        {"quantity": 85, "warehouse": "Moscow-1"}
+        {"quantity": 15, "warehouse": "Москва-Центр"},
+        {"quantity": 8, "warehouse": "Санкт-Петербург"}
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Наушники Sony WH-1000XM5",
+      "price": 34990,
+      "sku": "SONY-WH1000-BLK",
+      "category": "Электроника",
+      "availabilities": [
+        {"quantity": 100, "warehouse": "Москва-Центр"},
+        {"quantity": 45, "warehouse": "Екатеринбург"}
       ]
     }
   ]
@@ -460,9 +495,9 @@ product.ProductService</code></pre>
                                 </div>
                                 <div class="proto-definition">
                                     <div class="proto-label">REQUEST MESSAGE</div>
-                                    <pre><code>message GetProductsByCategoryRequest {
-    string category = 1;
-    bool include_availability = 2;
+                                    <pre><code>{
+  "category": "Электроника",
+  "include_availability": true
 }</code></pre>
                                 </div>
                             </div>

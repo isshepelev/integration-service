@@ -160,6 +160,18 @@ query GetMultipleCategories {
     price
     sku
   }
+  gaming: productsByCategory(category: "Игры и развлечения") {
+    id
+    name
+    price
+    sku
+  }
+  transport: productsByCategory(category: "Транспорт") {
+    id
+    name
+    price
+    sku
+  }
 }
 
 # Get specific products by ID
@@ -200,4 +212,26 @@ query GetSpecificProducts {
 #   "category": "Электроника"
 # }
 #
+# ============================================
+# AVAILABLE CATEGORIES:
+# ============================================
+# - Электроника (Electronics)
+# - Бытовая техника (Home Appliances)
+# - Игры и развлечения (Games & Entertainment)
+# - Транспорт (Transport)
+#
+# ============================================
+# AVAILABLE PRODUCTS:
+# ============================================
+# ID | SKU             | Name                              | Category
+# 1  | SAM-S24-BLK     | Смартфон Samsung Galaxy S24       | Электроника
+# 2  | APP-MBP14-SLV   | Ноутбук Apple MacBook Pro 14      | Электроника
+# 3  | SONY-WH1000-BLK | Наушники Sony WH-1000XM5          | Электроника
+# 4  | DLG-MAG-BLK     | Кофемашина DeLonghi Magnifica S   | Бытовая техника
+# 5  | DYS-V15-GLD     | Пылесос Dyson V15 Detect          | Бытовая техника
+# 6  | LG-OLED55-BLK   | Телевизор LG OLED 55"             | Электроника
+# 7  | SONY-PS5-WHT    | Игровая консоль Sony PlayStation 5| Игры и развлечения
+# 8  | APP-AWU2-TIT    | Умные часы Apple Watch Ultra 2    | Электроника
+# 9  | SAM-SBS-SLVR    | Холодильник Samsung Side-by-Side  | Бытовая техника
+# 10 | XIA-ES4P-BLK    | Электросамокат Xiaomi ES 4 Pro    | Транспорт
 # ============================================
