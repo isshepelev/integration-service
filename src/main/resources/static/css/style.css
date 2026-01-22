@@ -483,7 +483,11 @@ footer,
 }
 
 [data-theme="light"] a {
-    color: var(--text-link, #0077cc);
+    color: #1f2937;
+}
+
+[data-theme="light"] a:hover {
+    color: #0d9488;
 }
 
 [data-theme="light"] code {
@@ -540,4 +544,46 @@ footer,
 [data-theme="light"] footer {
     border-top-color: var(--border-subtle, rgba(0, 0, 0, 0.1));
     color: var(--text-muted, #6b7280);
+}
+
+[data-theme="light"] .link-group a {
+    color: #1f2937;
+}
+
+[data-theme="light"] .link-group a:hover {
+    color: #0d9488;
+    text-shadow: none;
+}
+
+[data-theme="light"] .link-group h4 {
+    color: #111827;
+}
+
+[data-theme="light"] .link-group code {
+    color: #0d9488;
+}
+
+[data-theme="light"] .endpoint-info code {
+    color: #0d9488;
+}
+
+[data-theme="light"] .grpc-details pre {
+    color: #0d9488;
+}
+
+[data-theme="light"] .card h3 {
+    color: #111827;
+}
+
+[data-theme="light"] .card p {
+    color: #374151;
+}
+
+[data-theme="light"] .api-section h2,
+[data-theme="light"] .quick-links h2 {
+    color: #111827;
+}
+
+[data-theme="light"] .api-section p {
+    color: #4b5563;
 }

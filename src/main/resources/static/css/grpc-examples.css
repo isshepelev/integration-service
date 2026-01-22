@@ -1430,6 +1430,21 @@
     border-color: rgba(0, 0, 0, 0.1);
 }
 
+[data-theme="light"] .proto-label {
+    background: rgba(5, 150, 105, 0.15);
+    color: #1f2937 !important;
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .proto-definition .proto-label {
+    color: #1f2937 !important;
+    background: rgba(5, 150, 105, 0.12);
+}
+
+[data-theme="light"] .proto-definition code {
+    color: #374151;
+}
+
 [data-theme="light"] .proto-header {
     background: rgba(5, 150, 105, 0.08);
     border-bottom-color: rgba(0, 0, 0, 0.1);

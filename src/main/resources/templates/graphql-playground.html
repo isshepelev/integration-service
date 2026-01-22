@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a0a0f">
-    <title>GraphQL Playground - Integration Service</title>
+    <title>GraphQL Playground - Сервис Интеграции</title>
     <!-- Theme System -->
     <link rel="stylesheet" th:href="@{/css/theme.css}">
     <link rel="stylesheet" th:href="@{/css/animations.css}">
@@ -16,8 +16,8 @@
     <div class="container playground-container">
         <header class="playground-header">
             <div class="header-left">
-                <a th:href="@{/}" class="back-link">&larr; Back to Portal</a>
-                <button class="theme-toggle-btn ripple-container" data-theme-toggle aria-label="Switch theme" title="Switch theme">
+                <a th:href="@{/}" class="back-link">&larr; Назад к порталу</a>
+                <button class="theme-toggle-btn ripple-container" data-theme-toggle aria-label="Сменить тему" title="Сменить тему">
                     <span class="icon-sun">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
@@ -32,10 +32,10 @@
             </div>
             <div class="header-center">
                 <h1>GraphQL Playground</h1>
-                <p class="subtitle">Interactive Query Editor</p>
+                <p class="subtitle">Интерактивный редактор запросов</p>
             </div>
             <div class="header-right">
-                <a th:href="@{/graphql-examples}" class="btn btn-graphql">View Examples</a>
+                <a th:href="@{/graphql-examples}" class="btn btn-graphql">Смотреть примеры</a>
             </div>
         </header>
 
@@ -44,13 +44,13 @@
                 <!-- Query Editor Panel -->
                 <div class="editor-panel">
                     <div class="panel-header">
-                        <h3>Query</h3>
+                        <h3>Запрос</h3>
                         <button id="executeBtn" class="btn btn-execute" onclick="executeQuery()">
-                            <span class="play-icon">&#9658;</span> Execute
+                            <span class="play-icon">&#9658;</span> Выполнить
                         </button>
                     </div>
                     <div class="editor-wrapper">
-                        <textarea id="queryEditor" class="code-editor" spellcheck="false" placeholder="Enter your GraphQL query here...">query GetAllProducts {
+                        <textarea id="queryEditor" class="code-editor" spellcheck="false" placeholder="Введите ваш GraphQL запрос здесь...">query GetAllProducts {
   products {
     id
     name
@@ -65,7 +65,7 @@
                     <!-- Variables Section -->
                     <div class="variables-section">
                         <div class="panel-header collapsible" onclick="toggleVariables()">
-                            <h3>Variables <span id="variablesToggle" class="toggle-icon">&#9660;</span></h3>
+                            <h3>Переменные <span id="variablesToggle" class="toggle-icon">&#9660;</span></h3>
                         </div>
                         <div id="variablesPanel" class="variables-wrapper">
                             <textarea id="variablesEditor" class="code-editor variables-editor" spellcheck="false" placeholder='{"key": "value"}'>{}</textarea>
@@ -76,33 +76,33 @@
                 <!-- Response Panel -->
                 <div class="response-panel">
                     <div class="panel-header">
-                        <h3>Response</h3>
+                        <h3>Ответ</h3>
                         <div class="response-info">
                             <span id="responseStatus" class="status-indicator"></span>
                             <span id="responseTime" class="response-time"></span>
                         </div>
                     </div>
                     <div class="response-wrapper">
-                        <pre id="responseOutput" class="response-output"><span class="placeholder-text">Execute a query to see the response...</span></pre>
+                        <pre id="responseOutput" class="response-output"><span class="placeholder-text">Выполните запрос, чтобы увидеть ответ...</span></pre>
                     </div>
                 </div>
             </div>
 
             <!-- Quick Queries Section -->
             <div class="quick-queries">
-                <h3>Quick Queries</h3>
+                <h3>Быстрые запросы</h3>
                 <div class="query-buttons">
-                    <button class="query-chip" onclick="loadQuery('products')">All Products</button>
-                    <button class="query-chip" onclick="loadQuery('productsWithAvailability')">Products + Availability</button>
-                    <button class="query-chip" onclick="loadQuery('productById')">Product by ID</button>
-                    <button class="query-chip" onclick="loadQuery('productBySku')">Product by SKU</button>
-                    <button class="query-chip" onclick="loadQuery('productsByCategory')">Products by Category</button>
+                    <button class="query-chip" onclick="loadQuery('products')">Все продукты</button>
+                    <button class="query-chip" onclick="loadQuery('productsWithAvailability')">Продукты + Наличие</button>
+                    <button class="query-chip" onclick="loadQuery('productById')">Продукт по ID</button>
+                    <button class="query-chip" onclick="loadQuery('productBySku')">Продукт по SKU</button>
+                    <button class="query-chip" onclick="loadQuery('productsByCategory')">Продукты по категории</button>
                 </div>
             </div>
         </main>
 
         <footer>
-            <p>Integration Service v1.0.0 | GraphQL Endpoint: <code>/graphql</code></p>
+            <p>Сервис Интеграции v1.0.0 | GraphQL Эндпоинт: <code>/graphql</code></p>
         </footer>
     </div>
 
@@ -235,15 +235,15 @@
                     variables = JSON.parse(varsText);
                 }
             } catch (e) {
-                responseOutput.innerHTML = '<span class="error-text">Error parsing variables: ' + e.message + '</span>';
+                responseOutput.innerHTML = '<span class="error-text">Ошибка разбора переменных: ' + e.message + '</span>';
                 responseStatus.className = 'status-indicator status-error';
                 responseStatus.textContent = 'Error';
                 return;
             }
 
             executeBtn.disabled = true;
-            executeBtn.innerHTML = '<span class="loading-spinner"></span> Executing...';
-            responseOutput.innerHTML = '<span class="loading-text">Executing query...</span>';
+            executeBtn.innerHTML = '<span class="loading-spinner"></span> Выполняется...';
+            responseOutput.innerHTML = '<span class="loading-text">Выполняется запрос...</span>';
             responseStatus.className = 'status-indicator';
             responseStatus.textContent = '';
             responseTime.textContent = '';
@@ -273,18 +273,18 @@
 
                 if (data.errors) {
                     responseStatus.className = 'status-indicator status-error';
-                    responseStatus.textContent = 'Error';
+                    responseStatus.textContent = 'Ошибка';
                 } else {
                     responseStatus.className = 'status-indicator status-success';
                     responseStatus.textContent = 'Success';
                 }
             } catch (e) {
-                responseOutput.innerHTML = '<span class="error-text">Network error: ' + e.message + '</span>';
+                responseOutput.innerHTML = '<span class="error-text">Сетевая ошибка: ' + e.message + '</span>';
                 responseStatus.className = 'status-indicator status-error';
                 responseStatus.textContent = 'Error';
             } finally {
                 executeBtn.disabled = false;
-                executeBtn.innerHTML = '<span class="play-icon">&#9658;</span> Execute';
+                executeBtn.innerHTML = '<span class="play-icon">&#9658;</span> Выполнить';
             }
         }
 

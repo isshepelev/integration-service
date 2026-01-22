@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0a0a0f">
-    <title>GraphQL Examples - 2090 Edition</title>
+    <title>Примеры GraphQL - 2090 Edition</title>
     <!-- Theme System -->
     <link rel="stylesheet" th:href="@{/css/theme.css}">
     <link rel="stylesheet" th:href="@{/css/animations.css}">
@@ -22,7 +22,7 @@
         <header class="futuristic-header">
             <div class="header-nav">
                 <a th:href="@{/}" class="nav-link hologram-text">&larr; PORTAL</a>
-                <button class="theme-toggle-btn ripple-container" data-theme-toggle aria-label="Switch theme" title="Switch theme">
+                <button class="theme-toggle-btn ripple-container" data-theme-toggle aria-label="Сменить тему" title="Сменить тему">
                     <span class="icon-sun">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
@@ -40,21 +40,21 @@
                 <div class="glitch-wrapper">
                     <h1 class="glitch" data-text="GraphQL">GraphQL</h1>
                 </div>
-                <p class="neon-subtitle">QUERY EXAMPLES // YEAR 2090</p>
+                <p class="neon-subtitle">ПРИМЕРЫ ЗАПРОСОВ </p>
                 <div class="scan-line"></div>
             </div>
             <div class="header-stats">
                 <div class="stat-item">
                     <span class="stat-value neon-cyan">23</span>
-                    <span class="stat-label">QUERIES</span>
+                    <span class="stat-label">ЗАПРОСОВ</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-value neon-pink">7</span>
-                    <span class="stat-label">TYPES</span>
+                    <span class="stat-label">ТИПОВ</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-value neon-green">ACTIVE</span>
-                    <span class="stat-label">STATUS</span>
+                    <span class="stat-value neon-green">АКТИВЕН</span>
+                    <span class="stat-label">СТАТУС</span>
                 </div>
             </div>
         </header>
@@ -63,8 +63,8 @@
             <!-- Schema Section -->
             <section class="schema-section glass-panel">
                 <div class="section-header">
-                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> SCHEMA OVERVIEW</h2>
-                    <div class="status-badge online">SYNCHRONIZED</div>
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> ОБЗОР СХЕМЫ</h2>
+                    <div class="status-badge online">СИНХРОНИЗИРОВАНО</div>
                 </div>
                 <div class="schema-grid">
                     <div class="schema-type-card">
@@ -159,27 +159,27 @@
             <!-- Connection Info Section -->
             <section class="connection-section glass-panel">
                 <div class="section-header">
-                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> CONNECTION INFO</h2>
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> ИНФОРМАЦИЯ О ПОДКЛЮЧЕНИИ</h2>
                 </div>
                 <div class="connection-grid">
                     <div class="connection-item">
-                        <span class="connection-label">Host</span>
+                        <span class="connection-label">Хост</span>
                         <code class="connection-value">localhost</code>
                     </div>
                     <div class="connection-item">
-                        <span class="connection-label">Port</span>
+                        <span class="connection-label">Порт</span>
                         <code class="connection-value">8080</code>
                     </div>
                     <div class="connection-item">
-                        <span class="connection-label">Endpoint</span>
+                        <span class="connection-label">Эндпоинт</span>
                         <code class="connection-value">/graphql</code>
                     </div>
                     <div class="connection-item">
-                        <span class="connection-label">Transport</span>
+                        <span class="connection-label">Транспорт</span>
                         <code class="connection-value">HTTP POST</code>
                     </div>
                     <div class="connection-item full-path-item">
-                        <span class="connection-label">Full URL</span>
+                        <span class="connection-label">Полный URL</span>
                         <code class="connection-value">http://localhost:8080/graphql</code>
                     </div>
                 </div>
@@ -188,7 +188,7 @@
             <!-- Tabbed Examples Section -->
             <section class="examples-section glass-panel">
                 <div class="section-header">
-                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> QUERY EXAMPLES</h2>
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> ПРИМЕРЫ ЗАПРОСОВ</h2>
                 </div>
 
                 <!-- Tabs Navigation -->
@@ -196,87 +196,87 @@
                     <div class="tabs-nav-grouped">
                         <!-- Products Group -->
                         <div class="tabs-group">
-                            <span class="tabs-group-label">PRODUCTS</span>
+                            <span class="tabs-group-label">ПРОДУКТЫ</span>
                             <div class="tabs-group-buttons">
                                 <button class="tab-btn active" data-tab="tab1">
                                     <span class="tab-number">01</span>
-                                    <span class="tab-title">All Products</span>
+                                    <span class="tab-title">Все продукты</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab2">
                                     <span class="tab-number">02</span>
-                                    <span class="tab-title">With Availability</span>
+                                    <span class="tab-title">С наличием</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab3">
                                     <span class="tab-number">03</span>
-                                    <span class="tab-title">Product By ID</span>
+                                    <span class="tab-title">Продукт по ID</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab15">
                                     <span class="tab-number">15</span>
-                                    <span class="tab-title">Create Product</span>
+                                    <span class="tab-title">Создать продукт</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab16">
                                     <span class="tab-number">16</span>
-                                    <span class="tab-title">Update Product</span>
+                                    <span class="tab-title">Обновить продукт</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab17">
                                     <span class="tab-number">17</span>
-                                    <span class="tab-title">Delete Product</span>
+                                    <span class="tab-title">Удалить продукт</span>
                                 </button>
                             </div>
                         </div>
                         <!-- Customers Group -->
                         <div class="tabs-group">
-                            <span class="tabs-group-label">CUSTOMERS</span>
+                            <span class="tabs-group-label">КЛИЕНТЫ</span>
                             <div class="tabs-group-buttons">
                                 <button class="tab-btn" data-tab="tab4">
                                     <span class="tab-number">04</span>
-                                    <span class="tab-title">All Customers</span>
+                                    <span class="tab-title">Все клиенты</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab5">
                                     <span class="tab-number">05</span>
-                                    <span class="tab-title">Customer By ID</span>
+                                    <span class="tab-title">Клиент по ID</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab6">
                                     <span class="tab-number">06</span>
-                                    <span class="tab-title">Create Customer</span>
+                                    <span class="tab-title">Создать клиента</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab11">
                                     <span class="tab-number">11</span>
-                                    <span class="tab-title">Update Customer</span>
+                                    <span class="tab-title">Обновить клиента</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab12">
                                     <span class="tab-number">12</span>
-                                    <span class="tab-title">Delete Customer</span>
+                                    <span class="tab-title">Удалить клиента</span>
                                 </button>
                             </div>
                         </div>
                         <!-- Orders Group -->
                         <div class="tabs-group">
-                            <span class="tabs-group-label">ORDERS</span>
+                            <span class="tabs-group-label">ЗАКАЗЫ</span>
                             <div class="tabs-group-buttons">
                                 <button class="tab-btn" data-tab="tab7">
                                     <span class="tab-number">07</span>
-                                    <span class="tab-title">All Orders</span>
+                                    <span class="tab-title">Все заказы</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab8">
                                     <span class="tab-number">08</span>
-                                    <span class="tab-title">Orders By Customer</span>
+                                    <span class="tab-title">Заказы клиента</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab9">
                                     <span class="tab-number">09</span>
-                                    <span class="tab-title">Create Order</span>
+                                    <span class="tab-title">Создать заказ</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab10">
                                     <span class="tab-number">10</span>
-                                    <span class="tab-title">Customer + Orders</span>
+                                    <span class="tab-title">Клиент + Заказы</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab13">
                                     <span class="tab-number">13</span>
-                                    <span class="tab-title">Update Order Status</span>
+                                    <span class="tab-title">Обновить статус</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab14">
                                     <span class="tab-number">14</span>
-                                    <span class="tab-title">Delete Order</span>
+                                    <span class="tab-title">Удалить заказ</span>
                                 </button>
                             </div>
                         </div>
@@ -288,15 +288,15 @@
                         <div class="tab-panel active" id="tab1">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Get All Products</h3>
+                                    <h3>Получить все продукты</h3>
                                     <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>query GetAllProducts {
@@ -311,7 +311,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -337,7 +337,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -347,15 +347,15 @@
                         <div class="tab-panel" id="tab2">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Products with Availability</h3>
+                                    <h3>Продукты с наличием</h3>
                                     <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>query GetAllProductsWithAvailability {
@@ -374,7 +374,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -404,7 +404,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -414,15 +414,15 @@
                         <div class="tab-panel" id="tab3">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Product by ID</h3>
+                                    <h3>Продукт по ID</h3>
                                     <span class="category-badge filtered">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>query GetProductById($id: ID!) {
@@ -445,7 +445,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -467,7 +467,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -477,15 +477,15 @@
                         <div class="tab-panel" id="tab4">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Get All Customers</h3>
+                                    <h3>Получить всех клиентов</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>query GetAllCustomers {
@@ -506,7 +506,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -544,7 +544,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -554,15 +554,15 @@
                         <div class="tab-panel" id="tab5">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Customer by ID</h3>
+                                    <h3>Клиент по ID</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>query GetCustomerById($id: ID!) {
@@ -584,7 +584,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -605,7 +605,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -615,15 +615,15 @@
                         <div class="tab-panel" id="tab6">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Create Customer</h3>
+                                    <h3>Создать клиента</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>mutation CreateCustomer($input: CreateCustomerInput!) {
@@ -657,7 +657,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -677,7 +677,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -687,15 +687,15 @@
                         <div class="tab-panel" id="tab7">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Get All Orders</h3>
+                                    <h3>Получить все заказы</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>query GetAllOrders {
@@ -717,7 +717,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -768,7 +768,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -778,15 +778,15 @@
                         <div class="tab-panel" id="tab8">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Orders By Customer ID</h3>
+                                    <h3>Заказы по ID клиента</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>query GetOrdersByCustomer($customerId: ID!) {
@@ -808,7 +808,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -851,7 +851,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -861,15 +861,15 @@
                         <div class="tab-panel" id="tab9">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Create Order</h3>
+                                    <h3>Создать заказ</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>mutation CreateOrder($input: CreateOrderInput!) {
@@ -905,7 +905,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -930,7 +930,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -940,15 +940,15 @@
                         <div class="tab-panel" id="tab10">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Customer with Orders (Multi-Query)</h3>
+                                    <h3>Клиент с заказами (Multi-Query)</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>query GetCustomerWithOrders($customerId: ID!) {
@@ -980,7 +980,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -1021,7 +1021,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -1031,15 +1031,15 @@
                         <div class="tab-panel" id="tab11">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Update Customer</h3>
+                                    <h3>Обновить клиента</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>mutation UpdateCustomer($id: ID!, $input: UpdateCustomerInput!) {
@@ -1073,7 +1073,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -1094,7 +1094,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -1104,15 +1104,15 @@
                         <div class="tab-panel" id="tab12">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Delete Customer</h3>
+                                    <h3>Удалить клиента</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>mutation DeleteCustomer($id: ID!) {
@@ -1124,7 +1124,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -1135,7 +1135,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -1145,15 +1145,15 @@
                         <div class="tab-panel" id="tab13">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Update Order Status</h3>
+                                    <h3>Обновить статус заказа</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>mutation UpdateOrderStatus($id: ID!, $status: OrderStatus!) {
@@ -1179,7 +1179,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -1208,7 +1208,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -1218,15 +1218,15 @@
                         <div class="tab-panel" id="tab14">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Delete Order</h3>
+                                    <h3>Удалить заказ</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>mutation DeleteOrder($id: ID!) {
@@ -1238,7 +1238,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -1249,7 +1249,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -1259,15 +1259,15 @@
                         <div class="tab-panel" id="tab15">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Create Product</h3>
+                                    <h3>Создать продукт</h3>
                                     <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>mutation CreateProduct($input: CreateProductInput!) {
@@ -1294,7 +1294,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -1312,7 +1312,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -1322,15 +1322,15 @@
                         <div class="tab-panel" id="tab16">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Update Product</h3>
+                                    <h3>Обновить продукт</h3>
                                     <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>mutation UpdateProduct($id: ID!, $input: UpdateProductInput!) {
@@ -1358,7 +1358,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -1376,7 +1376,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -1386,15 +1386,15 @@
                         <div class="tab-panel" id="tab17">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Delete Product</h3>
+                                    <h3>Удалить продукт</h3>
                                     <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>REQUEST</span>
+                                            <span>ЗАПРОС</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>mutation DeleteProduct($id: ID!) {
@@ -1406,7 +1406,7 @@
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "data": {
@@ -1417,7 +1417,7 @@
                                 </div>
                                 <div class="example-actions">
                                     <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                        <span class="btn-icon">&#9654;</span> ОТКРЫТЬ В PLAYGROUND
                                     </a>
                                 </div>
                             </div>
@@ -1440,7 +1440,7 @@
                 </div>
                 <div class="footer-status">
                     <span class="status-dot"></span>
-                    <span>ALL SYSTEMS OPERATIONAL</span>
+                    <span>ВСЕ СИСТЕМЫ РАБОТАЮТ</span>
                 </div>
             </div>
         </footer>
@@ -1482,7 +1482,7 @@
             const code = codeBlock.querySelector('code').textContent;
             navigator.clipboard.writeText(code).then(() => {
                 const originalText = btn.innerHTML;
-                btn.innerHTML = '<span class="copy-icon">&#x2713;</span> COPIED';
+                btn.innerHTML = '<span class="copy-icon">&#x2713;</span> СКОПИРОВАНО';
                 btn.classList.add('copied');
                 setTimeout(() => {
                     btn.innerHTML = originalText;
