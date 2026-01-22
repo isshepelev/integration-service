@@ -35,7 +35,7 @@
 В случае новой версии приложения необходимо использовать следующую команду:
 
 ```bash
-  docker compose up -d --build --no-cache
+  docker compose build --no-cache && docker compose up -d
 ```
 
 ## Требования
