@@ -5,7 +5,9 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import ppr.ru.integrationservice.dto.CreateProductRequest;
 import ppr.ru.integrationservice.dto.ProductDTO;
+import ppr.ru.integrationservice.dto.UpdateProductRequest;
 import ppr.ru.integrationservice.service.ProductService;
 import ppr.ru.integrationservice.soap.generated.*;
 
@@ -70,6 +72,56 @@ public class ProductSoapEndpoint {
         product.ifPresent(dto -> response.setProduct(toSoapProduct(dto)));
         return response;
     }
+
+    // ==================== Mutation Operations ====================
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "createProductRequest")
+    @ResponsePayload
+    public CreateProductResponse createProduct(@RequestPayload ppr.ru.integrationservice.soap.generated.CreateProductRequest request) {
+        CreateProductRequest serviceRequest = CreateProductRequest.builder()
+                .name(request.getName())
+                .description(request.getDescription())
+                .price(request.getPrice())
+                .sku(request.getSku())
+                .category(request.getCategory())
+                .build();
+
+        ProductDTO created = productService.createProduct(serviceRequest);
+
+        CreateProductResponse response = new CreateProductResponse();
+        response.setProduct(toSoapProduct(created));
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "updateProductRequest")
+    @ResponsePayload
+    public UpdateProductResponse updateProduct(@RequestPayload ppr.ru.integrationservice.soap.generated.UpdateProductRequest request) {
+        UpdateProductRequest serviceRequest = UpdateProductRequest.builder()
+                .name(request.getName())
+                .description(request.getDescription())
+                .price(request.getPrice())
+                .sku(request.getSku())
+                .category(request.getCategory())
+                .build();
+
+        Optional<ProductDTO> updated = productService.partialUpdateProduct(request.getId(), serviceRequest);
+
+        UpdateProductResponse response = new UpdateProductResponse();
+        updated.ifPresent(dto -> response.setProduct(toSoapProduct(dto)));
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "deleteProductRequest")
+    @ResponsePayload
+    public DeleteProductResponse deleteProduct(@RequestPayload DeleteProductRequest request) {
+        boolean success = productService.deleteProduct(request.getId());
+
+        DeleteProductResponse response = new DeleteProductResponse();
+        response.setSuccess(success);
+        return response;
+    }
+
+    // ==================== Helper Methods ====================
 
     private Product toSoapProduct(ProductDTO dto) {
         Product product = new Product();

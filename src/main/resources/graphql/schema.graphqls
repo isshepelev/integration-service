@@ -19,6 +19,11 @@ type Query {
 }
 
 type Mutation {
+    # Product mutations
+    createProduct(input: CreateProductInput!): Product!
+    updateProduct(id: ID!, input: UpdateProductInput!): Product
+    deleteProduct(id: ID!): Boolean!
+
     # Customer mutations
     createCustomer(input: CreateCustomerInput!): Customer!
     updateCustomer(id: ID!, input: UpdateCustomerInput!): Customer
@@ -87,6 +92,24 @@ input AddressInput {
     state: String
     zipCode: String
     country: String
+}
+
+# ==================== Product Input Types ====================
+
+input CreateProductInput {
+    name: String!
+    description: String
+    price: Float!
+    sku: String!
+    category: String
+}
+
+input UpdateProductInput {
+    name: String
+    description: String
+    price: Float
+    sku: String
+    category: String
 }
 
 # ==================== Order Types (MongoDB) ====================

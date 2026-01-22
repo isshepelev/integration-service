@@ -28,7 +28,7 @@
             </div>
             <div class="header-stats">
                 <div class="stat-item">
-                    <span class="stat-value neon-cyan">20</span>
+                    <span class="stat-value neon-cyan">23</span>
                     <span class="stat-label">QUERIES</span>
                 </div>
                 <div class="stat-item">
@@ -71,6 +71,9 @@
                             <span class="type-name">Mutation</span>
                         </div>
                         <ul class="type-fields">
+                            <li><code>createProduct(input: ...)</code> <span class="return-type">Product!</span></li>
+                            <li><code>updateProduct(id: ID!, input: ...)</code> <span class="return-type">Product</span></li>
+                            <li><code>deleteProduct(id: ID!)</code> <span class="return-type">Boolean!</span></li>
                             <li><code>createCustomer(input: ...)</code> <span class="return-type">Customer!</span></li>
                             <li><code>updateCustomer(id: ID!, input: ...)</code> <span class="return-type">Customer</span></li>
                             <li><code>deleteCustomer(id: ID!)</code> <span class="return-type">Boolean!</span></li>
@@ -189,6 +192,18 @@
                                 <button class="tab-btn" data-tab="tab3">
                                     <span class="tab-number">03</span>
                                     <span class="tab-title">Product By ID</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab15">
+                                    <span class="tab-number">15</span>
+                                    <span class="tab-title">Create Product</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab16">
+                                    <span class="tab-number">16</span>
+                                    <span class="tab-title">Update Product</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab17">
+                                    <span class="tab-number">17</span>
+                                    <span class="tab-title">Delete Product</span>
                                 </button>
                             </div>
                         </div>
@@ -1211,6 +1226,174 @@
                                         <pre><code>{
   "data": {
     "deleteOrder": true
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 15: Create Product -->
+                        <div class="tab-panel" id="tab15">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Create Product</h3>
+                                    <span class="category-badge basic">POSTGRESQL</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>mutation CreateProduct($input: CreateProductInput!) {
+  createProduct(input: $input) {
+    id
+    name
+    description
+    price
+    sku
+    category
+  }
+}
+
+# Variables:
+# {
+#   "input": {
+#     "name": "Умная колонка Яндекс Станция Макс",
+#     "description": "Умная колонка с Алисой, LED-дисплей, 65 Вт",
+#     "price": 24990.00,
+#     "sku": "YA-STM-BLK",
+#     "category": "Электроника"
+#   }
+# }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "createProduct": {
+      "id": "11",
+      "name": "Умная колонка Яндекс Станция Макс",
+      "description": "Умная колонка с Алисой, LED-дисплей, 65 Вт",
+      "price": 24990.0,
+      "sku": "YA-STM-BLK",
+      "category": "Электроника"
+    }
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 16: Update Product -->
+                        <div class="tab-panel" id="tab16">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Update Product</h3>
+                                    <span class="category-badge basic">POSTGRESQL</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>mutation UpdateProduct($id: ID!, $input: UpdateProductInput!) {
+  updateProduct(id: $id, input: $input) {
+    id
+    name
+    description
+    price
+    sku
+    category
+  }
+}
+
+# Variables:
+# {
+#   "id": "1",
+#   "input": {
+#     "name": "Смартфон Samsung Galaxy S24 Ultra",
+#     "description": "Флагманский смартфон с AI, обновленная версия",
+#     "price": 99990.00,
+#     "sku": "SAM-S24U-BLK",
+#     "category": "Электроника"
+#   }
+# }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "updateProduct": {
+      "id": "1",
+      "name": "Смартфон Samsung Galaxy S24 Ultra",
+      "description": "Флагманский смартфон с AI, обновленная версия",
+      "price": 99990.0,
+      "sku": "SAM-S24U-BLK",
+      "category": "Электроника"
+    }
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 17: Delete Product -->
+                        <div class="tab-panel" id="tab17">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Delete Product</h3>
+                                    <span class="category-badge basic">POSTGRESQL</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>mutation DeleteProduct($id: ID!) {
+  deleteProduct(id: $id)
+}
+
+# Variables:
+# { "id": "11" }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "deleteProduct": true
   }
 }</code></pre>
                                     </div>

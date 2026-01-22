@@ -28,7 +28,7 @@
             </div>
             <div class="header-stats">
                 <div class="stat-item">
-                    <span class="stat-value neon-cyan">21</span>
+                    <span class="stat-value neon-cyan">24</span>
                     <span class="stat-label">OPERATIONS</span>
                 </div>
                 <div class="stat-item">
@@ -59,6 +59,9 @@
                             <li><code>getProductsRequest</code> <span class="return-type">getProductsResponse</span></li>
                             <li><code>getProductByIdRequest</code> <span class="return-type">getProductResponse</span></li>
                             <li><code>getProductBySkuRequest</code> <span class="return-type">getProductResponse</span></li>
+                            <li><code>createProductRequest</code> <span class="return-type">createProductResponse</span></li>
+                            <li><code>updateProductRequest</code> <span class="return-type">updateProductResponse</span></li>
+                            <li><code>deleteProductRequest</code> <span class="return-type">deleteProductResponse</span></li>
                         </ul>
                     </div>
                     <div class="schema-type-card">
@@ -179,6 +182,18 @@
                                 <button class="tab-btn" data-tab="tab2">
                                     <span class="tab-number">02</span>
                                     <span class="tab-title">Product By ID</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab13">
+                                    <span class="tab-number">13</span>
+                                    <span class="tab-title">Create Product</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab14">
+                                    <span class="tab-number">14</span>
+                                    <span class="tab-title">Update Product</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab15">
+                                    <span class="tab-number">15</span>
+                                    <span class="tab-title">Delete Product</span>
                                 </button>
                             </div>
                         </div>
@@ -892,6 +907,155 @@
       &lt;ns2:deleteOrderResponse xmlns:ns2="..."&gt;
          &lt;ns2:success&gt;true&lt;/ns2:success&gt;
       &lt;/ns2:deleteOrderResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 13: Create Product -->
+                        <div class="tab-panel" id="tab13">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Create Product</h3>
+                                    <span class="category-badge basic">POSTGRESQL</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;prod:createProductRequest&gt;
+         &lt;prod:name&gt;Умная колонка Яндекс Станция Макс&lt;/prod:name&gt;
+         &lt;prod:description&gt;Умная колонка с Алисой, LED-дисплей, 65 Вт&lt;/prod:description&gt;
+         &lt;prod:price&gt;24990.00&lt;/prod:price&gt;
+         &lt;prod:sku&gt;YA-STM-BLK&lt;/prod:sku&gt;
+         &lt;prod:category&gt;Электроника&lt;/prod:category&gt;
+      &lt;/prod:createProductRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:createProductResponse xmlns:ns2="..."&gt;
+         &lt;ns2:product&gt;
+            &lt;ns2:id&gt;11&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;Умная колонка Яндекс Станция Макс&lt;/ns2:name&gt;
+            &lt;ns2:description&gt;Умная колонка с Алисой, LED-дисплей, 65 Вт&lt;/ns2:description&gt;
+            &lt;ns2:price&gt;24990.00&lt;/ns2:price&gt;
+            &lt;ns2:sku&gt;YA-STM-BLK&lt;/ns2:sku&gt;
+            &lt;ns2:category&gt;Электроника&lt;/ns2:category&gt;
+         &lt;/ns2:product&gt;
+      &lt;/ns2:createProductResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 14: Update Product -->
+                        <div class="tab-panel" id="tab14">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Update Product</h3>
+                                    <span class="category-badge basic">POSTGRESQL</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;prod:updateProductRequest&gt;
+         &lt;prod:id&gt;1&lt;/prod:id&gt;
+         &lt;prod:name&gt;Смартфон Samsung Galaxy S24 Ultra&lt;/prod:name&gt;
+         &lt;prod:description&gt;Флагманский смартфон с AI и S Pen&lt;/prod:description&gt;
+         &lt;prod:price&gt;109990.00&lt;/prod:price&gt;
+         &lt;prod:sku&gt;SAM-S24U-BLK&lt;/prod:sku&gt;
+         &lt;prod:category&gt;Электроника&lt;/prod:category&gt;
+      &lt;/prod:updateProductRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:updateProductResponse xmlns:ns2="..."&gt;
+         &lt;ns2:product&gt;
+            &lt;ns2:id&gt;1&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;Смартфон Samsung Galaxy S24 Ultra&lt;/ns2:name&gt;
+            &lt;ns2:description&gt;Флагманский смартфон с AI и S Pen&lt;/ns2:description&gt;
+            &lt;ns2:price&gt;109990.00&lt;/ns2:price&gt;
+            &lt;ns2:sku&gt;SAM-S24U-BLK&lt;/ns2:sku&gt;
+            &lt;ns2:category&gt;Электроника&lt;/ns2:category&gt;
+         &lt;/ns2:product&gt;
+      &lt;/ns2:updateProductResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 15: Delete Product -->
+                        <div class="tab-panel" id="tab15">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Delete Product</h3>
+                                    <span class="category-badge basic">POSTGRESQL</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;prod:deleteProductRequest&gt;
+         &lt;prod:id&gt;11&lt;/prod:id&gt;
+      &lt;/prod:deleteProductRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:deleteProductResponse xmlns:ns2="..."&gt;
+         &lt;ns2:success&gt;true&lt;/ns2:success&gt;
+      &lt;/ns2:deleteProductResponse&gt;
    &lt;/SOAP-ENV:Body&gt;
 &lt;/SOAP-ENV:Envelope&gt;</code></pre>
                                     </div>

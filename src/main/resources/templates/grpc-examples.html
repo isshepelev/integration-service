@@ -28,7 +28,7 @@
             </div>
             <div class="header-stats">
                 <div class="stat-item">
-                    <span class="stat-value neon-cyan">21</span>
+                    <span class="stat-value neon-cyan">24</span>
                     <span class="stat-label">METHODS</span>
                 </div>
                 <div class="stat-item">
@@ -60,6 +60,9 @@
                             <li><code>GetProductById</code> <span class="return-type">ProductResponse</span></li>
                             <li><code>GetProductBySku</code> <span class="return-type">ProductResponse</span></li>
                             <li><code>GetProductsByCategory</code> <span class="return-type">GetProductsResponse</span></li>
+                            <li><code>CreateProduct</code> <span class="return-type">ProductResponse</span></li>
+                            <li><code>UpdateProduct</code> <span class="return-type">ProductResponse</span></li>
+                            <li><code>DeleteProduct</code> <span class="return-type">DeleteProductResponse</span></li>
                         </ul>
                     </div>
                     <div class="schema-type-card">
@@ -180,6 +183,18 @@
                                 <button class="tab-btn" data-tab="tab3">
                                     <span class="tab-number">03</span>
                                     <span class="tab-title">Product By ID</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab14">
+                                    <span class="tab-number">14</span>
+                                    <span class="tab-title">Create Product</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab15">
+                                    <span class="tab-number">15</span>
+                                    <span class="tab-title">Update Product</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab16">
+                                    <span class="tab-number">16</span>
+                                    <span class="tab-title">Delete Product</span>
                                 </button>
                             </div>
                         </div>
@@ -890,6 +905,131 @@ product.ProductService</code></pre>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Tab 14: Create Product -->
+                        <div class="tab-panel" id="tab14">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Create Product</h3>
+                                    <span class="category-badge basic">POSTGRESQL</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>GRPCURL COMMAND</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>grpcurl -plaintext \
+  -d '{
+    "name": "Умная колонка Яндекс Станция Макс",
+    "description": "Умная колонка с Алисой, LED-дисплей, 65 Вт",
+    "price": 24990.00,
+    "sku": "YA-STM-BLK",
+    "category": "Электроника"
+  }' \
+  localhost:<span th:text="${grpcPort}">9090</span> \
+  product.ProductService/CreateProduct</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "product": {
+    "id": "11",
+    "name": "Умная колонка Яндекс Станция Макс",
+    "description": "Умная колонка с Алисой, LED-дисплей, 65 Вт",
+    "price": 24990,
+    "sku": "YA-STM-BLK",
+    "category": "Электроника"
+  },
+  "found": true
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 15: Update Product -->
+                        <div class="tab-panel" id="tab15">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Update Product</h3>
+                                    <span class="category-badge basic">POSTGRESQL</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>GRPCURL COMMAND</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>grpcurl -plaintext \
+  -d '{
+    "id": 1,
+    "name": "Смартфон Samsung Galaxy S24 Ultra",
+    "description": "Флагманский смартфон с AI, 200 МП камера",
+    "price": 109990.00,
+    "sku": "SAM-S24U-BLK",
+    "category": "Электроника"
+  }' \
+  localhost:<span th:text="${grpcPort}">9090</span> \
+  product.ProductService/UpdateProduct</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "product": {
+    "id": "1",
+    "name": "Смартфон Samsung Galaxy S24 Ultra",
+    "description": "Флагманский смартфон с AI, 200 МП камера",
+    "price": 109990,
+    "sku": "SAM-S24U-BLK",
+    "category": "Электроника"
+  },
+  "found": true
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 16: Delete Product -->
+                        <div class="tab-panel" id="tab16">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Delete Product</h3>
+                                    <span class="category-badge basic">POSTGRESQL</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>GRPCURL COMMAND</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>grpcurl -plaintext \
+  -d '{"id": 11}' \
+  localhost:<span th:text="${grpcPort}">9090</span> \
+  product.ProductService/DeleteProduct</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "success": true
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -942,6 +1082,9 @@ service ProductService {
     rpc GetProductById(GetProductByIdRequest) returns (ProductResponse);
     rpc GetProductBySku(GetProductBySkuRequest) returns (ProductResponse);
     rpc GetProductsByCategory(GetProductsByCategoryRequest) returns (GetProductsResponse);
+    rpc CreateProduct(CreateProductRequest) returns (ProductResponse);
+    rpc UpdateProduct(UpdateProductRequest) returns (ProductResponse);
+    rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
 }
 
 message GetProductsRequest {
@@ -987,6 +1130,31 @@ message Availability {
     int32 quantity = 2;
     string warehouse = 3;
     string last_updated = 4;
+}
+
+message CreateProductRequest {
+    string name = 1;
+    string description = 2;
+    double price = 3;
+    string sku = 4;
+    string category = 5;
+}
+
+message UpdateProductRequest {
+    int64 id = 1;
+    string name = 2;
+    string description = 3;
+    double price = 4;
+    string sku = 5;
+    string category = 6;
+}
+
+message DeleteProductRequest {
+    int64 id = 1;
+}
+
+message DeleteProductResponse {
+    bool success = 1;
 }</code></pre>
                             </div>
                         </div>

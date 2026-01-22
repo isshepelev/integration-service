@@ -11,6 +11,9 @@ service ProductService {
     rpc GetProductById(GetProductByIdRequest) returns (ProductResponse);
     rpc GetProductBySku(GetProductBySkuRequest) returns (ProductResponse);
     rpc GetProductsByCategory(GetProductsByCategoryRequest) returns (GetProductsResponse);
+    rpc CreateProduct(CreateProductRequest) returns (ProductResponse);
+    rpc UpdateProduct(UpdateProductRequest) returns (ProductResponse);
+    rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse);
 }
 
 message GetProductsRequest {
@@ -56,4 +59,29 @@ message Availability {
     int32 quantity = 2;
     string warehouse = 3;
     string last_updated = 4;
+}
+
+message CreateProductRequest {
+    string name = 1;
+    string description = 2;
+    double price = 3;
+    string sku = 4;
+    string category = 5;
+}
+
+message UpdateProductRequest {
+    int64 id = 1;
+    string name = 2;
+    string description = 3;
+    double price = 4;
+    string sku = 5;
+    string category = 6;
+}
+
+message DeleteProductRequest {
+    int64 id = 1;
+}
+
+message DeleteProductResponse {
+    bool success = 1;
 }

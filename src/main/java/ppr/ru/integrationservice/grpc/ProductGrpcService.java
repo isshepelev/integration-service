@@ -7,6 +7,8 @@ import ppr.ru.integrationservice.dto.ProductDTO;
 import ppr.ru.integrationservice.grpc.generated.*;
 import ppr.ru.integrationservice.service.ProductService;
 
+import java.math.BigDecimal;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -68,6 +70,62 @@ public class ProductGrpcService extends ProductServiceGrpc.ProductServiceImplBas
 
         GetProductsResponse response = GetProductsResponse.newBuilder()
                 .addAllProducts(products.stream().map(this::toProto).toList())
+                .build();
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void createProduct(CreateProductRequest request, StreamObserver<ProductResponse> responseObserver) {
+        ppr.ru.integrationservice.dto.CreateProductRequest dtoRequest =
+                ppr.ru.integrationservice.dto.CreateProductRequest.builder()
+                        .name(request.getName())
+                        .description(request.getDescription())
+                        .price(BigDecimal.valueOf(request.getPrice()))
+                        .sku(request.getSku())
+                        .category(request.getCategory())
+                        .build();
+
+        ProductDTO created = productService.createProduct(dtoRequest);
+
+        ProductResponse response = ProductResponse.newBuilder()
+                .setProduct(toProto(created))
+                .setFound(true)
+                .build();
+
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void updateProduct(UpdateProductRequest request, StreamObserver<ProductResponse> responseObserver) {
+        ppr.ru.integrationservice.dto.UpdateProductRequest dtoRequest =
+                ppr.ru.integrationservice.dto.UpdateProductRequest.builder()
+                        .name(request.getName())
+                        .description(request.getDescription())
+                        .price(BigDecimal.valueOf(request.getPrice()))
+                        .sku(request.getSku())
+                        .category(request.getCategory())
+                        .build();
+
+        Optional<ProductDTO> updated = productService.updateProduct(request.getId(), dtoRequest);
+
+        ProductResponse.Builder builder = ProductResponse.newBuilder()
+                .setFound(updated.isPresent());
+
+        updated.ifPresent(p -> builder.setProduct(toProto(p)));
+
+        responseObserver.onNext(builder.build());
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void deleteProduct(DeleteProductRequest request, StreamObserver<DeleteProductResponse> responseObserver) {
+        boolean success = productService.deleteProduct(request.getId());
+
+        DeleteProductResponse response = DeleteProductResponse.newBuilder()
+                .setSuccess(success)
                 .build();
 
         responseObserver.onNext(response);
