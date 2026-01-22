@@ -17,7 +17,7 @@
         <header class="futuristic-header">
             <div class="header-nav">
                 <a th:href="@{/}" class="nav-link hologram-text">&larr; PORTAL</a>
-                <a th:href="@{/ws/products.wsdl}" class="nav-link hologram-text" target="_blank">WSDL &rarr;</a>
+                <a th:href="@{/ws/integration.wsdl}" class="nav-link hologram-text" target="_blank">WSDL &rarr;</a>
             </div>
             <div class="header-title">
                 <div class="glitch-wrapper">
@@ -28,12 +28,12 @@
             </div>
             <div class="header-stats">
                 <div class="stat-item">
-                    <span class="stat-value neon-cyan">3</span>
+                    <span class="stat-value neon-cyan">21</span>
                     <span class="stat-label">OPERATIONS</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-value neon-pink">2</span>
-                    <span class="stat-label">TYPES</span>
+                    <span class="stat-value neon-pink">4</span>
+                    <span class="stat-label">WSDLS</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-value neon-green">ACTIVE</span>
@@ -52,8 +52,8 @@
                 <div class="schema-grid">
                     <div class="schema-type-card">
                         <div class="type-header">
-                            <span class="type-icon">O</span>
-                            <span class="type-name">Operations</span>
+                            <span class="type-icon">W</span>
+                            <span class="type-name">Products (PostgreSQL)</span>
                         </div>
                         <ul class="type-fields">
                             <li><code>getProductsRequest</code> <span class="return-type">getProductsResponse</span></li>
@@ -63,29 +63,56 @@
                     </div>
                     <div class="schema-type-card">
                         <div class="type-header">
-                            <span class="type-icon">T</span>
-                            <span class="type-name">Product</span>
+                            <span class="type-icon">W</span>
+                            <span class="type-name">Customers (MongoDB)</span>
                         </div>
                         <ul class="type-fields">
-                            <li><code>id</code> <span class="return-type">xs:long</span></li>
-                            <li><code>name</code> <span class="return-type">xs:string</span></li>
-                            <li><code>description</code> <span class="return-type">xs:string?</span></li>
-                            <li><code>price</code> <span class="return-type">xs:decimal</span></li>
-                            <li><code>sku</code> <span class="return-type">xs:string</span></li>
-                            <li><code>category</code> <span class="return-type">xs:string?</span></li>
-                            <li><code>availability</code> <span class="return-type">[Availability]</span></li>
+                            <li><code>getCustomersRequest</code> <span class="return-type">getCustomersResponse</span></li>
+                            <li><code>getCustomerByIdRequest</code> <span class="return-type">getCustomerResponse</span></li>
+                            <li><code>createCustomerRequest</code> <span class="return-type">createCustomerResponse</span></li>
+                            <li><code>updateCustomerRequest</code> <span class="return-type">updateCustomerResponse</span></li>
+                            <li><code>deleteCustomerRequest</code> <span class="return-type">deleteCustomerResponse</span></li>
+                        </ul>
+                    </div>
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">W</span>
+                            <span class="type-name">Orders (MongoDB)</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>getOrdersRequest</code> <span class="return-type">getOrdersResponse</span></li>
+                            <li><code>getOrderByIdRequest</code> <span class="return-type">getOrderResponse</span></li>
+                            <li><code>getOrdersByCustomerIdRequest</code> <span class="return-type">getOrdersResponse</span></li>
+                            <li><code>createOrderRequest</code> <span class="return-type">createOrderResponse</span></li>
+                            <li><code>updateOrderStatusRequest</code> <span class="return-type">updateOrderStatusResponse</span></li>
+                            <li><code>deleteOrderRequest</code> <span class="return-type">deleteOrderResponse</span></li>
                         </ul>
                     </div>
                     <div class="schema-type-card">
                         <div class="type-header">
                             <span class="type-icon">T</span>
-                            <span class="type-name">ProductAvailability</span>
+                            <span class="type-name">Customer</span>
                         </div>
                         <ul class="type-fields">
-                            <li><code>id</code> <span class="return-type">xs:long</span></li>
-                            <li><code>quantity</code> <span class="return-type">xs:int</span></li>
-                            <li><code>warehouse</code> <span class="return-type">xs:string</span></li>
-                            <li><code>lastUpdated</code> <span class="return-type">xs:string?</span></li>
+                            <li><code>id</code> <span class="return-type">xs:string</span></li>
+                            <li><code>name</code> <span class="return-type">xs:string</span></li>
+                            <li><code>email</code> <span class="return-type">xs:string</span></li>
+                            <li><code>phone</code> <span class="return-type">xs:string?</span></li>
+                            <li><code>address</code> <span class="return-type">Address</span></li>
+                        </ul>
+                    </div>
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">T</span>
+                            <span class="type-name">Order</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>id</code> <span class="return-type">xs:string</span></li>
+                            <li><code>customerId</code> <span class="return-type">xs:string</span></li>
+                            <li><code>items</code> <span class="return-type">[OrderItem]</span></li>
+                            <li><code>total</code> <span class="return-type">xs:decimal</span></li>
+                            <li><code>status</code> <span class="return-type">xs:string</span></li>
+                            <li><code>createdAt</code> <span class="return-type">xs:string?</span></li>
                         </ul>
                     </div>
                 </div>
@@ -114,12 +141,20 @@
                         <code class="connection-value">HTTP POST</code>
                     </div>
                     <div class="connection-item full-path-item">
-                        <span class="connection-label">Namespace</span>
-                        <code class="connection-value">http://integrationservice.ru.ppr/soap/products</code>
+                        <span class="connection-label">Products WSDL</span>
+                        <code class="connection-value"><a th:href="@{/ws/products.wsdl}" target="_blank">http://localhost:<span th:text="${serverPort}">8080</span>/ws/products.wsdl</a></code>
                     </div>
                     <div class="connection-item full-path-item">
-                        <span class="connection-label">WSDL URL</span>
-                        <code class="connection-value" th:text="'http://localhost:' + ${serverPort} + '/ws/products.wsdl'">http://localhost:8080/ws/products.wsdl</code>
+                        <span class="connection-label">Customers WSDL</span>
+                        <code class="connection-value"><a th:href="@{/ws/customers.wsdl}" target="_blank">http://localhost:<span th:text="${serverPort}">8080</span>/ws/customers.wsdl</a></code>
+                    </div>
+                    <div class="connection-item full-path-item">
+                        <span class="connection-label">Orders WSDL</span>
+                        <code class="connection-value"><a th:href="@{/ws/orders.wsdl}" target="_blank">http://localhost:<span th:text="${serverPort}">8080</span>/ws/orders.wsdl</a></code>
+                    </div>
+                    <div class="connection-item full-path-item">
+                        <span class="connection-label">Integration WSDL</span>
+                        <code class="connection-value"><a th:href="@{/ws/integration.wsdl}" target="_blank">http://localhost:<span th:text="${serverPort}">8080</span>/ws/integration.wsdl</a></code>
                     </div>
                 </div>
             </section>
@@ -127,36 +162,78 @@
             <!-- Tabbed Examples Section -->
             <section class="examples-section glass-panel">
                 <div class="section-header">
-                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> REQUEST DATABASE</h2>
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> QUERY EXAMPLES</h2>
                 </div>
 
                 <!-- Tabs Navigation -->
                 <div class="tabs-container">
-                    <div class="tabs-nav">
-                        <button class="tab-btn active" data-tab="tab1">
-                            <span class="tab-number">01</span>
-                            <span class="tab-title">All Products</span>
-                        </button>
-                        <button class="tab-btn" data-tab="tab2">
-                            <span class="tab-number">02</span>
-                            <span class="tab-title">With Availability</span>
-                        </button>
-                        <button class="tab-btn" data-tab="tab3">
-                            <span class="tab-number">03</span>
-                            <span class="tab-title">By Category</span>
-                        </button>
-                        <button class="tab-btn" data-tab="tab4">
-                            <span class="tab-number">04</span>
-                            <span class="tab-title">By ID</span>
-                        </button>
-                        <button class="tab-btn" data-tab="tab5">
-                            <span class="tab-number">05</span>
-                            <span class="tab-title">By ID + Availability</span>
-                        </button>
-                        <button class="tab-btn" data-tab="tab6">
-                            <span class="tab-number">06</span>
-                            <span class="tab-title">By SKU</span>
-                        </button>
+                    <div class="tabs-nav-grouped">
+                        <!-- Products Group -->
+                        <div class="tabs-group">
+                            <span class="tabs-group-label">PRODUCTS</span>
+                            <div class="tabs-group-buttons">
+                                <button class="tab-btn active" data-tab="tab1">
+                                    <span class="tab-number">01</span>
+                                    <span class="tab-title">All Products</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab2">
+                                    <span class="tab-number">02</span>
+                                    <span class="tab-title">Product By ID</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Customers Group -->
+                        <div class="tabs-group">
+                            <span class="tabs-group-label">CUSTOMERS</span>
+                            <div class="tabs-group-buttons">
+                                <button class="tab-btn" data-tab="tab3">
+                                    <span class="tab-number">03</span>
+                                    <span class="tab-title">All Customers</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab4">
+                                    <span class="tab-number">04</span>
+                                    <span class="tab-title">Customer By ID</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab5">
+                                    <span class="tab-number">05</span>
+                                    <span class="tab-title">Create Customer</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab9">
+                                    <span class="tab-number">09</span>
+                                    <span class="tab-title">Update Customer</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab10">
+                                    <span class="tab-number">10</span>
+                                    <span class="tab-title">Delete Customer</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Orders Group -->
+                        <div class="tabs-group">
+                            <span class="tabs-group-label">ORDERS</span>
+                            <div class="tabs-group-buttons">
+                                <button class="tab-btn" data-tab="tab6">
+                                    <span class="tab-number">06</span>
+                                    <span class="tab-title">All Orders</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab7">
+                                    <span class="tab-number">07</span>
+                                    <span class="tab-title">Orders By Customer</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab8">
+                                    <span class="tab-number">08</span>
+                                    <span class="tab-title">Create Order</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab11">
+                                    <span class="tab-number">11</span>
+                                    <span class="tab-title">Update Order Status</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab12">
+                                    <span class="tab-number">12</span>
+                                    <span class="tab-title">Delete Order</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Tab Contents -->
@@ -166,7 +243,7 @@
                             <div class="example-content">
                                 <div class="example-header">
                                     <h3>Get All Products</h3>
-                                    <span class="category-badge basic">BASIC</span>
+                                    <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
@@ -182,7 +259,7 @@
    &lt;soapenv:Header/&gt;
    &lt;soapenv:Body&gt;
       &lt;prod:getProductsRequest&gt;
-         &lt;prod:includeAvailability&gt;false&lt;/prod:includeAvailability&gt;
+         &lt;prod:includeAvailability&gt;true&lt;/prod:includeAvailability&gt;
       &lt;/prod:getProductsRequest&gt;
    &lt;/soapenv:Body&gt;
 &lt;/soapenv:Envelope&gt;</code></pre>
@@ -191,55 +268,34 @@
                                         <div class="code-label">
                                             <span>RESPONSE</span>
                                         </div>
-                                        <pre><code>&lt;SOAP-ENV:Envelope
-    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
    &lt;SOAP-ENV:Body&gt;
-      &lt;ns2:getProductsResponse
-          xmlns:ns2="http://integrationservice.ru.ppr/soap/products"&gt;
+      &lt;ns2:getProductsResponse xmlns:ns2="..."&gt;
          &lt;ns2:product&gt;
             &lt;ns2:id&gt;1&lt;/ns2:id&gt;
             &lt;ns2:name&gt;Смартфон Samsung Galaxy S24&lt;/ns2:name&gt;
-            &lt;ns2:description&gt;Флагманский смартфон с AI функциями&lt;/ns2:description&gt;
             &lt;ns2:price&gt;89990.00&lt;/ns2:price&gt;
             &lt;ns2:sku&gt;SAM-S24-BLK&lt;/ns2:sku&gt;
             &lt;ns2:category&gt;Электроника&lt;/ns2:category&gt;
-         &lt;/ns2:product&gt;
-         &lt;ns2:product&gt;
-            &lt;ns2:id&gt;2&lt;/ns2:id&gt;
-            &lt;ns2:name&gt;Ноутбук Apple MacBook Pro 14&lt;/ns2:name&gt;
-            &lt;ns2:description&gt;Профессиональный ноутбук с чипом M3 Pro&lt;/ns2:description&gt;
-            &lt;ns2:price&gt;199990.00&lt;/ns2:price&gt;
-            &lt;ns2:sku&gt;APP-MBP14-SLV&lt;/ns2:sku&gt;
-            &lt;ns2:category&gt;Электроника&lt;/ns2:category&gt;
-         &lt;/ns2:product&gt;
-         &lt;ns2:product&gt;
-            &lt;ns2:id&gt;3&lt;/ns2:id&gt;
-            &lt;ns2:name&gt;Наушники Sony WH-1000XM5&lt;/ns2:name&gt;
-            &lt;ns2:description&gt;Беспроводные наушники с шумоподавлением&lt;/ns2:description&gt;
-            &lt;ns2:price&gt;34990.00&lt;/ns2:price&gt;
-            &lt;ns2:sku&gt;SONY-WH1000-BLK&lt;/ns2:sku&gt;
-            &lt;ns2:category&gt;Электроника&lt;/ns2:category&gt;
+            &lt;ns2:availability&gt;
+               &lt;ns2:quantity&gt;50&lt;/ns2:quantity&gt;
+               &lt;ns2:warehouse&gt;Москва-Центр&lt;/ns2:warehouse&gt;
+            &lt;/ns2:availability&gt;
          &lt;/ns2:product&gt;
       &lt;/ns2:getProductsResponse&gt;
    &lt;/SOAP-ENV:Body&gt;
 &lt;/SOAP-ENV:Envelope&gt;</code></pre>
                                     </div>
                                 </div>
-                                <div class="example-actions">
-                                    <div class="curl-command">
-                                        <span class="curl-label">cURL:</span>
-                                        <code>curl -X POST -H "Content-Type: text/xml" -d @request.xml http://localhost:8080/ws</code>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
-                        <!-- Tab 2: Products with Availability -->
+                        <!-- Tab 2: Product by ID -->
                         <div class="tab-panel" id="tab2">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Products with Availability</h3>
-                                    <span class="category-badge basic">BASIC</span>
+                                    <h3>Get Product by ID</h3>
+                                    <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
@@ -254,9 +310,10 @@
     xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
    &lt;soapenv:Header/&gt;
    &lt;soapenv:Body&gt;
-      &lt;prod:getProductsRequest&gt;
+      &lt;prod:getProductByIdRequest&gt;
+         &lt;prod:id&gt;1&lt;/prod:id&gt;
          &lt;prod:includeAvailability&gt;true&lt;/prod:includeAvailability&gt;
-      &lt;/prod:getProductsRequest&gt;
+      &lt;/prod:getProductByIdRequest&gt;
    &lt;/soapenv:Body&gt;
 &lt;/soapenv:Envelope&gt;</code></pre>
                                     </div>
@@ -264,57 +321,31 @@
                                         <div class="code-label">
                                             <span>RESPONSE</span>
                                         </div>
-                                        <pre><code>&lt;SOAP-ENV:Envelope
-    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
    &lt;SOAP-ENV:Body&gt;
-      &lt;ns2:getProductsResponse
-          xmlns:ns2="http://integrationservice.ru.ppr/soap/products"&gt;
+      &lt;ns2:getProductResponse xmlns:ns2="..."&gt;
          &lt;ns2:product&gt;
             &lt;ns2:id&gt;1&lt;/ns2:id&gt;
             &lt;ns2:name&gt;Смартфон Samsung Galaxy S24&lt;/ns2:name&gt;
-            &lt;ns2:description&gt;Флагманский смартфон с AI функциями&lt;/ns2:description&gt;
+            &lt;ns2:description&gt;Флагманский смартфон с AI&lt;/ns2:description&gt;
             &lt;ns2:price&gt;89990.00&lt;/ns2:price&gt;
             &lt;ns2:sku&gt;SAM-S24-BLK&lt;/ns2:sku&gt;
             &lt;ns2:category&gt;Электроника&lt;/ns2:category&gt;
-            &lt;ns2:availability&gt;
-               &lt;ns2:id&gt;1&lt;/ns2:id&gt;
-               &lt;ns2:quantity&gt;50&lt;/ns2:quantity&gt;
-               &lt;ns2:warehouse&gt;Москва-Центр&lt;/ns2:warehouse&gt;
-               &lt;ns2:lastUpdated&gt;2024-01-15T10:30:00&lt;/ns2:lastUpdated&gt;
-            &lt;/ns2:availability&gt;
-            &lt;ns2:availability&gt;
-               &lt;ns2:id&gt;2&lt;/ns2:id&gt;
-               &lt;ns2:quantity&gt;30&lt;/ns2:quantity&gt;
-               &lt;ns2:warehouse&gt;Санкт-Петербург&lt;/ns2:warehouse&gt;
-               &lt;ns2:lastUpdated&gt;2024-01-15T11:00:00&lt;/ns2:lastUpdated&gt;
-            &lt;/ns2:availability&gt;
-            &lt;ns2:availability&gt;
-               &lt;ns2:id&gt;3&lt;/ns2:id&gt;
-               &lt;ns2:quantity&gt;25&lt;/ns2:quantity&gt;
-               &lt;ns2:warehouse&gt;Новосибирск&lt;/ns2:warehouse&gt;
-               &lt;ns2:lastUpdated&gt;2024-01-14T16:45:00&lt;/ns2:lastUpdated&gt;
-            &lt;/ns2:availability&gt;
          &lt;/ns2:product&gt;
-      &lt;/ns2:getProductsResponse&gt;
+      &lt;/ns2:getProductResponse&gt;
    &lt;/SOAP-ENV:Body&gt;
 &lt;/SOAP-ENV:Envelope&gt;</code></pre>
-                                    </div>
-                                </div>
-                                <div class="example-actions">
-                                    <div class="curl-command">
-                                        <span class="curl-label">cURL:</span>
-                                        <code>curl -X POST -H "Content-Type: text/xml" -d @request.xml http://localhost:8080/ws</code>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Tab 3: Products by Category -->
+                        <!-- Tab 3: Get All Customers -->
                         <div class="tab-panel" id="tab3">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Products by Category</h3>
-                                    <span class="category-badge filtered">FILTERED</span>
+                                    <h3>Get All Customers</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
@@ -326,13 +357,10 @@
                                         </div>
                                         <pre><code>&lt;soapenv:Envelope
     xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-    xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
+    xmlns:cust="http://integrationservice.ru.ppr/soap/customers"&gt;
    &lt;soapenv:Header/&gt;
    &lt;soapenv:Body&gt;
-      &lt;prod:getProductsRequest&gt;
-         &lt;prod:includeAvailability&gt;false&lt;/prod:includeAvailability&gt;
-         &lt;prod:category&gt;Электроника&lt;/prod:category&gt;
-      &lt;/prod:getProductsRequest&gt;
+      &lt;cust:getCustomersRequest/&gt;
    &lt;/soapenv:Body&gt;
 &lt;/soapenv:Envelope&gt;</code></pre>
                                     </div>
@@ -340,55 +368,45 @@
                                         <div class="code-label">
                                             <span>RESPONSE</span>
                                         </div>
-                                        <pre><code>&lt;SOAP-ENV:Envelope
-    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
    &lt;SOAP-ENV:Body&gt;
-      &lt;ns2:getProductsResponse
-          xmlns:ns2="http://integrationservice.ru.ppr/soap/products"&gt;
-         &lt;ns2:product&gt;
-            &lt;ns2:id&gt;1&lt;/ns2:id&gt;
-            &lt;ns2:name&gt;Смартфон Samsung Galaxy S24&lt;/ns2:name&gt;
-            &lt;ns2:description&gt;Флагманский смартфон с AI функциями&lt;/ns2:description&gt;
-            &lt;ns2:price&gt;89990.00&lt;/ns2:price&gt;
-            &lt;ns2:sku&gt;SAM-S24-BLK&lt;/ns2:sku&gt;
-            &lt;ns2:category&gt;Электроника&lt;/ns2:category&gt;
-         &lt;/ns2:product&gt;
-         &lt;ns2:product&gt;
-            &lt;ns2:id&gt;2&lt;/ns2:id&gt;
-            &lt;ns2:name&gt;Ноутбук Apple MacBook Pro 14&lt;/ns2:name&gt;
-            &lt;ns2:description&gt;Профессиональный ноутбук с чипом M3 Pro&lt;/ns2:description&gt;
-            &lt;ns2:price&gt;199990.00&lt;/ns2:price&gt;
-            &lt;ns2:sku&gt;APP-MBP14-SLV&lt;/ns2:sku&gt;
-            &lt;ns2:category&gt;Электроника&lt;/ns2:category&gt;
-         &lt;/ns2:product&gt;
-         &lt;ns2:product&gt;
-            &lt;ns2:id&gt;3&lt;/ns2:id&gt;
-            &lt;ns2:name&gt;Наушники Sony WH-1000XM5&lt;/ns2:name&gt;
-            &lt;ns2:description&gt;Беспроводные наушники с шумоподавлением&lt;/ns2:description&gt;
-            &lt;ns2:price&gt;34990.00&lt;/ns2:price&gt;
-            &lt;ns2:sku&gt;SONY-WH1000-BLK&lt;/ns2:sku&gt;
-            &lt;ns2:category&gt;Электроника&lt;/ns2:category&gt;
-         &lt;/ns2:product&gt;
-      &lt;/ns2:getProductsResponse&gt;
+      &lt;ns2:getCustomersResponse xmlns:ns2="..."&gt;
+         &lt;ns2:customer&gt;
+            &lt;ns2:id&gt;507f1f77bcf86cd799439011&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;Иван Петров&lt;/ns2:name&gt;
+            &lt;ns2:email&gt;ivan.petrov@example.com&lt;/ns2:email&gt;
+            &lt;ns2:phone&gt;+7 (999) 123-45-67&lt;/ns2:phone&gt;
+            &lt;ns2:address&gt;
+               &lt;ns2:street&gt;ул. Ленина, д. 15, кв. 42&lt;/ns2:street&gt;
+               &lt;ns2:city&gt;Москва&lt;/ns2:city&gt;
+               &lt;ns2:country&gt;Россия&lt;/ns2:country&gt;
+            &lt;/ns2:address&gt;
+         &lt;/ns2:customer&gt;
+         &lt;ns2:customer&gt;
+            &lt;ns2:id&gt;507f1f77bcf86cd799439012&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;Мария Сидорова&lt;/ns2:name&gt;
+            &lt;ns2:email&gt;maria.sidorova@example.com&lt;/ns2:email&gt;
+            &lt;ns2:phone&gt;+7 (999) 987-65-43&lt;/ns2:phone&gt;
+            &lt;ns2:address&gt;
+               &lt;ns2:street&gt;Невский пр., д. 100&lt;/ns2:street&gt;
+               &lt;ns2:city&gt;Санкт-Петербург&lt;/ns2:city&gt;
+               &lt;ns2:country&gt;Россия&lt;/ns2:country&gt;
+            &lt;/ns2:address&gt;
+         &lt;/ns2:customer&gt;
+      &lt;/ns2:getCustomersResponse&gt;
    &lt;/SOAP-ENV:Body&gt;
 &lt;/SOAP-ENV:Envelope&gt;</code></pre>
-                                    </div>
-                                </div>
-                                <div class="example-actions">
-                                    <div class="curl-command">
-                                        <span class="curl-label">cURL:</span>
-                                        <code>curl -X POST -H "Content-Type: text/xml" -d @request.xml http://localhost:8080/ws</code>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Tab 4: Product by ID -->
+                        <!-- Tab 4: Customer by ID -->
                         <div class="tab-panel" id="tab4">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Product by ID</h3>
-                                    <span class="category-badge filtered">FILTERED</span>
+                                    <h3>Get Customer by ID</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
@@ -400,13 +418,12 @@
                                         </div>
                                         <pre><code>&lt;soapenv:Envelope
     xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-    xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
+    xmlns:cust="http://integrationservice.ru.ppr/soap/customers"&gt;
    &lt;soapenv:Header/&gt;
    &lt;soapenv:Body&gt;
-      &lt;prod:getProductByIdRequest&gt;
-         &lt;prod:id&gt;1&lt;/prod:id&gt;
-         &lt;prod:includeAvailability&gt;false&lt;/prod:includeAvailability&gt;
-      &lt;/prod:getProductByIdRequest&gt;
+      &lt;cust:getCustomerByIdRequest&gt;
+         &lt;cust:id&gt;507f1f77bcf86cd799439011&lt;/cust:id&gt;
+      &lt;/cust:getCustomerByIdRequest&gt;
    &lt;/soapenv:Body&gt;
 &lt;/soapenv:Envelope&gt;</code></pre>
                                     </div>
@@ -414,39 +431,34 @@
                                         <div class="code-label">
                                             <span>RESPONSE</span>
                                         </div>
-                                        <pre><code>&lt;SOAP-ENV:Envelope
-    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
    &lt;SOAP-ENV:Body&gt;
-      &lt;ns2:getProductResponse
-          xmlns:ns2="http://integrationservice.ru.ppr/soap/products"&gt;
-         &lt;ns2:product&gt;
-            &lt;ns2:id&gt;1&lt;/ns2:id&gt;
-            &lt;ns2:name&gt;Смартфон Samsung Galaxy S24&lt;/ns2:name&gt;
-            &lt;ns2:description&gt;Флагманский смартфон с AI функциями&lt;/ns2:description&gt;
-            &lt;ns2:price&gt;89990.00&lt;/ns2:price&gt;
-            &lt;ns2:sku&gt;SAM-S24-BLK&lt;/ns2:sku&gt;
-            &lt;ns2:category&gt;Электроника&lt;/ns2:category&gt;
-         &lt;/ns2:product&gt;
-      &lt;/ns2:getProductResponse&gt;
+      &lt;ns2:getCustomerResponse xmlns:ns2="..."&gt;
+         &lt;ns2:customer&gt;
+            &lt;ns2:id&gt;507f1f77bcf86cd799439011&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;Иван Петров&lt;/ns2:name&gt;
+            &lt;ns2:email&gt;ivan.petrov@example.com&lt;/ns2:email&gt;
+            &lt;ns2:phone&gt;+7 (999) 123-45-67&lt;/ns2:phone&gt;
+            &lt;ns2:address&gt;
+               &lt;ns2:street&gt;ул. Ленина, д. 15, кв. 42&lt;/ns2:street&gt;
+               &lt;ns2:city&gt;Москва&lt;/ns2:city&gt;
+               &lt;ns2:country&gt;Россия&lt;/ns2:country&gt;
+            &lt;/ns2:address&gt;
+         &lt;/ns2:customer&gt;
+      &lt;/ns2:getCustomerResponse&gt;
    &lt;/SOAP-ENV:Body&gt;
 &lt;/SOAP-ENV:Envelope&gt;</code></pre>
-                                    </div>
-                                </div>
-                                <div class="example-actions">
-                                    <div class="curl-command">
-                                        <span class="curl-label">cURL:</span>
-                                        <code>curl -X POST -H "Content-Type: text/xml" -d @request.xml http://localhost:8080/ws</code>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Tab 5: Product by ID with Availability -->
+                        <!-- Tab 5: Create Customer -->
                         <div class="tab-panel" id="tab5">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Product by ID with Availability</h3>
-                                    <span class="category-badge advanced">ADVANCED</span>
+                                    <h3>Create Customer</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
@@ -458,13 +470,21 @@
                                         </div>
                                         <pre><code>&lt;soapenv:Envelope
     xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-    xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
+    xmlns:cust="http://integrationservice.ru.ppr/soap/customers"&gt;
    &lt;soapenv:Header/&gt;
    &lt;soapenv:Body&gt;
-      &lt;prod:getProductByIdRequest&gt;
-         &lt;prod:id&gt;1&lt;/prod:id&gt;
-         &lt;prod:includeAvailability&gt;true&lt;/prod:includeAvailability&gt;
-      &lt;/prod:getProductByIdRequest&gt;
+      &lt;cust:createCustomerRequest&gt;
+         &lt;cust:name&gt;Алексей Иванов&lt;/cust:name&gt;
+         &lt;cust:email&gt;alexey.ivanov@example.com&lt;/cust:email&gt;
+         &lt;cust:phone&gt;+7 (999) 555-12-34&lt;/cust:phone&gt;
+         &lt;cust:address&gt;
+            &lt;cust:street&gt;ул. Пушкина, д. 10&lt;/cust:street&gt;
+            &lt;cust:city&gt;Казань&lt;/cust:city&gt;
+            &lt;cust:state&gt;Республика Татарстан&lt;/cust:state&gt;
+            &lt;cust:zipCode&gt;420000&lt;/cust:zipCode&gt;
+            &lt;cust:country&gt;Россия&lt;/cust:country&gt;
+         &lt;/cust:address&gt;
+      &lt;/cust:createCustomerRequest&gt;
    &lt;/soapenv:Body&gt;
 &lt;/soapenv:Envelope&gt;</code></pre>
                                     </div>
@@ -472,57 +492,33 @@
                                         <div class="code-label">
                                             <span>RESPONSE</span>
                                         </div>
-                                        <pre><code>&lt;SOAP-ENV:Envelope
-    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
    &lt;SOAP-ENV:Body&gt;
-      &lt;ns2:getProductResponse
-          xmlns:ns2="http://integrationservice.ru.ppr/soap/products"&gt;
-         &lt;ns2:product&gt;
-            &lt;ns2:id&gt;1&lt;/ns2:id&gt;
-            &lt;ns2:name&gt;Смартфон Samsung Galaxy S24&lt;/ns2:name&gt;
-            &lt;ns2:description&gt;Флагманский смартфон с AI функциями&lt;/ns2:description&gt;
-            &lt;ns2:price&gt;89990.00&lt;/ns2:price&gt;
-            &lt;ns2:sku&gt;SAM-S24-BLK&lt;/ns2:sku&gt;
-            &lt;ns2:category&gt;Электроника&lt;/ns2:category&gt;
-            &lt;ns2:availability&gt;
-               &lt;ns2:id&gt;1&lt;/ns2:id&gt;
-               &lt;ns2:quantity&gt;50&lt;/ns2:quantity&gt;
-               &lt;ns2:warehouse&gt;Москва-Центр&lt;/ns2:warehouse&gt;
-               &lt;ns2:lastUpdated&gt;2024-01-15T10:30:00&lt;/ns2:lastUpdated&gt;
-            &lt;/ns2:availability&gt;
-            &lt;ns2:availability&gt;
-               &lt;ns2:id&gt;2&lt;/ns2:id&gt;
-               &lt;ns2:quantity&gt;30&lt;/ns2:quantity&gt;
-               &lt;ns2:warehouse&gt;Санкт-Петербург&lt;/ns2:warehouse&gt;
-               &lt;ns2:lastUpdated&gt;2024-01-15T11:00:00&lt;/ns2:lastUpdated&gt;
-            &lt;/ns2:availability&gt;
-            &lt;ns2:availability&gt;
-               &lt;ns2:id&gt;3&lt;/ns2:id&gt;
-               &lt;ns2:quantity&gt;25&lt;/ns2:quantity&gt;
-               &lt;ns2:warehouse&gt;Новосибирск&lt;/ns2:warehouse&gt;
-               &lt;ns2:lastUpdated&gt;2024-01-14T16:45:00&lt;/ns2:lastUpdated&gt;
-            &lt;/ns2:availability&gt;
-         &lt;/ns2:product&gt;
-      &lt;/ns2:getProductResponse&gt;
+      &lt;ns2:createCustomerResponse xmlns:ns2="..."&gt;
+         &lt;ns2:customer&gt;
+            &lt;ns2:id&gt;507f1f77bcf86cd799439015&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;Алексей Иванов&lt;/ns2:name&gt;
+            &lt;ns2:email&gt;alexey.ivanov@example.com&lt;/ns2:email&gt;
+            &lt;ns2:phone&gt;+7 (999) 555-12-34&lt;/ns2:phone&gt;
+            &lt;ns2:address&gt;
+               &lt;ns2:city&gt;Казань&lt;/ns2:city&gt;
+               &lt;ns2:country&gt;Россия&lt;/ns2:country&gt;
+            &lt;/ns2:address&gt;
+         &lt;/ns2:customer&gt;
+      &lt;/ns2:createCustomerResponse&gt;
    &lt;/SOAP-ENV:Body&gt;
 &lt;/SOAP-ENV:Envelope&gt;</code></pre>
-                                    </div>
-                                </div>
-                                <div class="example-actions">
-                                    <div class="curl-command">
-                                        <span class="curl-label">cURL:</span>
-                                        <code>curl -X POST -H "Content-Type: text/xml" -d @request.xml http://localhost:8080/ws</code>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Tab 6: Product by SKU -->
+                        <!-- Tab 6: Get All Orders -->
                         <div class="tab-panel" id="tab6">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Product by SKU</h3>
-                                    <span class="category-badge filtered">FILTERED</span>
+                                    <h3>Get All Orders</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
@@ -534,13 +530,10 @@
                                         </div>
                                         <pre><code>&lt;soapenv:Envelope
     xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-    xmlns:prod="http://integrationservice.ru.ppr/soap/products"&gt;
+    xmlns:ord="http://integrationservice.ru.ppr/soap/orders"&gt;
    &lt;soapenv:Header/&gt;
    &lt;soapenv:Body&gt;
-      &lt;prod:getProductBySkuRequest&gt;
-         &lt;prod:sku&gt;SAM-S24-BLK&lt;/prod:sku&gt;
-         &lt;prod:includeAvailability&gt;false&lt;/prod:includeAvailability&gt;
-      &lt;/prod:getProductBySkuRequest&gt;
+      &lt;ord:getOrdersRequest/&gt;
    &lt;/soapenv:Body&gt;
 &lt;/soapenv:Envelope&gt;</code></pre>
                                     </div>
@@ -548,28 +541,359 @@
                                         <div class="code-label">
                                             <span>RESPONSE</span>
                                         </div>
-                                        <pre><code>&lt;SOAP-ENV:Envelope
-    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
    &lt;SOAP-ENV:Body&gt;
-      &lt;ns2:getProductResponse
-          xmlns:ns2="http://integrationservice.ru.ppr/soap/products"&gt;
-         &lt;ns2:product&gt;
-            &lt;ns2:id&gt;1&lt;/ns2:id&gt;
-            &lt;ns2:name&gt;Смартфон Samsung Galaxy S24&lt;/ns2:name&gt;
-            &lt;ns2:description&gt;Флагманский смартфон с AI функциями&lt;/ns2:description&gt;
-            &lt;ns2:price&gt;89990.00&lt;/ns2:price&gt;
-            &lt;ns2:sku&gt;SAM-S24-BLK&lt;/ns2:sku&gt;
-            &lt;ns2:category&gt;Электроника&lt;/ns2:category&gt;
-         &lt;/ns2:product&gt;
-      &lt;/ns2:getProductResponse&gt;
+      &lt;ns2:getOrdersResponse xmlns:ns2="..."&gt;
+         &lt;ns2:order&gt;
+            &lt;ns2:id&gt;60d5ecf4c8e4a12d8c9b4567&lt;/ns2:id&gt;
+            &lt;ns2:customerId&gt;507f1f77bcf86cd799439011&lt;/ns2:customerId&gt;
+            &lt;ns2:total&gt;124980.00&lt;/ns2:total&gt;
+            &lt;ns2:status&gt;DELIVERED&lt;/ns2:status&gt;
+            &lt;ns2:createdAt&gt;2024-01-10T14:30:00&lt;/ns2:createdAt&gt;
+            &lt;ns2:item&gt;
+               &lt;ns2:productName&gt;Смартфон Samsung Galaxy S24&lt;/ns2:productName&gt;
+               &lt;ns2:quantity&gt;1&lt;/ns2:quantity&gt;
+               &lt;ns2:unitPrice&gt;89990.00&lt;/ns2:unitPrice&gt;
+               &lt;ns2:subtotal&gt;89990.00&lt;/ns2:subtotal&gt;
+            &lt;/ns2:item&gt;
+            &lt;ns2:item&gt;
+               &lt;ns2:productName&gt;Наушники Sony WH-1000XM5&lt;/ns2:productName&gt;
+               &lt;ns2:quantity&gt;1&lt;/ns2:quantity&gt;
+               &lt;ns2:unitPrice&gt;34990.00&lt;/ns2:unitPrice&gt;
+               &lt;ns2:subtotal&gt;34990.00&lt;/ns2:subtotal&gt;
+            &lt;/ns2:item&gt;
+         &lt;/ns2:order&gt;
+      &lt;/ns2:getOrdersResponse&gt;
    &lt;/SOAP-ENV:Body&gt;
 &lt;/SOAP-ENV:Envelope&gt;</code></pre>
                                     </div>
                                 </div>
-                                <div class="example-actions">
-                                    <div class="curl-command">
-                                        <span class="curl-label">cURL:</span>
-                                        <code>curl -X POST -H "Content-Type: text/xml" -d @request.xml http://localhost:8080/ws</code>
+                            </div>
+                        </div>
+
+                        <!-- Tab 7: Orders by Customer -->
+                        <div class="tab-panel" id="tab7">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Get Orders by Customer ID</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:ord="http://integrationservice.ru.ppr/soap/orders"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;ord:getOrdersByCustomerIdRequest&gt;
+         &lt;ord:customerId&gt;507f1f77bcf86cd799439011&lt;/ord:customerId&gt;
+      &lt;/ord:getOrdersByCustomerIdRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:getOrdersResponse xmlns:ns2="..."&gt;
+         &lt;ns2:order&gt;
+            &lt;ns2:id&gt;60d5ecf4c8e4a12d8c9b4567&lt;/ns2:id&gt;
+            &lt;ns2:customerId&gt;507f1f77bcf86cd799439011&lt;/ns2:customerId&gt;
+            &lt;ns2:total&gt;124980.00&lt;/ns2:total&gt;
+            &lt;ns2:status&gt;DELIVERED&lt;/ns2:status&gt;
+            &lt;ns2:item&gt;
+               &lt;ns2:productName&gt;Смартфон Samsung Galaxy S24&lt;/ns2:productName&gt;
+               &lt;ns2:quantity&gt;1&lt;/ns2:quantity&gt;
+               &lt;ns2:subtotal&gt;89990.00&lt;/ns2:subtotal&gt;
+            &lt;/ns2:item&gt;
+         &lt;/ns2:order&gt;
+         &lt;ns2:order&gt;
+            &lt;ns2:id&gt;60d5ecf4c8e4a12d8c9b4569&lt;/ns2:id&gt;
+            &lt;ns2:customerId&gt;507f1f77bcf86cd799439011&lt;/ns2:customerId&gt;
+            &lt;ns2:total&gt;69990.00&lt;/ns2:total&gt;
+            &lt;ns2:status&gt;PENDING&lt;/ns2:status&gt;
+            &lt;ns2:item&gt;
+               &lt;ns2:productName&gt;Пылесос Dyson V15 Detect&lt;/ns2:productName&gt;
+               &lt;ns2:quantity&gt;1&lt;/ns2:quantity&gt;
+               &lt;ns2:subtotal&gt;69990.00&lt;/ns2:subtotal&gt;
+            &lt;/ns2:item&gt;
+         &lt;/ns2:order&gt;
+      &lt;/ns2:getOrdersResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 8: Create Order -->
+                        <div class="tab-panel" id="tab8">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Create Order</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:ord="http://integrationservice.ru.ppr/soap/orders"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;ord:createOrderRequest&gt;
+         &lt;ord:customerId&gt;507f1f77bcf86cd799439011&lt;/ord:customerId&gt;
+         &lt;ord:item&gt;
+            &lt;ord:productId&gt;1&lt;/ord:productId&gt;
+            &lt;ord:productName&gt;Смартфон Samsung Galaxy S24&lt;/ord:productName&gt;
+            &lt;ord:quantity&gt;2&lt;/ord:quantity&gt;
+            &lt;ord:unitPrice&gt;89990.00&lt;/ord:unitPrice&gt;
+         &lt;/ord:item&gt;
+      &lt;/ord:createOrderRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:createOrderResponse xmlns:ns2="..."&gt;
+         &lt;ns2:order&gt;
+            &lt;ns2:id&gt;60d5ecf4c8e4a12d8c9b4570&lt;/ns2:id&gt;
+            &lt;ns2:customerId&gt;507f1f77bcf86cd799439011&lt;/ns2:customerId&gt;
+            &lt;ns2:total&gt;179980.00&lt;/ns2:total&gt;
+            &lt;ns2:status&gt;PENDING&lt;/ns2:status&gt;
+            &lt;ns2:createdAt&gt;2024-01-20T10:00:00&lt;/ns2:createdAt&gt;
+            &lt;ns2:item&gt;
+               &lt;ns2:productName&gt;Смартфон Samsung Galaxy S24&lt;/ns2:productName&gt;
+               &lt;ns2:quantity&gt;2&lt;/ns2:quantity&gt;
+               &lt;ns2:unitPrice&gt;89990.00&lt;/ns2:unitPrice&gt;
+               &lt;ns2:subtotal&gt;179980.00&lt;/ns2:subtotal&gt;
+            &lt;/ns2:item&gt;
+         &lt;/ns2:order&gt;
+      &lt;/ns2:createOrderResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 9: Update Customer -->
+                        <div class="tab-panel" id="tab9">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Update Customer</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:cust="http://integrationservice.ru.ppr/soap/customers"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;cust:updateCustomerRequest&gt;
+         &lt;cust:id&gt;507f1f77bcf86cd799439011&lt;/cust:id&gt;
+         &lt;cust:name&gt;Иван Петров&lt;/cust:name&gt;
+         &lt;cust:email&gt;ivan.petrov.updated@example.com&lt;/cust:email&gt;
+         &lt;cust:phone&gt;+7 (999) 999-99-99&lt;/cust:phone&gt;
+         &lt;cust:address&gt;
+            &lt;cust:street&gt;ул. Новая, д. 25&lt;/cust:street&gt;
+            &lt;cust:city&gt;Москва&lt;/cust:city&gt;
+            &lt;cust:state&gt;Московская область&lt;/cust:state&gt;
+            &lt;cust:zipCode&gt;101001&lt;/cust:zipCode&gt;
+            &lt;cust:country&gt;Россия&lt;/cust:country&gt;
+         &lt;/cust:address&gt;
+      &lt;/cust:updateCustomerRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:updateCustomerResponse xmlns:ns2="..."&gt;
+         &lt;ns2:customer&gt;
+            &lt;ns2:id&gt;507f1f77bcf86cd799439011&lt;/ns2:id&gt;
+            &lt;ns2:name&gt;Иван Петров&lt;/ns2:name&gt;
+            &lt;ns2:email&gt;ivan.petrov.updated@example.com&lt;/ns2:email&gt;
+            &lt;ns2:phone&gt;+7 (999) 999-99-99&lt;/ns2:phone&gt;
+            &lt;ns2:address&gt;
+               &lt;ns2:street&gt;ул. Новая, д. 25&lt;/ns2:street&gt;
+               &lt;ns2:city&gt;Москва&lt;/ns2:city&gt;
+               &lt;ns2:country&gt;Россия&lt;/ns2:country&gt;
+            &lt;/ns2:address&gt;
+         &lt;/ns2:customer&gt;
+      &lt;/ns2:updateCustomerResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 10: Delete Customer -->
+                        <div class="tab-panel" id="tab10">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Delete Customer</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:cust="http://integrationservice.ru.ppr/soap/customers"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;cust:deleteCustomerRequest&gt;
+         &lt;cust:id&gt;507f1f77bcf86cd799439015&lt;/cust:id&gt;
+      &lt;/cust:deleteCustomerRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:deleteCustomerResponse xmlns:ns2="..."&gt;
+         &lt;ns2:success&gt;true&lt;/ns2:success&gt;
+      &lt;/ns2:deleteCustomerResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 11: Update Order Status -->
+                        <div class="tab-panel" id="tab11">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Update Order Status</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:ord="http://integrationservice.ru.ppr/soap/orders"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;ord:updateOrderStatusRequest&gt;
+         &lt;ord:id&gt;60d5ecf4c8e4a12d8c9b4567&lt;/ord:id&gt;
+         &lt;ord:status&gt;SHIPPED&lt;/ord:status&gt;
+      &lt;/ord:updateOrderStatusRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:updateOrderStatusResponse xmlns:ns2="..."&gt;
+         &lt;ns2:order&gt;
+            &lt;ns2:id&gt;60d5ecf4c8e4a12d8c9b4567&lt;/ns2:id&gt;
+            &lt;ns2:customerId&gt;507f1f77bcf86cd799439011&lt;/ns2:customerId&gt;
+            &lt;ns2:total&gt;124980.00&lt;/ns2:total&gt;
+            &lt;ns2:status&gt;SHIPPED&lt;/ns2:status&gt;
+            &lt;ns2:updatedAt&gt;2024-01-20T15:30:00&lt;/ns2:updatedAt&gt;
+            &lt;ns2:item&gt;
+               &lt;ns2:productName&gt;Смартфон Samsung Galaxy S24&lt;/ns2:productName&gt;
+               &lt;ns2:quantity&gt;1&lt;/ns2:quantity&gt;
+               &lt;ns2:subtotal&gt;89990.00&lt;/ns2:subtotal&gt;
+            &lt;/ns2:item&gt;
+            &lt;ns2:item&gt;
+               &lt;ns2:productName&gt;Наушники Sony WH-1000XM5&lt;/ns2:productName&gt;
+               &lt;ns2:quantity&gt;1&lt;/ns2:quantity&gt;
+               &lt;ns2:subtotal&gt;34990.00&lt;/ns2:subtotal&gt;
+            &lt;/ns2:item&gt;
+         &lt;/ns2:order&gt;
+      &lt;/ns2:updateOrderStatusResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 12: Delete Order -->
+                        <div class="tab-panel" id="tab12">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Delete Order</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>&lt;soapenv:Envelope
+    xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:ord="http://integrationservice.ru.ppr/soap/orders"&gt;
+   &lt;soapenv:Header/&gt;
+   &lt;soapenv:Body&gt;
+      &lt;ord:deleteOrderRequest&gt;
+         &lt;ord:id&gt;60d5ecf4c8e4a12d8c9b4570&lt;/ord:id&gt;
+      &lt;/ord:deleteOrderRequest&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="..."&gt;
+   &lt;SOAP-ENV:Body&gt;
+      &lt;ns2:deleteOrderResponse xmlns:ns2="..."&gt;
+         &lt;ns2:success&gt;true&lt;/ns2:success&gt;
+      &lt;/ns2:deleteOrderResponse&gt;
+   &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;</code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -587,7 +911,7 @@
                 </div>
                 <div class="footer-links">
                     <a th:href="@{/}" class="footer-link">PORTAL</a>
-                    <a th:href="@{/ws/products.wsdl}" class="footer-link" target="_blank">WSDL</a>
+                    <a th:href="@{/ws/integration.wsdl}" class="footer-link" target="_blank">WSDL</a>
                 </div>
                 <div class="footer-status">
                     <span class="status-dot"></span>

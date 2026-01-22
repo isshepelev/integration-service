@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://integrationservice.ru.ppr/soap/integration"
+           xmlns:prod="http://integrationservice.ru.ppr/soap/products"
+           xmlns:cust="http://integrationservice.ru.ppr/soap/customers"
+           xmlns:ord="http://integrationservice.ru.ppr/soap/orders"
+           targetNamespace="http://integrationservice.ru.ppr/soap/integration"
+           elementFormDefault="qualified">
+
+    <!-- Import all domain schemas -->
+    <xs:import namespace="http://integrationservice.ru.ppr/soap/products" schemaLocation="products.xsd"/>
+    <xs:import namespace="http://integrationservice.ru.ppr/soap/customers" schemaLocation="customers.xsd"/>
+    <xs:import namespace="http://integrationservice.ru.ppr/soap/orders" schemaLocation="orders.xsd"/>
+
+    <!-- ==================== Integration Service Overview ==================== -->
+    <!--
+        This schema provides a unified entry point for the Integration Service SOAP API.
+
+        Available Services:
+
+        1. Products Service (PostgreSQL) - /ws/products.wsdl
+           - getProductsRequest/Response
+           - getProductByIdRequest/Response
+           - getProductBySkuRequest/Response
+
+        2. Customers Service (MongoDB) - /ws/customers.wsdl
+           - getCustomersRequest/Response
+           - getCustomerByIdRequest/Response
+           - getCustomerByEmailRequest/Response
+           - createCustomerRequest/Response
+           - updateCustomerRequest/Response
+           - deleteCustomerRequest/Response
+
+        3. Orders Service (MongoDB) - /ws/orders.wsdl
+           - getOrdersRequest/Response
+           - getOrderByIdRequest/Response
+           - getOrdersByCustomerIdRequest/Response
+           - getOrdersByStatusRequest/Response
+           - createOrderRequest/Response
+           - updateOrderStatusRequest/Response
+           - deleteOrderRequest/Response
+    -->
+
+    <!-- ==================== Service Info Request/Response ==================== -->
+
+    <xs:element name="getServiceInfoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- Empty request to get service information -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getServiceInfoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceName" type="xs:string"/>
+                <xs:element name="version" type="xs:string"/>
+                <xs:element name="availableEndpoints" type="tns:endpointList"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==================== Complex Types ==================== -->
+
+    <xs:complexType name="endpointList">
+        <xs:sequence>
+            <xs:element name="endpoint" type="tns:endpoint" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="endpoint">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="wsdlUrl" type="xs:string"/>
+            <xs:element name="namespace" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="dataSource" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

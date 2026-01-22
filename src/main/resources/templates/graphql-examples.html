@@ -28,11 +28,11 @@
             </div>
             <div class="header-stats">
                 <div class="stat-item">
-                    <span class="stat-value neon-cyan">8</span>
+                    <span class="stat-value neon-cyan">20</span>
                     <span class="stat-label">QUERIES</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-value neon-pink">3</span>
+                    <span class="stat-value neon-pink">7</span>
                     <span class="stat-label">TYPES</span>
                 </div>
                 <div class="stat-item">
@@ -57,10 +57,26 @@
                         </div>
                         <ul class="type-fields">
                             <li><code>products</code> <span class="return-type">[Product!]!</span></li>
-                            <li><code>productsWithAvailability</code> <span class="return-type">[Product!]!</span></li>
                             <li><code>product(id: ID!)</code> <span class="return-type">Product</span></li>
-                            <li><code>productBySku(sku: String!)</code> <span class="return-type">Product</span></li>
-                            <li><code>productsByCategory(category: String!)</code> <span class="return-type">[Product!]!</span></li>
+                            <li><code>customers</code> <span class="return-type">[Customer!]!</span></li>
+                            <li><code>customer(id: ID!)</code> <span class="return-type">Customer</span></li>
+                            <li><code>orders</code> <span class="return-type">[Order!]!</span></li>
+                            <li><code>order(id: ID!)</code> <span class="return-type">Order</span></li>
+                            <li><code>ordersByCustomerId(customerId: ID!)</code> <span class="return-type">[Order!]!</span></li>
+                        </ul>
+                    </div>
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">M</span>
+                            <span class="type-name">Mutation</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>createCustomer(input: ...)</code> <span class="return-type">Customer!</span></li>
+                            <li><code>updateCustomer(id: ID!, input: ...)</code> <span class="return-type">Customer</span></li>
+                            <li><code>deleteCustomer(id: ID!)</code> <span class="return-type">Boolean!</span></li>
+                            <li><code>createOrder(input: ...)</code> <span class="return-type">Order!</span></li>
+                            <li><code>updateOrderStatus(id: ID!, status: ...)</code> <span class="return-type">Order</span></li>
+                            <li><code>deleteOrder(id: ID!)</code> <span class="return-type">Boolean!</span></li>
                         </ul>
                     </div>
                     <div class="schema-type-card">
@@ -76,6 +92,33 @@
                             <li><code>sku</code> <span class="return-type">String!</span></li>
                             <li><code>category</code> <span class="return-type">String</span></li>
                             <li><code>availabilities</code> <span class="return-type">[Availability!]</span></li>
+                        </ul>
+                    </div>
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">T</span>
+                            <span class="type-name">Customer</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>id</code> <span class="return-type">ID!</span></li>
+                            <li><code>name</code> <span class="return-type">String!</span></li>
+                            <li><code>email</code> <span class="return-type">String!</span></li>
+                            <li><code>phone</code> <span class="return-type">String</span></li>
+                            <li><code>address</code> <span class="return-type">Address</span></li>
+                        </ul>
+                    </div>
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">T</span>
+                            <span class="type-name">Order</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>id</code> <span class="return-type">ID!</span></li>
+                            <li><code>customerId</code> <span class="return-type">ID!</span></li>
+                            <li><code>items</code> <span class="return-type">[OrderItem!]!</span></li>
+                            <li><code>total</code> <span class="return-type">Float!</span></li>
+                            <li><code>status</code> <span class="return-type">OrderStatus!</span></li>
+                            <li><code>createdAt</code> <span class="return-type">String</span></li>
                         </ul>
                     </div>
                     <div class="schema-type-card">
@@ -125,44 +168,86 @@
             <!-- Tabbed Examples Section -->
             <section class="examples-section glass-panel">
                 <div class="section-header">
-                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> QUERY DATABASE</h2>
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> QUERY EXAMPLES</h2>
                 </div>
 
                 <!-- Tabs Navigation -->
                 <div class="tabs-container">
-                    <div class="tabs-nav">
-                        <button class="tab-btn active" data-tab="tab1">
-                            <span class="tab-number">01</span>
-                            <span class="tab-title">All Products</span>
-                        </button>
-                        <button class="tab-btn" data-tab="tab2">
-                            <span class="tab-number">02</span>
-                            <span class="tab-title">With Availability</span>
-                        </button>
-                        <button class="tab-btn" data-tab="tab3">
-                            <span class="tab-number">03</span>
-                            <span class="tab-title">By ID</span>
-                        </button>
-                        <button class="tab-btn" data-tab="tab4">
-                            <span class="tab-number">04</span>
-                            <span class="tab-title">By SKU</span>
-                        </button>
-                        <button class="tab-btn" data-tab="tab5">
-                            <span class="tab-number">05</span>
-                            <span class="tab-title">By Category</span>
-                        </button>
-                        <button class="tab-btn" data-tab="tab6">
-                            <span class="tab-number">06</span>
-                            <span class="tab-title">Partial Fields</span>
-                        </button>
-                        <button class="tab-btn" data-tab="tab7">
-                            <span class="tab-number">07</span>
-                            <span class="tab-title">Multi-Query</span>
-                        </button>
-                        <button class="tab-btn" data-tab="tab8">
-                            <span class="tab-number">08</span>
-                            <span class="tab-title">Stock Summary</span>
-                        </button>
+                    <div class="tabs-nav-grouped">
+                        <!-- Products Group -->
+                        <div class="tabs-group">
+                            <span class="tabs-group-label">PRODUCTS</span>
+                            <div class="tabs-group-buttons">
+                                <button class="tab-btn active" data-tab="tab1">
+                                    <span class="tab-number">01</span>
+                                    <span class="tab-title">All Products</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab2">
+                                    <span class="tab-number">02</span>
+                                    <span class="tab-title">With Availability</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab3">
+                                    <span class="tab-number">03</span>
+                                    <span class="tab-title">Product By ID</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Customers Group -->
+                        <div class="tabs-group">
+                            <span class="tabs-group-label">CUSTOMERS</span>
+                            <div class="tabs-group-buttons">
+                                <button class="tab-btn" data-tab="tab4">
+                                    <span class="tab-number">04</span>
+                                    <span class="tab-title">All Customers</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab5">
+                                    <span class="tab-number">05</span>
+                                    <span class="tab-title">Customer By ID</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab6">
+                                    <span class="tab-number">06</span>
+                                    <span class="tab-title">Create Customer</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab11">
+                                    <span class="tab-number">11</span>
+                                    <span class="tab-title">Update Customer</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab12">
+                                    <span class="tab-number">12</span>
+                                    <span class="tab-title">Delete Customer</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Orders Group -->
+                        <div class="tabs-group">
+                            <span class="tabs-group-label">ORDERS</span>
+                            <div class="tabs-group-buttons">
+                                <button class="tab-btn" data-tab="tab7">
+                                    <span class="tab-number">07</span>
+                                    <span class="tab-title">All Orders</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab8">
+                                    <span class="tab-number">08</span>
+                                    <span class="tab-title">Orders By Customer</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab9">
+                                    <span class="tab-number">09</span>
+                                    <span class="tab-title">Create Order</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab10">
+                                    <span class="tab-number">10</span>
+                                    <span class="tab-title">Customer + Orders</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab13">
+                                    <span class="tab-number">13</span>
+                                    <span class="tab-title">Update Order Status</span>
+                                </button>
+                                <button class="tab-btn" data-tab="tab14">
+                                    <span class="tab-number">14</span>
+                                    <span class="tab-title">Delete Order</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Tab Contents -->
@@ -172,7 +257,7 @@
                             <div class="example-content">
                                 <div class="example-header">
                                     <h3>Get All Products</h3>
-                                    <span class="category-badge basic">BASIC</span>
+                                    <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
@@ -212,13 +297,6 @@
         "price": 199990.0,
         "sku": "APP-MBP14-SLV",
         "category": "Электроника"
-      },
-      {
-        "id": "3",
-        "name": "Наушники Sony WH-1000XM5",
-        "price": 34990.0,
-        "sku": "SONY-WH1000-BLK",
-        "category": "Электроника"
       }
     ]
   }
@@ -238,7 +316,7 @@
                             <div class="example-content">
                                 <div class="example-header">
                                     <h3>Products with Availability</h3>
-                                    <span class="category-badge basic">BASIC</span>
+                                    <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
@@ -284,11 +362,6 @@
             "quantity": 30,
             "warehouse": "Санкт-Петербург",
             "lastUpdated": "2024-01-15T11:00:00"
-          },
-          {
-            "quantity": 25,
-            "warehouse": "Новосибирск",
-            "lastUpdated": "2024-01-14T16:45:00"
           }
         ]
       }
@@ -310,7 +383,7 @@
                             <div class="example-content">
                                 <div class="example-header">
                                     <h3>Product by ID</h3>
-                                    <span class="category-badge filtered">FILTERED</span>
+                                    <span class="category-badge filtered">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
@@ -347,18 +420,475 @@
     "product": {
       "id": "1",
       "name": "Смартфон Samsung Galaxy S24",
-      "description": "Флагманский смартфон с AI функциями, 8/256 ГБ, AMOLED 6.2\", 50 МП камера",
+      "description": "Флагманский смартфон с AI",
       "price": 89990.0,
       "sku": "SAM-S24-BLK",
       "category": "Электроника",
       "availabilities": [
+        { "quantity": 50, "warehouse": "Москва-Центр" },
+        { "quantity": 30, "warehouse": "Санкт-Петербург" }
+      ]
+    }
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 4: All Customers -->
+                        <div class="tab-panel" id="tab4">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Get All Customers</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>query GetAllCustomers {
+  customers {
+    id
+    name
+    email
+    phone
+    address {
+      street
+      city
+      state
+      zipCode
+      country
+    }
+  }
+}</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "customers": [
+      {
+        "id": "507f1f77bcf86cd799439011",
+        "name": "Иван Петров",
+        "email": "ivan.petrov@example.com",
+        "phone": "+7 (999) 123-45-67",
+        "address": {
+          "street": "ул. Ленина, д. 15, кв. 42",
+          "city": "Москва",
+          "state": "Московская область",
+          "zipCode": "101000",
+          "country": "Россия"
+        }
+      },
+      {
+        "id": "507f1f77bcf86cd799439012",
+        "name": "Мария Сидорова",
+        "email": "maria.sidorova@example.com",
+        "phone": "+7 (999) 987-65-43",
+        "address": {
+          "street": "Невский пр., д. 100",
+          "city": "Санкт-Петербург",
+          "state": "Ленинградская область",
+          "zipCode": "190000",
+          "country": "Россия"
+        }
+      }
+    ]
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 5: Customer by ID -->
+                        <div class="tab-panel" id="tab5">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Customer by ID</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>query GetCustomerById($id: ID!) {
+  customer(id: $id) {
+    id
+    name
+    email
+    phone
+    address {
+      street
+      city
+      country
+    }
+  }
+}
+
+# Variables:
+# { "id": "507f1f77bcf86cd799439011" }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "customer": {
+      "id": "507f1f77bcf86cd799439011",
+      "name": "Иван Петров",
+      "email": "ivan.petrov@example.com",
+      "phone": "+7 (999) 123-45-67",
+      "address": {
+        "street": "ул. Ленина, д. 15, кв. 42",
+        "city": "Москва",
+        "country": "Россия"
+      }
+    }
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 6: Create Customer -->
+                        <div class="tab-panel" id="tab6">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Create Customer</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>mutation CreateCustomer($input: CreateCustomerInput!) {
+  createCustomer(input: $input) {
+    id
+    name
+    email
+    phone
+    address {
+      city
+      country
+    }
+  }
+}
+
+# Variables:
+# {
+#   "input": {
+#     "name": "Алексей Иванов",
+#     "email": "alexey.ivanov@example.com",
+#     "phone": "+7 (999) 555-12-34",
+#     "address": {
+#       "street": "ул. Пушкина, д. 10",
+#       "city": "Казань",
+#       "state": "Республика Татарстан",
+#       "zipCode": "420000",
+#       "country": "Россия"
+#     }
+#   }
+# }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "createCustomer": {
+      "id": "507f1f77bcf86cd799439015",
+      "name": "Алексей Иванов",
+      "email": "alexey.ivanov@example.com",
+      "phone": "+7 (999) 555-12-34",
+      "address": {
+        "city": "Казань",
+        "country": "Россия"
+      }
+    }
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 7: All Orders -->
+                        <div class="tab-panel" id="tab7">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Get All Orders</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>query GetAllOrders {
+  orders {
+    id
+    customerId
+    total
+    status
+    createdAt
+    items {
+      productId
+      productName
+      quantity
+      unitPrice
+      subtotal
+    }
+  }
+}</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "orders": [
+      {
+        "id": "60d5ecf4c8e4a12d8c9b4567",
+        "customerId": "507f1f77bcf86cd799439011",
+        "total": 124980.0,
+        "status": "DELIVERED",
+        "createdAt": "2024-01-10T14:30:00",
+        "items": [
+          {
+            "productId": "1",
+            "productName": "Смартфон Samsung Galaxy S24",
+            "quantity": 1,
+            "unitPrice": 89990.0,
+            "subtotal": 89990.0
+          },
+          {
+            "productId": "3",
+            "productName": "Наушники Sony WH-1000XM5",
+            "quantity": 1,
+            "unitPrice": 34990.0,
+            "subtotal": 34990.0
+          }
+        ]
+      },
+      {
+        "id": "60d5ecf4c8e4a12d8c9b4568",
+        "customerId": "507f1f77bcf86cd799439012",
+        "total": 199990.0,
+        "status": "PROCESSING",
+        "createdAt": "2024-01-15T09:15:00",
+        "items": [
+          {
+            "productId": "2",
+            "productName": "Ноутбук Apple MacBook Pro 14",
+            "quantity": 1,
+            "unitPrice": 199990.0,
+            "subtotal": 199990.0
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 8: Orders By Customer -->
+                        <div class="tab-panel" id="tab8">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Orders By Customer ID</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>query GetOrdersByCustomer($customerId: ID!) {
+  ordersByCustomerId(customerId: $customerId) {
+    id
+    total
+    status
+    createdAt
+    items {
+      productName
+      quantity
+      subtotal
+    }
+  }
+}
+
+# Variables:
+# { "customerId": "507f1f77bcf86cd799439011" }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "ordersByCustomerId": [
+      {
+        "id": "60d5ecf4c8e4a12d8c9b4567",
+        "total": 124980.0,
+        "status": "DELIVERED",
+        "createdAt": "2024-01-10T14:30:00",
+        "items": [
+          {
+            "productName": "Смартфон Samsung Galaxy S24",
+            "quantity": 1,
+            "subtotal": 89990.0
+          },
+          {
+            "productName": "Наушники Sony WH-1000XM5",
+            "quantity": 1,
+            "subtotal": 34990.0
+          }
+        ]
+      },
+      {
+        "id": "60d5ecf4c8e4a12d8c9b4569",
+        "total": 69990.0,
+        "status": "PENDING",
+        "createdAt": "2024-01-18T16:45:00",
+        "items": [
+          {
+            "productName": "Пылесос Dyson V15 Detect",
+            "quantity": 1,
+            "subtotal": 69990.0
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 9: Create Order -->
+                        <div class="tab-panel" id="tab9">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Create Order</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>mutation CreateOrder($input: CreateOrderInput!) {
+  createOrder(input: $input) {
+    id
+    customerId
+    total
+    status
+    createdAt
+    items {
+      productName
+      quantity
+      unitPrice
+      subtotal
+    }
+  }
+}
+
+# Variables:
+# {
+#   "input": {
+#     "customerId": "507f1f77bcf86cd799439011",
+#     "items": [
+#       {
+#         "productId": "1",
+#         "productName": "Смартфон Samsung Galaxy S24",
+#         "quantity": 2,
+#         "unitPrice": 89990.0
+#       }
+#     ]
+#   }
+# }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "createOrder": {
+      "id": "60d5ecf4c8e4a12d8c9b4570",
+      "customerId": "507f1f77bcf86cd799439011",
+      "total": 179980.0,
+      "status": "PENDING",
+      "createdAt": "2024-01-20T10:00:00",
+      "items": [
         {
-          "quantity": 50,
-          "warehouse": "Москва-Центр"
-        },
-        {
-          "quantity": 30,
-          "warehouse": "Санкт-Петербург"
+          "productName": "Смартфон Samsung Galaxy S24",
+          "quantity": 2,
+          "unitPrice": 89990.0,
+          "subtotal": 179980.0
         }
       ]
     }
@@ -374,12 +904,12 @@
                             </div>
                         </div>
 
-                        <!-- Tab 4: Product by SKU -->
-                        <div class="tab-panel" id="tab4">
+                        <!-- Tab 10: Customer with Orders -->
+                        <div class="tab-panel" id="tab10">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Product by SKU</h3>
-                                    <span class="category-badge filtered">FILTERED</span>
+                                    <h3>Customer with Orders (Multi-Query)</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
@@ -389,274 +919,32 @@
                                                 <span class="copy-icon">&#x2398;</span> COPY
                                             </button>
                                         </div>
-                                        <pre><code>query GetProductBySku($sku: String!) {
-  productBySku(sku: $sku) {
+                                        <pre><code>query GetCustomerWithOrders($customerId: ID!) {
+  customer(id: $customerId) {
     id
     name
-    description
-    price
-    sku
-    category
-  }
-}
-
-# Variables:
-# { "sku": "SAM-S24-BLK" }</code></pre>
-                                    </div>
-                                    <div class="code-block response">
-                                        <div class="code-label">
-                                            <span>RESPONSE</span>
-                                        </div>
-                                        <pre><code>{
-  "data": {
-    "productBySku": {
-      "id": "1",
-      "name": "Смартфон Samsung Galaxy S24",
-      "description": "Флагманский смартфон с AI функциями, 8/256 ГБ, AMOLED 6.2\", 50 МП камера",
-      "price": 89990.0,
-      "sku": "SAM-S24-BLK",
-      "category": "Электроника"
+    email
+    phone
+    address {
+      city
+      country
     }
   }
-}</code></pre>
-                                    </div>
-                                </div>
-                                <div class="example-actions">
-                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab 5: Products by Category -->
-                        <div class="tab-panel" id="tab5">
-                            <div class="example-content">
-                                <div class="example-header">
-                                    <h3>Products by Category</h3>
-                                    <span class="category-badge filtered">FILTERED</span>
-                                </div>
-                                <div class="code-panels">
-                                    <div class="code-block request">
-                                        <div class="code-label">
-                                            <span>REQUEST</span>
-                                            <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
-                                            </button>
-                                        </div>
-                                        <pre><code>query GetProductsByCategory($category: String!) {
-  productsByCategory(category: $category) {
+  customerOrders: ordersByCustomerId(customerId: $customerId) {
     id
-    name
-    price
-    sku
-    category
-  }
-}
-
-# Variables:
-# { "category": "Электроника" }</code></pre>
-                                    </div>
-                                    <div class="code-block response">
-                                        <div class="code-label">
-                                            <span>RESPONSE</span>
-                                        </div>
-                                        <pre><code>{
-  "data": {
-    "productsByCategory": [
-      {
-        "id": "1",
-        "name": "Смартфон Samsung Galaxy S24",
-        "price": 89990.0,
-        "sku": "SAM-S24-BLK",
-        "category": "Электроника"
-      },
-      {
-        "id": "2",
-        "name": "Ноутбук Apple MacBook Pro 14",
-        "price": 199990.0,
-        "sku": "APP-MBP14-SLV",
-        "category": "Электроника"
-      },
-      {
-        "id": "3",
-        "name": "Наушники Sony WH-1000XM5",
-        "price": 34990.0,
-        "sku": "SONY-WH1000-BLK",
-        "category": "Электроника"
-      },
-      {
-        "id": "6",
-        "name": "Телевизор LG OLED 55\"",
-        "price": 129990.0,
-        "sku": "LG-OLED55-BLK",
-        "category": "Электроника"
-      },
-      {
-        "id": "8",
-        "name": "Умные часы Apple Watch Ultra 2",
-        "price": 79990.0,
-        "sku": "APP-AWU2-TIT",
-        "category": "Электроника"
-      }
-    ]
-  }
-}</code></pre>
-                                    </div>
-                                </div>
-                                <div class="example-actions">
-                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab 6: Partial Fields -->
-                        <div class="tab-panel" id="tab6">
-                            <div class="example-content">
-                                <div class="example-header">
-                                    <h3>Partial Fields (Optimized)</h3>
-                                    <span class="category-badge advanced">ADVANCED</span>
-                                </div>
-                                <div class="code-panels">
-                                    <div class="code-block request">
-                                        <div class="code-label">
-                                            <span>REQUEST</span>
-                                            <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
-                                            </button>
-                                        </div>
-                                        <pre><code>query GetProductNamesAndPrices {
-  products {
-    name
-    price
-  }
-}</code></pre>
-                                    </div>
-                                    <div class="code-block response">
-                                        <div class="code-label">
-                                            <span>RESPONSE</span>
-                                        </div>
-                                        <pre><code>{
-  "data": {
-    "products": [
-      {
-        "name": "Смартфон Samsung Galaxy S24",
-        "price": 89990.0
-      },
-      {
-        "name": "Ноутбук Apple MacBook Pro 14",
-        "price": 199990.0
-      },
-      {
-        "name": "Наушники Sony WH-1000XM5",
-        "price": 34990.0
-      },
-      {
-        "name": "Кофемашина DeLonghi Magnifica S",
-        "price": 54990.0
-      },
-      {
-        "name": "Пылесос Dyson V15 Detect",
-        "price": 69990.0
-      }
-    ]
-  }
-}</code></pre>
-                                    </div>
-                                </div>
-                                <div class="example-actions">
-                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab 7: Multiple Queries -->
-                        <div class="tab-panel" id="tab7">
-                            <div class="example-content">
-                                <div class="example-header">
-                                    <h3>Multiple Queries (Single Request)</h3>
-                                    <span class="category-badge advanced">ADVANCED</span>
-                                </div>
-                                <div class="code-panels">
-                                    <div class="code-block request">
-                                        <div class="code-label">
-                                            <span>REQUEST</span>
-                                            <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
-                                            </button>
-                                        </div>
-                                        <pre><code>query GetMultipleCategories {
-  electronics: productsByCategory(category: "Электроника") {
-    id
-    name
-    price
-  }
-  homeAppliances: productsByCategory(category: "Бытовая техника") {
-    id
-    name
-    price
-  }
-}</code></pre>
-                                    </div>
-                                    <div class="code-block response">
-                                        <div class="code-label">
-                                            <span>RESPONSE</span>
-                                        </div>
-                                        <pre><code>{
-  "data": {
-    "electronics": [
-      { "id": "1", "name": "Смартфон Samsung Galaxy S24", "price": 89990.0 },
-      { "id": "2", "name": "Ноутбук Apple MacBook Pro 14", "price": 199990.0 },
-      { "id": "3", "name": "Наушники Sony WH-1000XM5", "price": 34990.0 },
-      { "id": "6", "name": "Телевизор LG OLED 55\"", "price": 129990.0 },
-      { "id": "8", "name": "Умные часы Apple Watch Ultra 2", "price": 79990.0 }
-    ],
-    "homeAppliances": [
-      { "id": "4", "name": "Кофемашина DeLonghi Magnifica S", "price": 54990.0 },
-      { "id": "5", "name": "Пылесос Dyson V15 Detect", "price": 69990.0 },
-      { "id": "9", "name": "Холодильник Samsung Side-by-Side", "price": 149990.0 }
-    ]
-  }
-}</code></pre>
-                                    </div>
-                                </div>
-                                <div class="example-actions">
-                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
-                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Tab 8: Stock Summary -->
-                        <div class="tab-panel" id="tab8">
-                            <div class="example-content">
-                                <div class="example-header">
-                                    <h3>Stock Summary</h3>
-                                    <span class="category-badge advanced">ADVANCED</span>
-                                </div>
-                                <div class="code-panels">
-                                    <div class="code-block request">
-                                        <div class="code-label">
-                                            <span>REQUEST</span>
-                                            <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
-                                            </button>
-                                        </div>
-                                        <pre><code>query GetProductsStockSummary {
-  productsWithAvailability {
-    name
-    sku
-    availabilities {
-      warehouse
+    total
+    status
+    createdAt
+    items {
+      productName
       quantity
+      subtotal
     }
   }
-}</code></pre>
+}
+
+# Variables:
+# { "customerId": "507f1f77bcf86cd799439011" }</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
@@ -664,33 +952,265 @@
                                         </div>
                                         <pre><code>{
   "data": {
-    "productsWithAvailability": [
+    "customer": {
+      "id": "507f1f77bcf86cd799439011",
+      "name": "Иван Петров",
+      "email": "ivan.petrov@example.com",
+      "phone": "+7 (999) 123-45-67",
+      "address": {
+        "city": "Москва",
+        "country": "Россия"
+      }
+    },
+    "customerOrders": [
       {
-        "name": "Смартфон Samsung Galaxy S24",
-        "sku": "SAM-S24-BLK",
-        "availabilities": [
-          { "warehouse": "Москва-Центр", "quantity": 50 },
-          { "warehouse": "Санкт-Петербург", "quantity": 30 },
-          { "warehouse": "Новосибирск", "quantity": 25 }
+        "id": "60d5ecf4c8e4a12d8c9b4567",
+        "total": 124980.0,
+        "status": "DELIVERED",
+        "createdAt": "2024-01-10T14:30:00",
+        "items": [
+          { "productName": "Смартфон Samsung Galaxy S24", "quantity": 1, "subtotal": 89990.0 },
+          { "productName": "Наушники Sony WH-1000XM5", "quantity": 1, "subtotal": 34990.0 }
         ]
       },
       {
-        "name": "Ноутбук Apple MacBook Pro 14",
-        "sku": "APP-MBP14-SLV",
-        "availabilities": [
-          { "warehouse": "Москва-Центр", "quantity": 15 },
-          { "warehouse": "Санкт-Петербург", "quantity": 8 }
-        ]
-      },
-      {
-        "name": "Наушники Sony WH-1000XM5",
-        "sku": "SONY-WH1000-BLK",
-        "availabilities": [
-          { "warehouse": "Москва-Центр", "quantity": 100 },
-          { "warehouse": "Екатеринбург", "quantity": 45 }
+        "id": "60d5ecf4c8e4a12d8c9b4569",
+        "total": 69990.0,
+        "status": "PENDING",
+        "createdAt": "2024-01-18T16:45:00",
+        "items": [
+          { "productName": "Пылесос Dyson V15 Detect", "quantity": 1, "subtotal": 69990.0 }
         ]
       }
     ]
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 11: Update Customer -->
+                        <div class="tab-panel" id="tab11">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Update Customer</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>mutation UpdateCustomer($id: ID!, $input: UpdateCustomerInput!) {
+  updateCustomer(id: $id, input: $input) {
+    id
+    name
+    email
+    phone
+    address {
+      street
+      city
+      country
+    }
+  }
+}
+
+# Variables:
+# {
+#   "id": "507f1f77bcf86cd799439011",
+#   "input": {
+#     "name": "Иван Петров",
+#     "email": "ivan.petrov.updated@example.com",
+#     "phone": "+7 (999) 999-99-99",
+#     "address": {
+#       "street": "ул. Новая, д. 25",
+#       "city": "Москва",
+#       "country": "Россия"
+#     }
+#   }
+# }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "updateCustomer": {
+      "id": "507f1f77bcf86cd799439011",
+      "name": "Иван Петров",
+      "email": "ivan.petrov.updated@example.com",
+      "phone": "+7 (999) 999-99-99",
+      "address": {
+        "street": "ул. Новая, д. 25",
+        "city": "Москва",
+        "country": "Россия"
+      }
+    }
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 12: Delete Customer -->
+                        <div class="tab-panel" id="tab12">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Delete Customer</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>mutation DeleteCustomer($id: ID!) {
+  deleteCustomer(id: $id)
+}
+
+# Variables:
+# { "id": "507f1f77bcf86cd799439015" }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "deleteCustomer": true
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 13: Update Order Status -->
+                        <div class="tab-panel" id="tab13">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Update Order Status</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>mutation UpdateOrderStatus($id: ID!, $status: OrderStatus!) {
+  updateOrderStatus(id: $id, status: $status) {
+    id
+    customerId
+    total
+    status
+    updatedAt
+    items {
+      productName
+      quantity
+      subtotal
+    }
+  }
+}
+
+# Variables:
+# {
+#   "id": "60d5ecf4c8e4a12d8c9b4567",
+#   "status": "SHIPPED"
+# }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "updateOrderStatus": {
+      "id": "60d5ecf4c8e4a12d8c9b4567",
+      "customerId": "507f1f77bcf86cd799439011",
+      "total": 124980.0,
+      "status": "SHIPPED",
+      "updatedAt": "2024-01-20T15:30:00",
+      "items": [
+        {
+          "productName": "Смартфон Samsung Galaxy S24",
+          "quantity": 1,
+          "subtotal": 89990.0
+        },
+        {
+          "productName": "Наушники Sony WH-1000XM5",
+          "quantity": 1,
+          "subtotal": 34990.0
+        }
+      ]
+    }
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                <div class="example-actions">
+                                    <a th:href="@{/graphql-playground}" class="action-btn try-btn">
+                                        <span class="btn-icon">&#9654;</span> TRY IN PLAYGROUND
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 14: Delete Order -->
+                        <div class="tab-panel" id="tab14">
+                            <div class="example-content">
+                                <div class="example-header">
+                                    <h3>Delete Order</h3>
+                                    <span class="category-badge advanced">MONGODB</span>
+                                </div>
+                                <div class="code-panels">
+                                    <div class="code-block request">
+                                        <div class="code-label">
+                                            <span>REQUEST</span>
+                                            <button class="copy-btn" onclick="copyCode(this)">
+                                                <span class="copy-icon">&#x2398;</span> COPY
+                                            </button>
+                                        </div>
+                                        <pre><code>mutation DeleteOrder($id: ID!) {
+  deleteOrder(id: $id)
+}
+
+# Variables:
+# { "id": "60d5ecf4c8e4a12d8c9b4570" }</code></pre>
+                                    </div>
+                                    <div class="code-block response">
+                                        <div class="code-label">
+                                            <span>RESPONSE</span>
+                                        </div>
+                                        <pre><code>{
+  "data": {
+    "deleteOrder": true
   }
 }</code></pre>
                                     </div>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://integrationservice.ru.ppr/soap/orders"
+           targetNamespace="http://integrationservice.ru.ppr/soap/orders"
+           elementFormDefault="qualified">
+
+    <!-- ==================== Query Request/Response Elements ==================== -->
+
+    <xs:element name="getOrdersRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- Empty request to get all orders -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOrdersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="order" type="tns:order" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOrderByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOrderResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="order" type="tns:order" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOrdersByCustomerIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="customerId" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOrdersByStatusRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="status" type="tns:orderStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==================== Mutation Request/Response Elements ==================== -->
+
+    <xs:element name="createOrderRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="customerId" type="xs:string"/>
+                <xs:element name="item" type="tns:orderItemInput" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="createOrderResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="order" type="tns:order"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateOrderStatusRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:string"/>
+                <xs:element name="status" type="tns:orderStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateOrderStatusResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="order" type="tns:order" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteOrderRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteOrderResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ==================== Complex Types ==================== -->
+
+    <xs:complexType name="order">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="customerId" type="xs:string"/>
+            <xs:element name="item" type="tns:orderItem" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="total" type="xs:decimal"/>
+            <xs:element name="status" type="tns:orderStatus"/>
+            <xs:element name="createdAt" type="xs:string" minOccurs="0"/>
+            <xs:element name="updatedAt" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="orderItem">
+        <xs:sequence>
+            <xs:element name="productId" type="xs:long"/>
+            <xs:element name="productName" type="xs:string"/>
+            <xs:element name="quantity" type="xs:int"/>
+            <xs:element name="unitPrice" type="xs:decimal"/>
+            <xs:element name="subtotal" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="orderItemInput">
+        <xs:sequence>
+            <xs:element name="productId" type="xs:long"/>
+            <xs:element name="productName" type="xs:string"/>
+            <xs:element name="quantity" type="xs:int"/>
+            <xs:element name="unitPrice" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ==================== Simple Types ==================== -->
+
+    <xs:simpleType name="orderStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PENDING"/>
+            <xs:enumeration value="CONFIRMED"/>
+            <xs:enumeration value="PROCESSING"/>
+            <xs:enumeration value="SHIPPED"/>
+            <xs:enumeration value="DELIVERED"/>
+            <xs:enumeration value="CANCELLED"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

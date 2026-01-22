@@ -1,10 +1,36 @@
 type Query {
+    # Product queries
     products: [Product!]!
     productsWithAvailability: [Product!]!
     product(id: ID!): Product
     productBySku(sku: String!): Product
     productsByCategory(category: String!): [Product!]!
+
+    # Customer queries (MongoDB)
+    customers: [Customer!]!
+    customer(id: ID!): Customer
+    customerByEmail(email: String!): Customer
+
+    # Order queries (MongoDB)
+    orders: [Order!]!
+    order(id: ID!): Order
+    ordersByCustomerId(customerId: ID!): [Order!]!
+    ordersByStatus(status: OrderStatus!): [Order!]!
 }
+
+type Mutation {
+    # Customer mutations
+    createCustomer(input: CreateCustomerInput!): Customer!
+    updateCustomer(id: ID!, input: UpdateCustomerInput!): Customer
+    deleteCustomer(id: ID!): Boolean!
+
+    # Order mutations
+    createOrder(input: CreateOrderInput!): Order!
+    updateOrderStatus(id: ID!, status: OrderStatus!): Order
+    deleteOrder(id: ID!): Boolean!
+}
+
+# ==================== Product Types ====================
 
 type Product {
     id: ID!
@@ -21,4 +47,85 @@ type Availability {
     quantity: Int!
     warehouse: String!
     lastUpdated: String
+}
+
+# ==================== Customer Types (MongoDB) ====================
+
+type Customer {
+    id: ID!
+    name: String!
+    email: String!
+    phone: String
+    address: Address
+}
+
+type Address {
+    street: String
+    city: String
+    state: String
+    zipCode: String
+    country: String
+}
+
+input CreateCustomerInput {
+    name: String!
+    email: String!
+    phone: String
+    address: AddressInput
+}
+
+input UpdateCustomerInput {
+    name: String
+    email: String
+    phone: String
+    address: AddressInput
+}
+
+input AddressInput {
+    street: String
+    city: String
+    state: String
+    zipCode: String
+    country: String
+}
+
+# ==================== Order Types (MongoDB) ====================
+
+type Order {
+    id: ID!
+    customerId: ID!
+    items: [OrderItem!]!
+    total: Float!
+    status: OrderStatus!
+    createdAt: String
+    updatedAt: String
+}
+
+type OrderItem {
+    productId: ID!
+    productName: String!
+    quantity: Int!
+    unitPrice: Float!
+    subtotal: Float!
+}
+
+enum OrderStatus {
+    PENDING
+    CONFIRMED
+    PROCESSING
+    SHIPPED
+    DELIVERED
+    CANCELLED
+}
+
+input CreateOrderInput {
+    customerId: ID!
+    items: [OrderItemInput!]!
+}
+
+input OrderItemInput {
+    productId: ID!
+    productName: String!
+    quantity: Int!
+    unitPrice: Float!
 }

@@ -424,6 +424,18 @@
     max-width: 100%;
 }
 
+.full-path-item .connection-value a {
+    color: #ffcc00;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.full-path-item .connection-value a:hover {
+    color: #ffdd44;
+    text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+}
+
 /* Examples Section with Tabs */
 .examples-section {
     padding: 2rem;
@@ -444,6 +456,36 @@
     padding-bottom: 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     margin-bottom: 1.5rem;
+}
+
+/* Grouped Tabs Navigation */
+.tabs-nav-grouped {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.tabs-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tabs-group-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.4);
+    padding-left: 0.25rem;
+}
+
+.tabs-group-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .tab-btn {
@@ -813,6 +855,10 @@
 
     .tabs-nav {
         justify-content: center;
+    }
+
+    .tabs-group-buttons {
+        justify-content: flex-start;
     }
 
     .tab-btn {
