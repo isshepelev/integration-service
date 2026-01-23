@@ -256,7 +256,24 @@ java -jar target/integration-service-0.0.1-SNAPSHOT.jar --spring.profiles.active
 
 ## Проверка работоспособности
 
-### 1. REST API
+### 1. Веб-интерфейс
+
+Откройте в браузере главную страницу (на русском языке):
+
+```
+http://localhost:8080/
+```
+
+Доступные страницы:
+
+| URL | Описание |
+|-----|----------|
+| http://localhost:8080/graphql-examples | Примеры GraphQL запросов |
+| http://localhost:8080/graphql-playground | Интерактивный редактор GraphQL |
+| http://localhost:8080/grpc-examples | Примеры gRPC вызовов |
+| http://localhost:8080/soap-examples | Примеры SOAP запросов |
+
+### 2. REST API
 
 ```bash
 curl http://localhost:8080/api/products
@@ -264,7 +281,7 @@ curl http://localhost:8080/api/products
 
 Ожидаемый результат: JSON массив с продуктами.
 
-### 2. GraphQL
+### 3. GraphQL
 
 Откройте в браузере: http://localhost:8080/graphiql
 
@@ -280,7 +297,7 @@ curl http://localhost:8080/api/products
 }
 ```
 
-### 3. SOAP
+### 4. SOAP
 
 ```bash
 curl http://localhost:8080/ws/products.wsdl
@@ -288,7 +305,7 @@ curl http://localhost:8080/ws/products.wsdl
 
 Ожидаемый результат: XML с WSDL описанием.
 
-### 4. gRPC
+### 5. gRPC
 
 ```bash
 # Установка grpcurl

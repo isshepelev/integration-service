@@ -42,6 +42,16 @@ docker compose build --no-cache && docker compose up -d  # rebuild
 | gRPC | порт `9090` | `src/main/proto/*.proto` |
 | SOAP | `/ws` | `src/main/resources/xsd/*.xsd` |
 
+### Web Interface (локализован на русский)
+
+| URL | Описание |
+|-----|----------|
+| `/` | Главная страница портала |
+| `/graphql-examples` | Примеры GraphQL запросов |
+| `/graphql-playground` | Интерактивный редактор GraphQL |
+| `/grpc-examples` | Примеры gRPC с grpcurl |
+| `/soap-examples` | Примеры SOAP XML запросов |
+
 ### Layer Organization
 
 ```

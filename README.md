@@ -18,10 +18,20 @@
 | gRPC | порт `9090` | Сервис продуктов |
 | SOAP | `/ws` | Веб-сервис продуктов |
 
-## Документация
+## Документация и веб-интерфейс
 
-- **Swagger UI**: http://localhost:8080/swagger-ui.html
-- **GraphiQL**: http://localhost:8080/graphiql (интерактивный интерфейс)
+Все страницы веб-интерфейса локализованы на русский язык.
+
+| Страница | URL | Описание |
+|----------|-----|----------|
+| **Главная** | http://localhost:8080/ | Портал с навигацией по всем API |
+| **Swagger UI** | http://localhost:8080/swagger-ui.html | REST API документация |
+| **GraphiQL** | http://localhost:8080/graphiql | GraphQL IDE |
+| **GraphQL примеры** | http://localhost:8080/graphql-examples | Примеры GraphQL запросов |
+| **GraphQL Playground** | http://localhost:8080/graphql-playground | Интерактивный редактор GraphQL |
+| **gRPC примеры** | http://localhost:8080/grpc-examples | Примеры gRPC вызовов |
+| **SOAP примеры** | http://localhost:8080/soap-examples | Примеры SOAP запросов |
+| **WSDL** | http://localhost:8080/ws/integration.wsdl | WSDL описание сервисов |
 
 ## Запуск
 

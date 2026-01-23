@@ -86,9 +86,11 @@ docker run -d --name mongodb -p 27017:27017 mongo:7
 http://localhost:8080/
 ```
 
-На главной странице доступны кнопки для перехода ко всей документации API.
+На главной странице (на русском языке) доступны кнопки для перехода ко всей документации и примерам API.
 
 ### Доступные эндпоинты
+
+Все страницы веб-интерфейса локализованы на русский язык.
 
 | Компонент | URL | Описание |
 |-----------|-----|----------|
@@ -97,7 +99,11 @@ http://localhost:8080/
 | **OpenAPI JSON** | http://localhost:8080/v3/api-docs | OpenAPI спецификация |
 | REST API | http://localhost:8080/api/products | Список продуктов |
 | GraphiQL | http://localhost:8080/graphiql | GraphQL IDE |
-| WSDL | http://localhost:8080/ws/products.wsdl | SOAP описание |
+| **GraphQL примеры** | http://localhost:8080/graphql-examples | Примеры GraphQL запросов с документацией |
+| **GraphQL Playground** | http://localhost:8080/graphql-playground | Интерактивный редактор GraphQL запросов |
+| **gRPC примеры** | http://localhost:8080/grpc-examples | Примеры gRPC вызовов с grpcurl |
+| **SOAP примеры** | http://localhost:8080/soap-examples | Примеры SOAP XML запросов |
+| WSDL | http://localhost:8080/ws/integration.wsdl | SOAP описание всех сервисов |
 | gRPC | localhost:9090 | gRPC сервер |
 
 ## Документация

@@ -13,12 +13,13 @@
 
 ## Начало работы
 
-### GraphiQL IDE
+### Веб-интерфейс (на русском языке)
 
-Откройте в браузере:
-```
-http://localhost:8080/graphiql
-```
+| URL | Описание |
+|-----|----------|
+| http://localhost:8080/graphql-examples | Страница с примерами GraphQL запросов |
+| http://localhost:8080/graphql-playground | Интерактивный редактор запросов |
+| http://localhost:8080/graphiql | Стандартный GraphiQL IDE |
 
 ### Endpoint
 

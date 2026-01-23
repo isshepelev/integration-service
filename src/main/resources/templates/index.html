@@ -10,20 +10,20 @@
     <div class="container">
         <header>
             <h1>Integration Service</h1>
-            <p class="subtitle">Multi-Protocol API Portal</p>
+            <p class="subtitle">Мультипротокольный API Портал</p>
         </header>
 
         <main>
             <section class="api-section">
-                <h2>API Documentation</h2>
-                <p>Choose a protocol to view documentation or interact with the API:</p>
+                <h2>Документация API</h2>
+                <p>Выберите протокол для просмотра документации или взаимодействия с API:</p>
 
                 <div class="cards">
                     <!-- REST / OpenAPI -->
                     <div class="card rest">
                         <div class="card-icon">REST</div>
                         <h3>REST API</h3>
-                        <p>OpenAPI 3.0 specification with Swagger UI for interactive exploration.</p>
+                        <p>Спецификация OpenAPI 3.0 с Swagger UI для интерактивного исследования.</p>
                         <div class="card-links">
                             <a th:href="@{/swagger-ui.html}" class="btn btn-primary">Swagger UI</a>
                             <a th:href="@{/v3/api-docs}" class="btn btn-secondary" target="_blank">OpenAPI JSON</a>
@@ -38,10 +38,10 @@
                     <div class="card graphql">
                         <div class="card-icon">GraphQL</div>
                         <h3>GraphQL API</h3>
-                        <p>Flexible query language with built-in GraphiQL IDE for testing.</p>
+                        <p>Гибкий язык запросов со встроенным GraphiQL IDE для тестирования.</p>
                         <div class="card-links">
                             <a th:href="@{/graphql-playground}" class="btn btn-primary">Playground</a>
-                            <a th:href="@{/graphql-examples}" class="btn btn-secondary">Examples</a>
+                            <a th:href="@{/graphql-examples}" class="btn btn-secondary">Примеры</a>
                             <a th:href="@{/graphiql}" class="btn btn-secondary">GraphiQL IDE</a>
                         </div>
                         <div class="endpoint-info">
@@ -53,21 +53,21 @@
                     <div class="card grpc">
                         <div class="card-icon">gRPC</div>
                         <h3>gRPC API</h3>
-                        <p>High-performance RPC framework with Protocol Buffers.</p>
+                        <p>Высокопроизводительный RPC фреймворк с Protocol Buffers.</p>
                         <div class="card-links">
-                            <a href="#grpc-info" class="btn btn-primary" onclick="toggleGrpcInfo()">Connection Info</a>
-                            <a th:href="@{/grpc-examples}" class="btn btn-secondary">Examples</a>
+                            <a href="#grpc-info" class="btn btn-primary" onclick="toggleGrpcInfo()">Информация о подключении</a>
+                            <a th:href="@{/grpc-examples}" class="btn btn-secondary">Примеры</a>
                         </div>
                         <div class="endpoint-info">
                             <code th:text="'localhost:' + ${grpcPort}">localhost:9090</code>
                         </div>
                         <div id="grpc-info" class="grpc-details" style="display: none;">
-                            <h4>Usage with grpcurl:</h4>
+                            <h4>Использование grpcurl:</h4>
                             <pre>
-# List services
+# Список сервисов
 grpcurl -plaintext localhost:<span th:text="${grpcPort}">9090</span> list
 
-# Get products
+# Получить продукты
 grpcurl -plaintext -d '{}' \
   localhost:<span th:text="${grpcPort}">9090</span> \
   product.ProductService/GetProducts</pre>
@@ -78,10 +78,10 @@ grpcurl -plaintext -d '{}' \
                     <div class="card soap">
                         <div class="card-icon">SOAP</div>
                         <h3>SOAP Web Service</h3>
-                        <p>XML-based protocol for enterprise integration.</p>
+                        <p>XML-протокол для корпоративной интеграции.</p>
                         <div class="card-links">
                             <a th:href="@{/ws/integration.wsdl}" class="btn btn-primary" target="_blank">WSDL</a>
-                            <a th:href="@{/soap-examples}" class="btn btn-secondary">Examples</a>
+                            <a th:href="@{/soap-examples}" class="btn btn-secondary">Примеры</a>
                         </div>
                         <div class="endpoint-info">
                             <code>POST /ws</code>
@@ -91,10 +91,10 @@ grpcurl -plaintext -d '{}' \
             </section>
 
             <section class="quick-links">
-                <h2>Quick Links</h2>
+                <h2>Быстрые ссылки</h2>
                 <div class="links-grid">
                     <div class="link-group">
-                        <h4>API Endpoints</h4>
+                        <h4>API Эндпоинты</h4>
                         <ul>
                             <li><a th:href="@{/api/products}">GET /api/products</a></li>
                             <li><a th:href="@{/api/products?includeAvailability=true}">GET /api/products?includeAvailability=true</a></li>
@@ -103,7 +103,7 @@ grpcurl -plaintext -d '{}' \
                         </ul>
                     </div>
                     <div class="link-group">
-                        <h4>Documentation</h4>
+                        <h4>Документация</h4>
                         <ul>
                             <li><a th:href="@{/swagger-ui.html}">Swagger UI</a></li>
                             <li><a th:href="@{/v3/api-docs}">OpenAPI Spec (JSON)</a></li>
@@ -117,10 +117,10 @@ grpcurl -plaintext -d '{}' \
                         </ul>
                     </div>
                     <div class="link-group">
-                        <h4>Server Info</h4>
+                        <h4>Информация о сервере</h4>
                         <ul>
-                            <li>HTTP Port: <code th:text="${serverPort}">8080</code></li>
-                            <li>gRPC Port: <code th:text="${grpcPort}">9090</code></li>
+                            <li>HTTP Порт: <code th:text="${serverPort}">8080</code></li>
+                            <li>gRPC Порт: <code th:text="${grpcPort}">9090</code></li>
                         </ul>
                     </div>
                 </div>

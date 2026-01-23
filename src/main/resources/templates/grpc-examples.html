@@ -23,21 +23,21 @@
                 <div class="glitch-wrapper">
                     <h1 class="glitch" data-text="gRPC">gRPC</h1>
                 </div>
-                <p class="neon-subtitle">RPC EXAMPLES // YEAR 2050</p>
+                <p class="neon-subtitle">ПРИМЕРЫ RPC // ГОД 2050</p>
                 <div class="scan-line"></div>
             </div>
             <div class="header-stats">
                 <div class="stat-item">
                     <span class="stat-value neon-cyan">24</span>
-                    <span class="stat-label">METHODS</span>
+                    <span class="stat-label">МЕТОДЫ</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-value neon-pink">3</span>
-                    <span class="stat-label">SERVICES</span>
+                    <span class="stat-label">СЕРВИСЫ</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-value neon-green">ACTIVE</span>
-                    <span class="stat-label">STATUS</span>
+                    <span class="stat-value neon-green">АКТИВЕН</span>
+                    <span class="stat-label">СТАТУС</span>
                 </div>
             </div>
         </header>
@@ -46,7 +46,7 @@
             <!-- Proto Definition Section -->
             <section class="schema-section glass-panel">
                 <div class="section-header">
-                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> SERVICE DEFINITION</h2>
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> ОПРЕДЕЛЕНИЕ СЕРВИСОВ</h2>
                     <div class="status-badge online">PROTO3</div>
                 </div>
                 <div class="schema-grid">
@@ -127,27 +127,27 @@
             <!-- Connection Info Section -->
             <section class="connection-section glass-panel">
                 <div class="section-header">
-                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> CONNECTION INFO</h2>
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> ИНФОРМАЦИЯ О ПОДКЛЮЧЕНИИ</h2>
                 </div>
                 <div class="connection-grid">
                     <div class="connection-item">
-                        <span class="connection-label">Host</span>
+                        <span class="connection-label">Хост</span>
                         <code class="connection-value">localhost</code>
                     </div>
                     <div class="connection-item">
-                        <span class="connection-label">Port</span>
+                        <span class="connection-label">Порт</span>
                         <code class="connection-value" th:text="${grpcPort}">9090</code>
                     </div>
                     <div class="connection-item">
-                        <span class="connection-label">Service</span>
+                        <span class="connection-label">Сервис</span>
                         <code class="connection-value">product.ProductService</code>
                     </div>
                     <div class="connection-item">
-                        <span class="connection-label">Transport</span>
+                        <span class="connection-label">Транспорт</span>
                         <code class="connection-value">Plaintext (dev)</code>
                     </div>
                     <div class="connection-item full-path-item">
-                        <span class="connection-label">Full Path</span>
+                        <span class="connection-label">Полный путь</span>
                         <code class="connection-value">localhost:<span th:text="${grpcPort}">9090</span>/product.ProductService</code>
                     </div>
                 </div>
@@ -156,7 +156,7 @@
             <!-- Tabbed Examples Section -->
             <section class="examples-section glass-panel">
                 <div class="section-header">
-                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> QUERY EXAMPLES</h2>
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> ПРИМЕРЫ ЗАПРОСОВ</h2>
                 </div>
 
                 <!-- Tabs Navigation -->
@@ -164,89 +164,89 @@
                     <div class="tabs-nav-grouped">
                         <!-- Discovery Group -->
                         <div class="tabs-group">
-                            <span class="tabs-group-label">DISCOVERY</span>
+                            <span class="tabs-group-label">ОБНАРУЖЕНИЕ</span>
                             <div class="tabs-group-buttons">
                                 <button class="tab-btn active" data-tab="tab1">
                                     <span class="tab-number">01</span>
-                                    <span class="tab-title">List Services</span>
+                                    <span class="tab-title">Список сервисов</span>
                                 </button>
                             </div>
                         </div>
                         <!-- Products Group -->
                         <div class="tabs-group">
-                            <span class="tabs-group-label">PRODUCTS</span>
+                            <span class="tabs-group-label">ПРОДУКТЫ</span>
                             <div class="tabs-group-buttons">
                                 <button class="tab-btn" data-tab="tab2">
                                     <span class="tab-number">02</span>
-                                    <span class="tab-title">Get Products</span>
+                                    <span class="tab-title">Получить продукты</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab3">
                                     <span class="tab-number">03</span>
-                                    <span class="tab-title">Product By ID</span>
+                                    <span class="tab-title">Продукт по ID</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab14">
                                     <span class="tab-number">14</span>
-                                    <span class="tab-title">Create Product</span>
+                                    <span class="tab-title">Создать продукт</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab15">
                                     <span class="tab-number">15</span>
-                                    <span class="tab-title">Update Product</span>
+                                    <span class="tab-title">Обновить продукт</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab16">
                                     <span class="tab-number">16</span>
-                                    <span class="tab-title">Delete Product</span>
+                                    <span class="tab-title">Удалить продукт</span>
                                 </button>
                             </div>
                         </div>
                         <!-- Customers Group -->
                         <div class="tabs-group">
-                            <span class="tabs-group-label">CUSTOMERS</span>
+                            <span class="tabs-group-label">КЛИЕНТЫ</span>
                             <div class="tabs-group-buttons">
                                 <button class="tab-btn" data-tab="tab4">
                                     <span class="tab-number">04</span>
-                                    <span class="tab-title">Get Customers</span>
+                                    <span class="tab-title">Получить клиентов</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab5">
                                     <span class="tab-number">05</span>
-                                    <span class="tab-title">Customer By ID</span>
+                                    <span class="tab-title">Клиент по ID</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab6">
                                     <span class="tab-number">06</span>
-                                    <span class="tab-title">Create Customer</span>
+                                    <span class="tab-title">Создать клиента</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab10">
                                     <span class="tab-number">10</span>
-                                    <span class="tab-title">Update Customer</span>
+                                    <span class="tab-title">Обновить клиента</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab11">
                                     <span class="tab-number">11</span>
-                                    <span class="tab-title">Delete Customer</span>
+                                    <span class="tab-title">Удалить клиента</span>
                                 </button>
                             </div>
                         </div>
                         <!-- Orders Group -->
                         <div class="tabs-group">
-                            <span class="tabs-group-label">ORDERS</span>
+                            <span class="tabs-group-label">ЗАКАЗЫ</span>
                             <div class="tabs-group-buttons">
                                 <button class="tab-btn" data-tab="tab7">
                                     <span class="tab-number">07</span>
-                                    <span class="tab-title">Get Orders</span>
+                                    <span class="tab-title">Получить заказы</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab8">
                                     <span class="tab-number">08</span>
-                                    <span class="tab-title">Orders By Customer</span>
+                                    <span class="tab-title">Заказы по клиенту</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab9">
                                     <span class="tab-number">09</span>
-                                    <span class="tab-title">Create Order</span>
+                                    <span class="tab-title">Создать заказ</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab12">
                                     <span class="tab-number">12</span>
-                                    <span class="tab-title">Update Order Status</span>
+                                    <span class="tab-title">Обновить статус</span>
                                 </button>
                                 <button class="tab-btn" data-tab="tab13">
                                     <span class="tab-number">13</span>
-                                    <span class="tab-title">Delete Order</span>
+                                    <span class="tab-title">Удалить заказ</span>
                                 </button>
                             </div>
                         </div>
@@ -258,22 +258,22 @@
                         <div class="tab-panel active" id="tab1">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>List Available Services</h3>
+                                    <h3>Доступные сервисы</h3>
                                     <span class="category-badge basic">DISCOVERY</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext localhost:<span th:text="${grpcPort}">9090</span> list</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>customer.CustomerService
 grpc.health.v1.Health
@@ -284,7 +284,7 @@ product.ProductService</code></pre>
                                 </div>
                                 <div class="example-note">
                                     <span class="note-icon">&#9432;</span>
-                                    Use <code>grpcurl</code> to discover available services via gRPC reflection.
+                                    Используйте <code>grpcurl</code> для обнаружения доступных сервисов через gRPC reflection.
                                 </div>
                             </div>
                         </div>
@@ -293,15 +293,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab2">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Get All Products</h3>
+                                    <h3>Получить все продукты</h3>
                                     <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -311,7 +311,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "products": [
@@ -338,7 +338,7 @@ product.ProductService</code></pre>
                                     </div>
                                 </div>
                                 <div class="proto-definition">
-                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <div class="proto-label">СООБЩЕНИЕ ЗАПРОСА</div>
                                     <pre><code>{
   "include_availability": true
 }</code></pre>
@@ -350,15 +350,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab3">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Get Product by ID</h3>
+                                    <h3>Получить продукт по ID</h3>
                                     <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -368,7 +368,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "product": {
@@ -388,7 +388,7 @@ product.ProductService</code></pre>
                                     </div>
                                 </div>
                                 <div class="proto-definition">
-                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <div class="proto-label">СООБЩЕНИЕ ЗАПРОСА</div>
                                     <pre><code>{
   "id": 1,
   "include_availability": true
@@ -401,15 +401,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab4">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Get All Customers</h3>
+                                    <h3>Получить всех клиентов</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -419,7 +419,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "customers": [
@@ -455,7 +455,7 @@ product.ProductService</code></pre>
                                 </div>
                                 <div class="example-note">
                                     <span class="note-icon">&#9432;</span>
-                                    This method requires no parameters. Use <code>grpcurl</code> with empty request body <code>-d '{}'</code>
+                                    Этот метод не требует параметров. Используйте <code>grpcurl</code> с пустым телом запроса <code>-d '{}'</code>
                                 </div>
                             </div>
                         </div>
@@ -464,15 +464,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab5">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Get Customer by ID</h3>
+                                    <h3>Получить клиента по ID</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -482,7 +482,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "customer": {
@@ -501,7 +501,7 @@ product.ProductService</code></pre>
                                     </div>
                                 </div>
                                 <div class="proto-definition">
-                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <div class="proto-label">СООБЩЕНИЕ ЗАПРОСА</div>
                                     <pre><code>{
   "id": "507f1f77bcf86cd799439011"
 }</code></pre>
@@ -513,15 +513,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab6">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Create Customer</h3>
+                                    <h3>Создать клиента</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -542,7 +542,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "customer": {
@@ -563,7 +563,7 @@ product.ProductService</code></pre>
                                     </div>
                                 </div>
                                 <div class="proto-definition">
-                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <div class="proto-label">СООБЩЕНИЕ ЗАПРОСА</div>
                                     <pre><code>{
   "name": "Алексей Иванов",
   "email": "alexey.ivanov@example.com",
@@ -584,15 +584,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab7">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Get All Orders</h3>
+                                    <h3>Получить все заказы</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -602,7 +602,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "orders": [
@@ -651,7 +651,7 @@ product.ProductService</code></pre>
                                 </div>
                                 <div class="example-note">
                                     <span class="note-icon">&#9432;</span>
-                                    This method requires no parameters. Use <code>grpcurl</code> with empty request body <code>-d '{}'</code>
+                                    Этот метод не требует параметров. Используйте <code>grpcurl</code> с пустым телом запроса <code>-d '{}'</code>
                                 </div>
                             </div>
                         </div>
@@ -660,15 +660,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab8">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Get Orders by Customer ID</h3>
+                                    <h3>Получить заказы по ID клиента</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -678,7 +678,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "orders": [
@@ -708,7 +708,7 @@ product.ProductService</code></pre>
                                     </div>
                                 </div>
                                 <div class="proto-definition">
-                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <div class="proto-label">СООБЩЕНИЕ ЗАПРОСА</div>
                                     <pre><code>{
   "customer_id": "507f1f77bcf86cd799439011"
 }</code></pre>
@@ -720,15 +720,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab9">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Create Order</h3>
+                                    <h3>Создать заказ</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -748,7 +748,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "order": {
@@ -772,7 +772,7 @@ product.ProductService</code></pre>
                                     </div>
                                 </div>
                                 <div class="proto-definition">
-                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <div class="proto-label">СООБЩЕНИЕ ЗАПРОСА</div>
                                     <pre><code>{
   "customer_id": "507f1f77bcf86cd799439011",
   "items": [
@@ -792,15 +792,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab10">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Update Customer</h3>
+                                    <h3>Обновить клиента</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -822,7 +822,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "customer": {
@@ -843,7 +843,7 @@ product.ProductService</code></pre>
                                     </div>
                                 </div>
                                 <div class="proto-definition">
-                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <div class="proto-label">СООБЩЕНИЕ ЗАПРОСА</div>
                                     <pre><code>{
   "id": "507f1f77bcf86cd799439011",
   "name": "Иван Петров",
@@ -865,15 +865,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab11">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Delete Customer</h3>
+                                    <h3>Удалить клиента</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -883,7 +883,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "success": true
@@ -891,7 +891,7 @@ product.ProductService</code></pre>
                                     </div>
                                 </div>
                                 <div class="proto-definition">
-                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <div class="proto-label">СООБЩЕНИЕ ЗАПРОСА</div>
                                     <pre><code>{
   "id": "507f1f77bcf86cd799439015"
 }</code></pre>
@@ -903,15 +903,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab12">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Update Order Status</h3>
+                                    <h3>Обновить статус заказа</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -924,7 +924,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "order": {
@@ -956,7 +956,7 @@ product.ProductService</code></pre>
                                     </div>
                                 </div>
                                 <div class="proto-definition">
-                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <div class="proto-label">СООБЩЕНИЕ ЗАПРОСА</div>
                                     <pre><code>{
   "id": "60d5ecf4c8e4a12d8c9b4567",
   "status": "SHIPPED"
@@ -969,15 +969,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab13">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Delete Order</h3>
+                                    <h3>Удалить заказ</h3>
                                     <span class="category-badge advanced">MONGODB</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -987,7 +987,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "success": true
@@ -995,7 +995,7 @@ product.ProductService</code></pre>
                                     </div>
                                 </div>
                                 <div class="proto-definition">
-                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <div class="proto-label">СООБЩЕНИЕ ЗАПРОСА</div>
                                     <pre><code>{
   "id": "60d5ecf4c8e4a12d8c9b4570"
 }</code></pre>
@@ -1007,15 +1007,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab14">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Create Product</h3>
+                                    <h3>Создать продукт</h3>
                                     <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -1031,7 +1031,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "product": {
@@ -1047,7 +1047,7 @@ product.ProductService</code></pre>
                                     </div>
                                 </div>
                                 <div class="proto-definition">
-                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <div class="proto-label">СООБЩЕНИЕ ЗАПРОСА</div>
                                     <pre><code>{
   "name": "Умная колонка Яндекс Станция Макс",
   "description": "Умная колонка с Алисой, LED-дисплей, 65 Вт",
@@ -1063,15 +1063,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab15">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Update Product</h3>
+                                    <h3>Обновить продукт</h3>
                                     <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -1088,7 +1088,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "product": {
@@ -1104,7 +1104,7 @@ product.ProductService</code></pre>
                                     </div>
                                 </div>
                                 <div class="proto-definition">
-                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <div class="proto-label">СООБЩЕНИЕ ЗАПРОСА</div>
                                     <pre><code>{
   "id": 1,
   "name": "Смартфон Samsung Galaxy S24 Ultra",
@@ -1121,15 +1121,15 @@ product.ProductService</code></pre>
                         <div class="tab-panel" id="tab16">
                             <div class="example-content">
                                 <div class="example-header">
-                                    <h3>Delete Product</h3>
+                                    <h3>Удалить продукт</h3>
                                     <span class="category-badge basic">POSTGRESQL</span>
                                 </div>
                                 <div class="code-panels">
                                     <div class="code-block request">
                                         <div class="code-label">
-                                            <span>GRPCURL COMMAND</span>
+                                            <span>GRPCURL КОМАНДА</span>
                                             <button class="copy-btn" onclick="copyCode(this)">
-                                                <span class="copy-icon">&#x2398;</span> COPY
+                                                <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                             </button>
                                         </div>
                                         <pre><code>grpcurl -plaintext \
@@ -1139,7 +1139,7 @@ product.ProductService</code></pre>
                                     </div>
                                     <div class="code-block response">
                                         <div class="code-label">
-                                            <span>RESPONSE</span>
+                                            <span>ОТВЕТ</span>
                                         </div>
                                         <pre><code>{
   "success": true
@@ -1147,7 +1147,7 @@ product.ProductService</code></pre>
                                     </div>
                                 </div>
                                 <div class="proto-definition">
-                                    <div class="proto-label">REQUEST MESSAGE</div>
+                                    <div class="proto-label">СООБЩЕНИЕ ЗАПРОСА</div>
                                     <pre><code>{
   "id": 11
 }</code></pre>
@@ -1161,7 +1161,7 @@ product.ProductService</code></pre>
             <!-- Proto File Section -->
             <section class="proto-section glass-panel">
                 <div class="section-header">
-                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> PROTO DEFINITIONS</h2>
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> PROTO ОПРЕДЕЛЕНИЯ</h2>
                 </div>
 
                 <!-- Proto Tabs -->
@@ -1186,10 +1186,10 @@ product.ProductService</code></pre>
                         <div class="proto-tab-panel active" id="proto-product">
                             <div class="proto-actions">
                                 <button class="copy-btn" onclick="copyProtoTab('proto-product-content')">
-                                    <span class="copy-icon">&#x2398;</span> COPY
+                                    <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                 </button>
                                 <button class="copy-btn download-btn" onclick="downloadProtoTab('product.proto', 'proto-product-content')">
-                                    <span class="download-icon">&#x2193;</span> DOWNLOAD
+                                    <span class="download-icon">&#x2193;</span> СКАЧАТЬ
                                 </button>
                             </div>
                             <div class="proto-file">
@@ -1287,10 +1287,10 @@ message DeleteProductResponse {
                         <div class="proto-tab-panel" id="proto-customer">
                             <div class="proto-actions">
                                 <button class="copy-btn" onclick="copyProtoTab('proto-customer-content')">
-                                    <span class="copy-icon">&#x2398;</span> COPY
+                                    <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                 </button>
                                 <button class="copy-btn download-btn" onclick="downloadProtoTab('customer.proto', 'proto-customer-content')">
-                                    <span class="download-icon">&#x2193;</span> DOWNLOAD
+                                    <span class="download-icon">&#x2193;</span> СКАЧАТЬ
                                 </button>
                             </div>
                             <div class="proto-file">
@@ -1379,10 +1379,10 @@ message Address {
                         <div class="proto-tab-panel" id="proto-order">
                             <div class="proto-actions">
                                 <button class="copy-btn" onclick="copyProtoTab('proto-order-content')">
-                                    <span class="copy-icon">&#x2398;</span> COPY
+                                    <span class="copy-icon">&#x2398;</span> КОПИРОВАТЬ
                                 </button>
                                 <button class="copy-btn download-btn" onclick="downloadProtoTab('order.proto', 'proto-order-content')">
-                                    <span class="download-icon">&#x2193;</span> DOWNLOAD
+                                    <span class="download-icon">&#x2193;</span> СКАЧАТЬ
                                 </button>
                             </div>
                             <div class="proto-file">
@@ -1502,7 +1502,7 @@ enum OrderStatus {
                 </div>
                 <div class="footer-status">
                     <span class="status-dot"></span>
-                    <span>ALL SYSTEMS OPERATIONAL</span>
+                    <span>ВСЕ СИСТЕМЫ РАБОТАЮТ</span>
                 </div>
             </div>
         </footer>
