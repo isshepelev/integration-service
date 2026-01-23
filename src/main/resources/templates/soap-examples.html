@@ -91,6 +91,31 @@
                             <li><code>deleteOrderRequest</code> <span class="return-type">deleteOrderResponse</span></li>
                         </ul>
                     </div>
+                </div>
+            </section>
+
+            <!-- Entities Section -->
+            <section class="schema-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> ОПИСАНИЕ СУЩНОСТЕЙ</h2>
+                    <div class="status-badge online">XSD TYPES</div>
+                </div>
+                <div class="schema-grid">
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">T</span>
+                            <span class="type-name">Product</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>id</code> <span class="return-type">xs:long</span></li>
+                            <li><code>name</code> <span class="return-type">xs:string</span></li>
+                            <li><code>description</code> <span class="return-type">xs:string?</span></li>
+                            <li><code>price</code> <span class="return-type">xs:decimal</span></li>
+                            <li><code>sku</code> <span class="return-type">xs:string</span></li>
+                            <li><code>category</code> <span class="return-type">xs:string?</span></li>
+                            <li><code>availability</code> <span class="return-type">[Availability]</span></li>
+                        </ul>
+                    </div>
                     <div class="schema-type-card">
                         <div class="type-header">
                             <span class="type-icon">T</span>
@@ -116,6 +141,18 @@
                             <li><code>total</code> <span class="return-type">xs:decimal</span></li>
                             <li><code>status</code> <span class="return-type">xs:string</span></li>
                             <li><code>createdAt</code> <span class="return-type">xs:string?</span></li>
+                        </ul>
+                    </div>
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">T</span>
+                            <span class="type-name">Availability</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>id</code> <span class="return-type">xs:long</span></li>
+                            <li><code>quantity</code> <span class="return-type">xs:int</span></li>
+                            <li><code>warehouse</code> <span class="return-type">xs:string</span></li>
+                            <li><code>lastUpdated</code> <span class="return-type">xs:dateTime?</span></li>
                         </ul>
                     </div>
                 </div>

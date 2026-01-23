@@ -94,6 +94,31 @@
                             <li><code>DeleteOrder</code> <span class="return-type">DeleteOrderResponse</span></li>
                         </ul>
                     </div>
+                </div>
+            </section>
+
+            <!-- Entities Section -->
+            <section class="schema-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> ОПИСАНИЕ СУЩНОСТЕЙ</h2>
+                    <div class="status-badge online">MESSAGES</div>
+                </div>
+                <div class="schema-grid">
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">M</span>
+                            <span class="type-name">Product</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>id</code> <span class="return-type">int64</span></li>
+                            <li><code>name</code> <span class="return-type">string</span></li>
+                            <li><code>description</code> <span class="return-type">string</span></li>
+                            <li><code>price</code> <span class="return-type">double</span></li>
+                            <li><code>sku</code> <span class="return-type">string</span></li>
+                            <li><code>category</code> <span class="return-type">string</span></li>
+                            <li><code>availabilities</code> <span class="return-type">repeated Availability</span></li>
+                        </ul>
+                    </div>
                     <div class="schema-type-card">
                         <div class="type-header">
                             <span class="type-icon">M</span>
@@ -119,6 +144,18 @@
                             <li><code>total</code> <span class="return-type">double</span></li>
                             <li><code>status</code> <span class="return-type">OrderStatus</span></li>
                             <li><code>created_at</code> <span class="return-type">string</span></li>
+                        </ul>
+                    </div>
+                    <div class="schema-type-card">
+                        <div class="type-header">
+                            <span class="type-icon">M</span>
+                            <span class="type-name">Availability</span>
+                        </div>
+                        <ul class="type-fields">
+                            <li><code>id</code> <span class="return-type">int64</span></li>
+                            <li><code>quantity</code> <span class="return-type">int32</span></li>
+                            <li><code>warehouse</code> <span class="return-type">string</span></li>
+                            <li><code>last_updated</code> <span class="return-type">string</span></li>
                         </ul>
                     </div>
                 </div>
