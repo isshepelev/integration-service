@@ -13,7 +13,7 @@
 body,
 .futuristic-body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    background: var(--bg-base-gradient, linear-gradient(135deg, #0a0a0f 0%, #12121a 50%, #1a1a2e 100%));
+    background: var(--bg-base, #0a0a0f);
     min-height: 100vh;
     color: var(--text-secondary, #e0e0e0);
     position: relative;
@@ -192,20 +192,20 @@ main {
 }
 
 .card.graphql .card-icon {
-    background: linear-gradient(135deg, var(--color-primary-pink, #e535ab), #b8238f);
+    background: #6b1a5a;
     color: #fff;
     box-shadow: var(--glow-pink);
 }
 
 .card.grpc .card-icon {
-    background: linear-gradient(135deg, var(--color-primary-green, #00c853), #009624);
+    background: #005c32;
     color: #fff;
     box-shadow: var(--glow-green);
 }
 
 .card.soap .card-icon {
-    background: linear-gradient(135deg, var(--color-primary-orange, #ffc107), #ff8f00);
-    color: var(--bg-base, #1a1a2e);
+    background: #8a6600;
+    color: #fff;
     box-shadow: var(--glow-orange);
 }
 
@@ -272,30 +272,30 @@ main {
 
 /* Protocol-specific primary buttons */
 .card.graphql .btn-primary {
-    background: linear-gradient(135deg, var(--color-primary-pink, #e535ab), #b8238f);
+    background: #6b1a5a;
 }
 
 .card.graphql .btn-primary:hover {
-    background: linear-gradient(135deg, #f048b8, #c9309a);
+    background: #7d2068;
     box-shadow: var(--shadow-pink-tint);
 }
 
 .card.grpc .btn-primary {
-    background: linear-gradient(135deg, var(--color-primary-green, #00c853), #009624);
+    background: #005c32;
 }
 
 .card.grpc .btn-primary:hover {
-    background: linear-gradient(135deg, #00e65c, #00b030);
+    background: #007040;
     box-shadow: var(--shadow-green-tint);
 }
 
 .card.soap .btn-primary {
-    background: linear-gradient(135deg, var(--color-primary-orange, #ffc107), #ff8f00);
-    color: var(--bg-base, #1a1a2e);
+    background: #8a6600;
+    color: #fff;
 }
 
 .card.soap .btn-primary:hover {
-    background: linear-gradient(135deg, #ffd740, #ffab00);
+    background: #a07500;
     box-shadow: 0 4px 20px rgba(255, 193, 7, 0.3);
 }
 
@@ -465,7 +465,7 @@ footer,
 /* Body and global text colors */
 [data-theme="light"] body,
 [data-theme="light"] .futuristic-body {
-    background: var(--bg-base-gradient, linear-gradient(135deg, #f0f4f8 0%, #e8eef5 50%, #ffffff 100%));
+    background: var(--bg-base, #f0f4f8);
     color: var(--text-secondary, #333333);
 }
 

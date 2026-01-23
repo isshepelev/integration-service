@@ -15,7 +15,7 @@
 
   /* Background Layers (Dark Theme Default) */
   --bg-base: #0a0a0f;
-  --bg-base-gradient: linear-gradient(135deg, #0a0a0f 0%, #12121a 50%, #1a1a2e 100%);
+  --bg-base-gradient: #0a0a0f;
   --bg-elevated: rgba(255, 255, 255, 0.02);
   --bg-glass: rgba(255, 255, 255, 0.05);
   --bg-code: rgba(0, 0, 0, 0.4);
@@ -137,7 +137,7 @@
 [data-theme="light"] {
   /* Background Layers */
   --bg-base: #f0f4f8;
-  --bg-base-gradient: linear-gradient(135deg, #f0f4f8 0%, #e8eef5 50%, #ffffff 100%);
+  --bg-base-gradient: #f0f4f8;
   --bg-elevated: rgba(0, 0, 0, 0.02);
   --bg-glass: rgba(255, 255, 255, 0.7);
   --bg-code: rgba(0, 0, 0, 0.05);
