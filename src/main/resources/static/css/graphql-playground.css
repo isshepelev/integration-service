@@ -15,10 +15,7 @@
 
 .playground-header h1 {
     font-size: var(--font-2xl, 2rem);
-    background: linear-gradient(90deg, var(--color-primary-pink, #e535ab), #ff6b9d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-primary-pink, #e535ab);
     margin-bottom: var(--space-xs, 0.25rem);
 }
 
@@ -50,7 +47,7 @@
 }
 
 .btn-graphql {
-    background: linear-gradient(135deg, var(--color-primary-pink, #e535ab), #b8238f);
+    background: var(--color-primary-pink, #e535ab);
     color: #fff;
     padding: var(--space-sm, 0.5rem) var(--space-md, 1rem);
     border-radius: var(--radius-md, 8px);
@@ -125,7 +122,7 @@
 
 /* Execute Button */
 .btn-execute {
-    background: linear-gradient(135deg, var(--color-primary-pink, #e535ab), #b8238f);
+    background: var(--color-primary-pink, #e535ab);
     color: #fff;
     padding: 0.4rem var(--space-md, 1rem);
     border-radius: var(--radius-md, 6px);
@@ -344,9 +341,7 @@
 }
 
 [data-theme="light"] .playground-header h1 {
-    background: linear-gradient(90deg, #db2777, #ec4899);
-    -webkit-background-clip: text;
-    background-clip: text;
+    color: #db2777;
 }
 
 [data-theme="light"] .back-link {
@@ -358,7 +353,7 @@
 }
 
 [data-theme="light"] .btn-graphql {
-    background: linear-gradient(135deg, #db2777, #be185d);
+    background: #db2777;
 }
 
 [data-theme="light"] .btn-graphql:hover {
@@ -391,7 +386,7 @@
 }
 
 [data-theme="light"] .btn-execute {
-    background: linear-gradient(135deg, #db2777, #be185d);
+    background: #db2777;
 }
 
 [data-theme="light"] .btn-execute:hover:not(:disabled) {

@@ -2,7 +2,7 @@
 
 /* Base & Background Effects */
 .futuristic-body {
-    background: #0a0a0f;
+    background: #000000;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
@@ -10,34 +10,11 @@
 
 /* Radial glow effect */
 .futuristic-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-        ellipse at 100% 0%,
-        rgba(229, 53, 171, 0.1) 0%,
-        rgba(219, 39, 119, 0.05) 30%,
-        transparent 70%
-    );
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 .cyber-grid {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(rgba(229, 53, 171, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(229, 53, 171, 0.04) 1px, transparent 1px);
-    background-size: 50px 50px;
-    pointer-events: none;
-    z-index: 1;
+    display: none;
 }
 
 .floating-particles {
@@ -142,10 +119,7 @@
     font-weight: 900;
     text-transform: uppercase;
     position: relative;
-    background: linear-gradient(90deg, var(--color-primary-pink, #e535ab), var(--color-primary-cyan, #00ffff), var(--color-primary-green, #00ff88));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-primary-pink, #e535ab);
     animation: glitch-skew 1s infinite linear alternate-reverse;
 }
 
@@ -157,10 +131,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, var(--color-primary-pink, #e535ab), var(--color-primary-cyan, #00ffff), var(--color-primary-green, #00ff88));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-primary-pink, #e535ab);
 }
 
 .glitch::before {
@@ -212,7 +183,7 @@
     position: absolute;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--color-primary-cyan, rgba(0, 255, 255, 0.5)), transparent);
+    background: var(--color-primary-cyan, rgba(0, 255, 255, 0.5));
     animation: scan 3s infinite linear;
     top: 100%;
 }
@@ -357,7 +328,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-primary-pink, #e535ab), #b8238f);
+    background: var(--color-primary-pink, #e535ab);
     border-radius: var(--radius-md, 6px);
     font-weight: 700;
     font-size: var(--font-base, 0.9rem);
@@ -513,7 +484,7 @@
 }
 
 .tab-btn.active {
-    background: linear-gradient(135deg, rgba(229, 53, 171, 0.2), rgba(184, 35, 143, 0.2));
+    background: rgba(229, 53, 171, 0.2);
     border-color: var(--color-primary-pink, #e535ab);
     color: var(--text-primary, #fff);
     box-shadow: var(--shadow-pink-tint, 0 0 20px rgba(229, 53, 171, 0.3));
@@ -724,7 +695,7 @@
 }
 
 .try-btn {
-    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 255, 255, 0.05));
+    background: rgba(0, 255, 255, 0.1);
     border: 1px solid rgba(0, 255, 255, 0.4);
     color: var(--color-primary-cyan, #00ffff);
 }
@@ -845,18 +816,11 @@
 }
 
 [data-theme="light"] .futuristic-body::before {
-    background: radial-gradient(
-        ellipse at 100% 0%,
-        rgba(219, 39, 119, 0.08) 0%,
-        rgba(236, 72, 153, 0.04) 30%,
-        transparent 70%
-    );
+    display: none;
 }
 
 [data-theme="light"] .cyber-grid {
-    background-image:
-        linear-gradient(rgba(219, 39, 119, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(219, 39, 119, 0.06) 1px, transparent 1px);
+    display: none;
 }
 
 [data-theme="light"] .holographic-overlay {
@@ -881,16 +845,12 @@
 }
 
 [data-theme="light"] .glitch {
-    background: linear-gradient(90deg, #db2777, #be185d, #ec4899);
-    -webkit-background-clip: text;
-    background-clip: text;
+    color: #db2777;
 }
 
 [data-theme="light"] .glitch::before,
 [data-theme="light"] .glitch::after {
-    background: linear-gradient(90deg, #db2777, #be185d, #ec4899);
-    -webkit-background-clip: text;
-    background-clip: text;
+    color: #db2777;
 }
 
 [data-theme="light"] .neon-subtitle {
@@ -899,7 +859,7 @@
 }
 
 [data-theme="light"] .scan-line {
-    background: linear-gradient(90deg, transparent, rgba(219, 39, 119, 0.4), transparent);
+    background: rgba(219, 39, 119, 0.4);
 }
 
 /* Stats */
@@ -958,7 +918,7 @@
 }
 
 [data-theme="light"] .type-icon {
-    background: linear-gradient(135deg, #ec4899, #db2777);
+    background: #db2777;
 }
 
 [data-theme="light"] .type-name {
@@ -1000,7 +960,7 @@
 }
 
 [data-theme="light"] .tab-btn.active {
-    background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(219, 39, 119, 0.2));
+    background: rgba(219, 39, 119, 0.2);
     border-color: #db2777;
     color: var(--text-primary, #1f2937);
     box-shadow: 0 0 15px rgba(219, 39, 119, 0.2);

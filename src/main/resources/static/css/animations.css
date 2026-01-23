@@ -151,7 +151,7 @@
 .ripple {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 255, 255, 0.4) 0%, transparent 70%);
+  background: rgba(0, 255, 255, 0.4);
   transform: scale(0);
   animation: ripple 600ms ease-out forwards;
   pointer-events: none;
@@ -159,15 +159,15 @@
 
 /* Protocol-specific ripple colors */
 .ripple-pink {
-  background: radial-gradient(circle, rgba(229, 53, 171, 0.4) 0%, transparent 70%);
+  background: rgba(229, 53, 171, 0.4);
 }
 
 .ripple-green {
-  background: radial-gradient(circle, rgba(0, 255, 136, 0.4) 0%, transparent 70%);
+  background: rgba(0, 255, 136, 0.4);
 }
 
 .ripple-orange {
-  background: radial-gradient(circle, rgba(255, 193, 7, 0.4) 0%, transparent 70%);
+  background: rgba(255, 193, 7, 0.4);
 }
 
 /* ============================================
@@ -239,17 +239,7 @@
   inset: -2px;
   border-radius: inherit;
   padding: 2px;
-  background: linear-gradient(90deg,
-    var(--color-primary-cyan, #00ffff),
-    var(--color-primary-pink, #e535ab),
-    var(--color-primary-green, #00ff88),
-    var(--color-primary-cyan, #00ffff)
-  );
-  background-size: 300% 300%;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  background: var(--color-primary-cyan, #00ffff);
   opacity: 0;
   transition: opacity var(--transition-medium, 300ms);
   pointer-events: none;
@@ -337,14 +327,7 @@
 }
 
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--skeleton-base, rgba(255, 255, 255, 0.05)) 0%,
-    var(--skeleton-shine, rgba(255, 255, 255, 0.1)) 50%,
-    var(--skeleton-base, rgba(255, 255, 255, 0.05)) 100%
-  );
-  background-size: 200% 100%;
-  animation: skeletonShimmer 1.5s ease-in-out infinite;
+  background: var(--skeleton-base, rgba(255, 255, 255, 0.05));
   border-radius: var(--radius-md, 8px);
 }
 
@@ -551,23 +534,7 @@
 }
 
 .holo-shimmer::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 25%,
-    rgba(0, 255, 255, 0.15) 50%,
-    rgba(229, 53, 171, 0.1) 75%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: holoShimmer 3s linear infinite;
-  pointer-events: none;
+  display: none;
 }
 
 /* ============================================
@@ -719,11 +686,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg,
-    transparent,
-    var(--color-primary-cyan, #00ffff),
-    transparent
-  );
+  background: var(--color-primary-cyan, #00ffff);
   animation: scanLine 3s linear infinite;
   pointer-events: none;
 }

@@ -13,7 +13,7 @@
 body,
 .futuristic-body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    background: var(--bg-base, #0a0a0f);
+    background: var(--bg-base, #000000);
     min-height: 100vh;
     color: var(--text-secondary, #e0e0e0);
     position: relative;
@@ -22,41 +22,21 @@ body,
 
 /* Background Grid Effect */
 .bg-grid {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 /* Background Glow */
 .bg-glow {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(0, 255, 255, 0.05) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 /* Light theme background adjustments */
 [data-theme="light"] .bg-grid {
-    background-image:
-        linear-gradient(rgba(0, 119, 204, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 119, 204, 0.05) 1px, transparent 1px);
+    display: none;
 }
 
 [data-theme="light"] .bg-glow {
-    background: radial-gradient(circle, rgba(0, 119, 204, 0.03) 0%, transparent 70%);
+    display: none;
 }
 
 /* Container */
@@ -94,10 +74,7 @@ header,
 header h1,
 .main-header h1 {
     font-size: var(--font-3xl, 3rem);
-    background: linear-gradient(90deg, var(--color-primary-cyan, #00d9ff), var(--color-primary-green, #00ff88));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-primary-cyan, #00d9ff);
     margin-bottom: var(--space-sm, 0.5rem);
     animation: fadeSlideDown 0.6s ease forwards;
 }
@@ -158,7 +135,7 @@ main {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--protocol-color, var(--color-primary-cyan)), transparent);
+    background: var(--protocol-color, var(--color-primary-cyan));
     opacity: 0;
     transition: opacity var(--transition-medium, 0.3s);
 }
@@ -186,7 +163,7 @@ main {
 
 /* Protocol-specific card icons */
 .card.rest .card-icon {
-    background: linear-gradient(135deg, var(--color-primary-cyan, #00d9ff), #0099cc);
+    background: var(--color-primary-cyan, #00d9ff);
     color: #fff;
     box-shadow: var(--glow-cyan);
 }
@@ -249,12 +226,12 @@ main {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--color-primary-cyan, #00d9ff), #0099cc);
+    background: var(--color-primary-cyan, #00d9ff);
     color: #fff;
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #00bfff, #0077aa);
+    background: #0099cc;
     transform: scale(1.05);
     box-shadow: var(--shadow-cyan-tint);
 }

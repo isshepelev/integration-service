@@ -14,8 +14,8 @@
   --color-primary-blue: #4d4dff;
 
   /* Background Layers (Dark Theme Default) */
-  --bg-base: #0a0a0f;
-  --bg-base-gradient: #0a0a0f;
+  --bg-base: #000000;
+  --bg-base-gradient: #000000;
   --bg-elevated: rgba(255, 255, 255, 0.02);
   --bg-glass: rgba(255, 255, 255, 0.05);
   --bg-code: rgba(0, 0, 0, 0.4);
@@ -45,20 +45,9 @@
   --glow-orange: 0 0 10px rgba(255, 193, 7, 0.5), 0 0 20px rgba(255, 193, 7, 0.3);
 
   /* Holographic Gradient */
-  --gradient-holographic: linear-gradient(135deg,
-    rgba(229, 53, 171, 0.15) 0%,
-    rgba(0, 255, 255, 0.15) 25%,
-    rgba(0, 255, 136, 0.15) 50%,
-    rgba(168, 85, 247, 0.15) 75%,
-    rgba(229, 53, 171, 0.15) 100%
-  );
+  --gradient-holographic: rgba(0, 255, 255, 0.15);
 
-  --gradient-neon: linear-gradient(90deg,
-    var(--color-primary-cyan),
-    var(--color-primary-pink),
-    var(--color-primary-green),
-    var(--color-primary-cyan)
-  );
+  --gradient-neon: var(--color-primary-cyan);
 
   /* Glass Morphism */
   --glass-blur: 12px;
@@ -233,10 +222,6 @@
   border-radius: inherit;
   padding: 1px;
   background: var(--gradient-holographic);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
   pointer-events: none;
 }
 
@@ -277,7 +262,7 @@
   justify-content: center;
   gap: var(--space-sm);
   padding: var(--space-sm) var(--space-lg);
-  background: linear-gradient(135deg, var(--color-primary-cyan), var(--color-primary-pink));
+  background: var(--color-primary-cyan);
   border: none;
   border-radius: var(--radius-md);
   color: white;
@@ -513,23 +498,11 @@
    ============================================ */
 
 .gradient-text {
-  background: linear-gradient(90deg, var(--color-primary-cyan), var(--color-primary-green));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-primary-cyan);
 }
 
 .gradient-text-holo {
-  background: linear-gradient(90deg,
-    var(--color-primary-cyan),
-    var(--color-primary-pink),
-    var(--color-primary-green)
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradientShift 3s ease infinite;
+  color: var(--color-primary-cyan);
 }
 
 /* ============================================
