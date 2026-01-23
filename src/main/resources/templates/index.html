@@ -3,143 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Integration Service - API Portal</title>
+    <title>Integration Service - API Portal 2050</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Integration Service</h1>
-            <p class="subtitle">Мультипротокольный API Портал</p>
+<body class="futuristic-body">
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+    <div class="floating-particles" id="particles"></div>
+    <div class="holographic-overlay"></div>
+
+    <div class="container futuristic-container">
+        <header class="futuristic-header">
+            <div class="header-nav">
+                <a th:href="@{/swagger-ui.html}" class="nav-link">SWAGGER UI</a>
+            </div>
+            <div class="header-title">
+                <div class="glitch-wrapper">
+                    <h1 class="glitch" data-text="Integration Service">Integration Service</h1>
+                </div>
+                <p class="neon-subtitle">МУЛЬТИПРОТОКОЛЬНЫЙ API ПОРТАЛ // 2050</p>
+                <div class="scan-line"></div>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-value neon-cyan">4</span>
+                    <span class="stat-label">ПРОТОКОЛА</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value neon-blue">3</span>
+                    <span class="stat-label">СУЩНОСТИ</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value neon-green">ОНЛАЙН</span>
+                    <span class="stat-label">СТАТУС</span>
+                </div>
+            </div>
         </header>
 
-        <main>
-            <section class="api-section">
-                <h2>Документация API</h2>
-                <p>Выберите протокол для просмотра документации или взаимодействия с API:</p>
+        <main class="futuristic-main">
+            <!-- Protocol Cards Section -->
+            <section class="protocols-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> ДОСТУПНЫЕ ПРОТОКОЛЫ</h2>
+                </div>
 
-                <div class="cards">
-                    <!-- REST / OpenAPI -->
-                    <div class="card rest">
-                        <div class="card-icon">REST</div>
-                        <h3>REST API</h3>
-                        <p>Спецификация OpenAPI 3.0 с Swagger UI для интерактивного исследования.</p>
-                        <div class="card-links">
-                            <a th:href="@{/swagger-ui.html}" class="btn btn-primary">Swagger UI</a>
-                            <a th:href="@{/v3/api-docs}" class="btn btn-secondary" target="_blank">OpenAPI JSON</a>
-                            <a th:href="@{/v3/api-docs.yaml}" class="btn btn-secondary" target="_blank">OpenAPI YAML</a>
+                <div class="protocol-cards">
+                    <!-- REST Card -->
+                    <div class="protocol-card rest">
+                        <div class="card-header">
+                            <div class="card-icon">REST</div>
+                            <h3 class="card-title">REST API</h3>
                         </div>
-                        <div class="endpoint-info">
-                            <code>GET /api/products</code>
+                        <p class="card-description">
+                            Спецификация OpenAPI 3.0 с Swagger UI для интерактивного исследования и тестирования.
+                        </p>
+                        <div class="card-endpoint">GET /api/products</div>
+                        <div class="card-links">
+                            <a th:href="@{/swagger-ui.html}" class="card-link primary">Swagger UI</a>
+                            <a th:href="@{/v3/api-docs}" class="card-link secondary" target="_blank">OpenAPI JSON</a>
+                            <a th:href="@{/v3/api-docs.yaml}" class="card-link secondary" target="_blank">OpenAPI YAML</a>
                         </div>
                     </div>
 
-                    <!-- GraphQL -->
-                    <div class="card graphql">
-                        <div class="card-icon">GraphQL</div>
-                        <h3>GraphQL API</h3>
-                        <p>Гибкий язык запросов со встроенным GraphiQL IDE для тестирования.</p>
-                        <div class="card-links">
-                            <a th:href="@{/graphql-playground}" class="btn btn-primary">Playground</a>
-                            <a th:href="@{/graphql-examples}" class="btn btn-secondary">Примеры</a>
-                            <a th:href="@{/graphiql}" class="btn btn-secondary">GraphiQL IDE</a>
+                    <!-- GraphQL Card -->
+                    <div class="protocol-card graphql">
+                        <div class="card-header">
+                            <div class="card-icon">GQL</div>
+                            <h3 class="card-title">GraphQL API</h3>
                         </div>
-                        <div class="endpoint-info">
-                            <code>POST /graphql</code>
+                        <p class="card-description">
+                            Гибкий язык запросов со встроенным GraphiQL IDE для разработки и тестирования.
+                        </p>
+                        <div class="card-endpoint">POST /graphql</div>
+                        <div class="card-links">
+                            <a th:href="@{/graphql-playground}" class="card-link primary">Playground</a>
+                            <a th:href="@{/graphql-examples}" class="card-link secondary">Примеры</a>
+                            <a th:href="@{/graphiql}" class="card-link secondary">GraphiQL</a>
                         </div>
                     </div>
 
-                    <!-- gRPC -->
-                    <div class="card grpc">
-                        <div class="card-icon">gRPC</div>
-                        <h3>gRPC API</h3>
-                        <p>Высокопроизводительный RPC фреймворк с Protocol Buffers.</p>
+                    <!-- gRPC Card -->
+                    <div class="protocol-card grpc">
+                        <div class="card-header">
+                            <div class="card-icon">gRPC</div>
+                            <h3 class="card-title">gRPC API</h3>
+                        </div>
+                        <p class="card-description">
+                            Высокопроизводительный RPC фреймворк с Protocol Buffers для эффективной коммуникации.
+                        </p>
+                        <div class="card-endpoint">localhost:<span th:text="${grpcPort}">9090</span></div>
                         <div class="card-links">
-                            <a href="#grpc-info" class="btn btn-primary" onclick="toggleGrpcInfo()">Информация о подключении</a>
-                            <a th:href="@{/grpc-examples}" class="btn btn-secondary">Примеры</a>
+                            <button class="card-link primary" onclick="toggleGrpcInfo()">Подключение</button>
+                            <a th:href="@{/grpc-examples}" class="card-link secondary">Примеры</a>
                         </div>
-                        <div class="endpoint-info">
-                            <code th:text="'localhost:' + ${grpcPort}">localhost:9090</code>
-                        </div>
-                        <div id="grpc-info" class="grpc-details" style="display: none;">
-                            <h4>Использование grpcurl:</h4>
-                            <pre>
-# Список сервисов
+                        <div id="grpc-info" class="grpc-details-panel">
+                            <h4>GRPCURL КОМАНДЫ:</h4>
+                            <pre><code># Список сервисов
 grpcurl -plaintext localhost:<span th:text="${grpcPort}">9090</span> list
 
 # Получить продукты
 grpcurl -plaintext -d '{}' \
   localhost:<span th:text="${grpcPort}">9090</span> \
-  product.ProductService/GetProducts</pre>
+  product.ProductService/GetProducts</code></pre>
                         </div>
                     </div>
 
-                    <!-- SOAP -->
-                    <div class="card soap">
-                        <div class="card-icon">SOAP</div>
-                        <h3>SOAP Web Service</h3>
-                        <p>XML-протокол для корпоративной интеграции.</p>
-                        <div class="card-links">
-                            <a th:href="@{/ws/integration.wsdl}" class="btn btn-primary" target="_blank">WSDL</a>
-                            <a th:href="@{/soap-examples}" class="btn btn-secondary">Примеры</a>
+                    <!-- SOAP Card -->
+                    <div class="protocol-card soap">
+                        <div class="card-header">
+                            <div class="card-icon">SOAP</div>
+                            <h3 class="card-title">SOAP Web Service</h3>
                         </div>
-                        <div class="endpoint-info">
-                            <code>POST /ws</code>
+                        <p class="card-description">
+                            XML-протокол для корпоративной интеграции с WSDL описанием контракта.
+                        </p>
+                        <div class="card-endpoint">POST /ws</div>
+                        <div class="card-links">
+                            <a th:href="@{/ws/integration.wsdl}" class="card-link primary" target="_blank">WSDL</a>
+                            <a th:href="@{/soap-examples}" class="card-link secondary">Примеры</a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="quick-links">
-                <h2>Быстрые ссылки</h2>
-                <div class="links-grid">
-                    <div class="link-group">
+            <!-- Quick Links Section -->
+            <section class="quicklinks-section glass-panel">
+                <div class="section-header">
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> БЫСТРЫЕ ССЫЛКИ</h2>
+                </div>
+
+                <div class="quicklinks-grid">
+                    <div class="quicklinks-group">
                         <h4>API Эндпоинты</h4>
-                        <ul>
+                        <ul class="quicklinks-list">
                             <li><a th:href="@{/api/products}">GET /api/products</a></li>
                             <li><a th:href="@{/api/products?includeAvailability=true}">GET /api/products?includeAvailability=true</a></li>
                             <li><a th:href="@{/api/products/1}">GET /api/products/1</a></li>
                             <li><a th:href="@{/api/products/sku/SAM-S24-BLK}">GET /api/products/sku/SAM-S24-BLK</a></li>
+                            <li><a th:href="@{/api/customers}">GET /api/customers</a></li>
+                            <li><a th:href="@{/api/orders}">GET /api/orders</a></li>
                         </ul>
                     </div>
-                    <div class="link-group">
+
+                    <div class="quicklinks-group">
                         <h4>Документация</h4>
-                        <ul>
+                        <ul class="quicklinks-list">
                             <li><a th:href="@{/swagger-ui.html}">Swagger UI</a></li>
                             <li><a th:href="@{/v3/api-docs}">OpenAPI Spec (JSON)</a></li>
-                            <li><a th:href="@{/v3/api-docs.yaml}">OpenAPI Spec (YAML)</a></li>
                             <li><a th:href="@{/graphql-playground}">GraphQL Playground</a></li>
                             <li><a th:href="@{/graphql-examples}">GraphQL Examples</a></li>
-                            <li><a th:href="@{/graphiql}">GraphiQL IDE</a></li>
                             <li><a th:href="@{/grpc-examples}">gRPC Examples</a></li>
                             <li><a th:href="@{/soap-examples}">SOAP Examples</a></li>
                             <li><a th:href="@{/ws/integration.wsdl}">WSDL Schema</a></li>
                         </ul>
                     </div>
-                    <div class="link-group">
+
+                    <div class="quicklinks-group">
                         <h4>Информация о сервере</h4>
-                        <ul>
-                            <li>HTTP Порт: <code th:text="${serverPort}">8080</code></li>
-                            <li>gRPC Порт: <code th:text="${grpcPort}">9090</code></li>
-                        </ul>
+                        <div class="server-info">
+                            <div class="server-info-item">
+                                <span class="server-info-label">HTTP Порт</span>
+                                <code class="server-info-value" th:text="${serverPort}">8080</code>
+                            </div>
+                            <div class="server-info-item">
+                                <span class="server-info-label">gRPC Порт</span>
+                                <code class="server-info-value" th:text="${grpcPort}">9090</code>
+                            </div>
+                            <div class="server-info-item">
+                                <span class="server-info-label">PostgreSQL</span>
+                                <code class="server-info-value">15436</code>
+                            </div>
+                            <div class="server-info-item">
+                                <span class="server-info-label">MongoDB</span>
+                                <code class="server-info-value">27017</code>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
         </main>
 
-        <footer>
-            <p>Integration Service v1.0.0 | Spring Boot 4.0.1</p>
+        <footer class="futuristic-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="neon-text">INTEGRATION SERVICE</span>
+                    <span class="version">v1.0.0</span>
+                </div>
+                <div class="footer-tech">
+                    <span class="tech-badge">SPRING BOOT 4.0.1</span>
+                    <span class="tech-badge">JAVA 17</span>
+                </div>
+                <div class="footer-status">
+                    <span class="status-dot"></span>
+                    <span>ВСЕ СИСТЕМЫ РАБОТАЮТ</span>
+                </div>
+            </div>
         </footer>
     </div>
 
     <script>
-        function toggleGrpcInfo() {
-            var info = document.getElementById('grpc-info');
-            if (info.style.display === 'none') {
-                info.style.display = 'block';
-            } else {
-                info.style.display = 'none';
+        // Particle animation
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (5 + Math.random() * 10) + 's';
+                container.appendChild(particle);
             }
+        }
+        createParticles();
+
+        // Toggle gRPC info panel
+        function toggleGrpcInfo() {
+            const panel = document.getElementById('grpc-info');
+            panel.classList.toggle('show');
         }
     </script>
 </body>

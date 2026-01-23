@@ -3,22 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GraphQL Playground - Integration Service</title>
+    <title>GraphQL Playground - 2050 Edition</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/graphql-playground.css}">
 </head>
-<body>
-    <div class="container playground-container">
-        <header class="playground-header">
-            <div class="header-left">
-                <a th:href="@{/}" class="back-link">&larr; Назад к порталу</a>
-            </div>
-            <div class="header-center">
-                <h1>GraphQL Playground</h1>
-                <p class="subtitle">Интерактивный редактор запросов</p>
-            </div>
-            <div class="header-right">
-                <a th:href="@{/graphql-examples}" class="btn btn-graphql">Примеры</a>
+<body class="futuristic-body">
+    <!-- Animated Background -->
+    <div class="cyber-grid"></div>
+    <div class="floating-particles" id="particles"></div>
+    <div class="holographic-overlay"></div>
+
+    <div class="container futuristic-container">
+        <header class="futuristic-header">
+            <div class="header-nav">
+                <a th:href="@{/}" class="nav-link">&larr; PORTAL</a>
+                <div class="header-title">
+                    <div class="glitch-wrapper">
+                        <h1 class="glitch" data-text="GraphQL">GraphQL</h1>
+                    </div>
+                    <span class="neon-subtitle">PLAYGROUND // 2050</span>
+                </div>
+                <div class="header-actions">
+                    <a th:href="@{/graphql-examples}" class="header-btn">ПРИМЕРЫ</a>
+                    <a th:href="@{/graphiql}" class="header-btn">GraphiQL</a>
+                </div>
             </div>
         </header>
 
@@ -26,14 +34,16 @@
             <div class="playground-grid">
                 <!-- Query Editor Panel -->
                 <div class="editor-panel">
-                    <div class="panel-header">
-                        <h3>Запрос</h3>
-                        <button id="executeBtn" class="btn btn-execute" onclick="executeQuery()">
-                            <span class="play-icon">&#9658;</span> Выполнить
-                        </button>
-                    </div>
-                    <div class="editor-wrapper">
-                        <textarea id="queryEditor" class="code-editor" spellcheck="false" placeholder="Введите ваш GraphQL запрос здесь...">query GetAllProducts {
+                    <div class="panel-container">
+                        <div class="panel-header query-header">
+                            <h3>ЗАПРОС</h3>
+                            <button id="executeBtn" class="execute-btn" onclick="executeQuery()">
+                                <span class="play-icon">&#9658;</span> ВЫПОЛНИТЬ
+                                <span class="keyboard-hint">(Ctrl+Enter)</span>
+                            </button>
+                        </div>
+                        <div class="editor-wrapper">
+                            <textarea id="queryEditor" class="code-editor" spellcheck="false" placeholder="Введите ваш GraphQL запрос здесь...">query GetAllProducts {
   products {
     id
     name
@@ -43,53 +53,97 @@
     category
   }
 }</textarea>
-                    </div>
-
-                    <!-- Variables Section -->
-                    <div class="variables-section">
-                        <div class="panel-header collapsible" onclick="toggleVariables()">
-                            <h3>Переменные <span id="variablesToggle" class="toggle-icon">&#9660;</span></h3>
                         </div>
-                        <div id="variablesPanel" class="variables-wrapper">
-                            <textarea id="variablesEditor" class="code-editor variables-editor" spellcheck="false" placeholder='{"key": "value"}'>{}</textarea>
+
+                        <!-- Variables Section -->
+                        <div class="variables-section">
+                            <div class="variables-header" onclick="toggleVariables()">
+                                <h4>ПЕРЕМЕННЫЕ <span id="variablesToggle" class="toggle-icon">&#9660;</span></h4>
+                            </div>
+                            <div id="variablesPanel" class="variables-wrapper">
+                                <textarea id="variablesEditor" class="code-editor variables-editor" spellcheck="false" placeholder='{"key": "value"}'>{}</textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Response Panel -->
                 <div class="response-panel">
-                    <div class="panel-header">
-                        <h3>Ответ</h3>
-                        <div class="response-info">
-                            <span id="responseStatus" class="status-indicator"></span>
-                            <span id="responseTime" class="response-time"></span>
+                    <div class="panel-container">
+                        <div class="panel-header response-header">
+                            <h3>ОТВЕТ</h3>
+                            <div class="response-info">
+                                <span id="responseStatus" class="status-indicator"></span>
+                                <span id="responseTime" class="response-time"></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="response-wrapper">
-                        <pre id="responseOutput" class="response-output"><span class="placeholder-text">Выполните запрос, чтобы увидеть ответ...</span></pre>
+                        <div class="response-wrapper">
+                            <pre id="responseOutput" class="response-output"><span class="placeholder-text">Выполните запрос, чтобы увидеть ответ...</span></pre>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Quick Queries Section -->
-            <div class="quick-queries">
-                <h3>Быстрые запросы</h3>
+            <div class="quick-queries glass-panel">
+                <h3>БЫСТРЫЕ ЗАПРОСЫ (QUERY)</h3>
                 <div class="query-buttons">
                     <button class="query-chip" onclick="loadQuery('products')">Все продукты</button>
                     <button class="query-chip" onclick="loadQuery('productsWithAvailability')">Продукты + Наличие</button>
                     <button class="query-chip" onclick="loadQuery('productById')">Продукт по ID</button>
                     <button class="query-chip" onclick="loadQuery('productBySku')">Продукт по SKU</button>
                     <button class="query-chip" onclick="loadQuery('productsByCategory')">Продукты по категории</button>
+                    <button class="query-chip" onclick="loadQuery('customers')">Все клиенты</button>
+                    <button class="query-chip" onclick="loadQuery('customerById')">Клиент по ID</button>
+                    <button class="query-chip" onclick="loadQuery('orders')">Все заказы</button>
+                    <button class="query-chip" onclick="loadQuery('ordersByCustomer')">Заказы клиента</button>
+                </div>
+            </div>
+
+            <!-- Mutations Section -->
+            <div class="mutations-queries glass-panel">
+                <h3>МУТАЦИИ (MUTATION)</h3>
+                <div class="query-buttons">
+                    <button class="query-chip mutation-chip" onclick="loadQuery('createProduct')">Создать продукт</button>
+                    <button class="query-chip mutation-chip" onclick="loadQuery('updateProduct')">Обновить продукт</button>
+                    <button class="query-chip mutation-chip" onclick="loadQuery('deleteProduct')">Удалить продукт</button>
+                    <button class="query-chip mutation-chip" onclick="loadQuery('createCustomer')">Создать клиента</button>
+                    <button class="query-chip mutation-chip" onclick="loadQuery('createOrder')">Создать заказ</button>
                 </div>
             </div>
         </main>
 
-        <footer>
-            <p>Integration Service v1.0.0 | GraphQL Endpoint: <code>/graphql</code></p>
+        <footer class="futuristic-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="neon-text">INTEGRATION SERVICE</span>
+                    <span class="version">v1.0.0</span>
+                </div>
+                <code class="footer-endpoint">POST /graphql</code>
+                <div class="footer-status">
+                    <span class="status-dot"></span>
+                    <span>СИСТЕМА АКТИВНА</span>
+                </div>
+            </div>
         </footer>
     </div>
 
     <script>
+        // Particle animation
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationDuration = (5 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
         const queries = {
             products: {
                 query: `query GetAllProducts {
@@ -178,6 +232,186 @@
   }
 }`,
                 variables: '{\n  "category": "Электроника"\n}'
+            },
+            customers: {
+                query: `query GetAllCustomers {
+  customers {
+    id
+    name
+    email
+    phone
+    address {
+      street
+      city
+      state
+      zipCode
+      country
+    }
+  }
+}`,
+                variables: '{}'
+            },
+            customerById: {
+                query: `query GetCustomerById($id: ID!) {
+  customer(id: $id) {
+    id
+    name
+    email
+    phone
+    address {
+      street
+      city
+      state
+      zipCode
+      country
+    }
+  }
+}`,
+                variables: '{\n  "id": "507f1f77bcf86cd799439011"\n}'
+            },
+            orders: {
+                query: `query GetAllOrders {
+  orders {
+    id
+    customerId
+    items {
+      productId
+      productName
+      quantity
+      unitPrice
+      subtotal
+    }
+    total
+    status
+    createdAt
+  }
+}`,
+                variables: '{}'
+            },
+            ordersByCustomer: {
+                query: `query GetOrdersByCustomer($customerId: ID!) {
+  ordersByCustomerId(customerId: $customerId) {
+    id
+    customerId
+    items {
+      productId
+      productName
+      quantity
+      unitPrice
+      subtotal
+    }
+    total
+    status
+    createdAt
+  }
+}`,
+                variables: '{\n  "customerId": "507f1f77bcf86cd799439011"\n}'
+            },
+            createProduct: {
+                query: `mutation CreateProduct($input: CreateProductInput!) {
+  createProduct(input: $input) {
+    id
+    name
+    description
+    price
+    sku
+    category
+  }
+}`,
+                variables: `{
+  "input": {
+    "name": "Новый продукт",
+    "description": "Описание нового продукта",
+    "price": 9999.99,
+    "sku": "NEW-PROD-001",
+    "category": "Электроника"
+  }
+}`
+            },
+            updateProduct: {
+                query: `mutation UpdateProduct($id: ID!, $input: UpdateProductInput!) {
+  updateProduct(id: $id, input: $input) {
+    id
+    name
+    description
+    price
+    sku
+    category
+  }
+}`,
+                variables: `{
+  "id": "1",
+  "input": {
+    "name": "Обновленное название",
+    "price": 99990.00
+  }
+}`
+            },
+            deleteProduct: {
+                query: `mutation DeleteProduct($id: ID!) {
+  deleteProduct(id: $id)
+}`,
+                variables: '{\n  "id": "10"\n}'
+            },
+            createCustomer: {
+                query: `mutation CreateCustomer($input: CreateCustomerInput!) {
+  createCustomer(input: $input) {
+    id
+    name
+    email
+    phone
+    address {
+      street
+      city
+      country
+    }
+  }
+}`,
+                variables: `{
+  "input": {
+    "name": "Новый Клиент",
+    "email": "new.client@example.com",
+    "phone": "+7 (999) 000-00-00",
+    "address": {
+      "street": "ул. Примерная, д. 1",
+      "city": "Москва",
+      "state": "Московская область",
+      "zipCode": "100000",
+      "country": "Россия"
+    }
+  }
+}`
+            },
+            createOrder: {
+                query: `mutation CreateOrder($input: CreateOrderInput!) {
+  createOrder(input: $input) {
+    id
+    customerId
+    items {
+      productId
+      productName
+      quantity
+      unitPrice
+      subtotal
+    }
+    total
+    status
+    createdAt
+  }
+}`,
+                variables: `{
+  "input": {
+    "customerId": "507f1f77bcf86cd799439011",
+    "items": [
+      {
+        "productId": 1,
+        "productName": "Смартфон Samsung Galaxy S24",
+        "quantity": 1,
+        "unitPrice": 89990.00
+      }
+    ]
+  }
+}`
             }
         };
 
@@ -189,15 +423,19 @@
             }
         }
 
+        let variablesExpanded = true;
         function toggleVariables() {
             const panel = document.getElementById('variablesPanel');
             const toggle = document.getElementById('variablesToggle');
-            if (panel.style.display === 'none') {
-                panel.style.display = 'block';
+            variablesExpanded = !variablesExpanded;
+            if (variablesExpanded) {
+                panel.classList.remove('collapsed');
                 toggle.innerHTML = '&#9660;';
+                toggle.classList.remove('collapsed');
             } else {
-                panel.style.display = 'none';
+                panel.classList.add('collapsed');
                 toggle.innerHTML = '&#9654;';
+                toggle.classList.add('collapsed');
             }
         }
 
@@ -220,12 +458,12 @@
             } catch (e) {
                 responseOutput.innerHTML = '<span class="error-text">Ошибка парсинга переменных: ' + e.message + '</span>';
                 responseStatus.className = 'status-indicator status-error';
-                responseStatus.textContent = 'Ошибка';
+                responseStatus.textContent = 'ОШИБКА';
                 return;
             }
 
             executeBtn.disabled = true;
-            executeBtn.innerHTML = '<span class="loading-spinner"></span> Выполнение...';
+            executeBtn.innerHTML = '<span class="loading-spinner"></span> ВЫПОЛНЕНИЕ...';
             responseOutput.innerHTML = '<span class="loading-text">Выполнение запроса...</span>';
             responseStatus.className = 'status-indicator';
             responseStatus.textContent = '';
@@ -256,18 +494,18 @@
 
                 if (data.errors) {
                     responseStatus.className = 'status-indicator status-error';
-                    responseStatus.textContent = 'Ошибка';
+                    responseStatus.textContent = 'ОШИБКА';
                 } else {
                     responseStatus.className = 'status-indicator status-success';
-                    responseStatus.textContent = 'Успешно';
+                    responseStatus.textContent = 'УСПЕШНО';
                 }
             } catch (e) {
                 responseOutput.innerHTML = '<span class="error-text">Ошибка сети: ' + e.message + '</span>';
                 responseStatus.className = 'status-indicator status-error';
-                responseStatus.textContent = 'Ошибка';
+                responseStatus.textContent = 'ОШИБКА';
             } finally {
                 executeBtn.disabled = false;
-                executeBtn.innerHTML = '<span class="play-icon">&#9658;</span> Выполнить';
+                executeBtn.innerHTML = '<span class="play-icon">&#9658;</span> ВЫПОЛНИТЬ <span class="keyboard-hint">(Ctrl+Enter)</span>';
             }
         }
 
