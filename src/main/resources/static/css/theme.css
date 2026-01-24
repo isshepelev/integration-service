@@ -1,0 +1,1064 @@
+/* ========================================
+   Theme Switcher Styles
+   Light theme support for Integration Service
+   ======================================== */
+
+/* Theme Switcher Button */
+.theme-switcher {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 150, 255, 0.4);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.theme-switcher:hover {
+    transform: scale(1.1);
+    border-color: rgba(0, 150, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.4);
+}
+
+.theme-switcher:focus {
+    outline: none;
+    border-color: rgba(0, 150, 255, 1);
+    box-shadow: 0 0 25px rgba(0, 150, 255, 0.5);
+}
+
+/* Theme Icons */
+.theme-icon-moon,
+.theme-icon-sun {
+    display: block;
+    color: #00d9ff;
+    transition: transform 0.3s ease;
+}
+
+.theme-switcher:hover .theme-icon-moon,
+.theme-switcher:hover .theme-icon-sun {
+    transform: rotate(15deg);
+}
+
+/* Light theme icon color */
+body.light-theme .theme-icon-sun {
+    color: #f59e0b;
+}
+
+/* ========================================
+   LIGHT THEME OVERRIDES
+   ======================================== */
+
+/* Main background */
+body.light-theme.futuristic-body {
+    background: #f0f2f5;
+}
+
+/* Cyber grid - subtle for light theme */
+body.light-theme .cyber-grid {
+    background-image:
+        linear-gradient(rgba(0, 100, 180, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 100, 180, 0.08) 1px, transparent 1px);
+}
+
+/* Hide particles in light theme */
+body.light-theme .floating-particles,
+body.light-theme .particle {
+    display: none;
+}
+
+/* Holographic overlay - lighter */
+body.light-theme .holographic-overlay {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 100, 180, 0.03) 0%,
+        rgba(0, 150, 200, 0.03) 50%,
+        rgba(100, 150, 200, 0.03) 100%
+    );
+}
+
+/* Disable glitch animation in light theme */
+body.light-theme .glitch {
+    animation: none;
+    background: linear-gradient(90deg, #0066aa, #0088cc, #0077aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.light-theme .glitch::before,
+body.light-theme .glitch::after {
+    display: none;
+}
+
+/* Scan line - hidden in light theme */
+body.light-theme .scan-line {
+    display: none;
+}
+
+/* Navigation link */
+body.light-theme .nav-link {
+    color: #0066aa;
+    border-color: rgba(0, 100, 170, 0.4);
+}
+
+body.light-theme .nav-link:hover {
+    background: rgba(0, 100, 170, 0.1);
+    border-color: rgba(0, 100, 170, 0.7);
+    box-shadow: 0 2px 15px rgba(0, 100, 170, 0.2);
+}
+
+/* Neon subtitle */
+body.light-theme .neon-subtitle {
+    color: #0077aa;
+    text-shadow: none;
+}
+
+/* Stat items */
+body.light-theme .stat-value {
+    text-shadow: none;
+}
+
+body.light-theme .neon-cyan {
+    color: #0077aa;
+}
+
+body.light-theme .neon-blue {
+    color: #0066bb;
+}
+
+body.light-theme .neon-green {
+    color: #007744;
+}
+
+body.light-theme .stat-label {
+    color: #4a4a5a;
+}
+
+/* Glass panels */
+body.light-theme .glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Section headers */
+body.light-theme .section-header {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .hologram-text {
+    color: #1a1a2e;
+    text-shadow: none;
+}
+
+body.light-theme .icon-pulse {
+    color: #0077aa;
+    text-shadow: none;
+    animation: none;
+}
+
+/* Protocol cards */
+body.light-theme .protocol-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .protocol-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Card content */
+body.light-theme .card-title {
+    color: #1a1a2e;
+}
+
+body.light-theme .card-description {
+    color: #4a4a5a;
+}
+
+/* Card icons - REST */
+body.light-theme .protocol-card.rest {
+    --card-color: #0077aa;
+}
+
+body.light-theme .protocol-card.rest .card-icon {
+    background: linear-gradient(135deg, rgba(0, 119, 170, 0.2), rgba(0, 119, 170, 0.1));
+    color: #0077aa;
+    border-color: rgba(0, 119, 170, 0.4);
+    text-shadow: none;
+    box-shadow: 0 2px 10px rgba(0, 119, 170, 0.15);
+}
+
+body.light-theme .protocol-card.rest:hover {
+    border-color: rgba(0, 119, 170, 0.4);
+}
+
+/* Card icons - GraphQL */
+body.light-theme .protocol-card.graphql {
+    --card-color: #c22889;
+}
+
+body.light-theme .protocol-card.graphql .card-icon {
+    background: linear-gradient(135deg, rgba(194, 40, 137, 0.2), rgba(194, 40, 137, 0.1));
+    color: #c22889;
+    border-color: rgba(194, 40, 137, 0.4);
+    text-shadow: none;
+    box-shadow: 0 2px 10px rgba(194, 40, 137, 0.15);
+}
+
+body.light-theme .protocol-card.graphql:hover {
+    border-color: rgba(194, 40, 137, 0.4);
+}
+
+/* Card icons - gRPC */
+body.light-theme .protocol-card.grpc {
+    --card-color: #007744;
+}
+
+body.light-theme .protocol-card.grpc .card-icon {
+    background: linear-gradient(135deg, rgba(0, 119, 68, 0.2), rgba(0, 119, 68, 0.1));
+    color: #007744;
+    border-color: rgba(0, 119, 68, 0.4);
+    text-shadow: none;
+    box-shadow: 0 2px 10px rgba(0, 119, 68, 0.15);
+}
+
+body.light-theme .protocol-card.grpc:hover {
+    border-color: rgba(0, 119, 68, 0.4);
+}
+
+/* Card icons - SOAP */
+body.light-theme .protocol-card.soap {
+    --card-color: #b36200;
+}
+
+body.light-theme .protocol-card.soap .card-icon {
+    background: linear-gradient(135deg, rgba(179, 98, 0, 0.2), rgba(179, 98, 0, 0.1));
+    color: #b36200;
+    border-color: rgba(179, 98, 0, 0.4);
+    text-shadow: none;
+    box-shadow: 0 2px 10px rgba(179, 98, 0, 0.15);
+}
+
+body.light-theme .protocol-card.soap:hover {
+    border-color: rgba(179, 98, 0, 0.4);
+}
+
+/* Card endpoints - REST */
+body.light-theme .protocol-card.rest .card-endpoint {
+    background: rgba(0, 102, 170, 0.1);
+    color: #005588;
+    border: 1px solid rgba(0, 102, 170, 0.3);
+}
+
+/* Card endpoints - GraphQL */
+body.light-theme .protocol-card.graphql .card-endpoint {
+    background: rgba(194, 40, 137, 0.1);
+    color: #a01f70;
+    border: 1px solid rgba(194, 40, 137, 0.3);
+}
+
+/* Card endpoints - gRPC */
+body.light-theme .protocol-card.grpc .card-endpoint {
+    background: rgba(0, 119, 68, 0.1);
+    color: #005533;
+    border: 1px solid rgba(0, 119, 68, 0.3);
+}
+
+/* Card endpoints - SOAP */
+body.light-theme .protocol-card.soap .card-endpoint {
+    background: rgba(179, 98, 0, 0.1);
+    color: #8a4d00;
+    border: 1px solid rgba(179, 98, 0, 0.3);
+}
+
+/* Card links - REST primary */
+body.light-theme .protocol-card.rest .card-link.primary {
+    color: #ffffff;
+    background: linear-gradient(135deg, #0077aa, #005588);
+    border-color: #0077aa;
+    text-shadow: none;
+}
+
+body.light-theme .protocol-card.rest .card-link.primary:hover {
+    background: linear-gradient(135deg, #005588, #004466);
+    box-shadow: 0 4px 15px rgba(0, 102, 170, 0.3);
+}
+
+/* Card links - GraphQL primary */
+body.light-theme .protocol-card.graphql .card-link.primary {
+    color: #ffffff;
+    background: linear-gradient(135deg, #c22889, #a01f70);
+    border-color: #c22889;
+    text-shadow: none;
+}
+
+body.light-theme .protocol-card.graphql .card-link.primary:hover {
+    background: linear-gradient(135deg, #a01f70, #801860);
+    box-shadow: 0 4px 15px rgba(194, 40, 137, 0.3);
+}
+
+/* Card links - gRPC primary */
+body.light-theme .protocol-card.grpc .card-link.primary {
+    color: #ffffff;
+    background: linear-gradient(135deg, #007744, #005533);
+    border-color: #007744;
+    text-shadow: none;
+}
+
+body.light-theme .protocol-card.grpc .card-link.primary:hover {
+    background: linear-gradient(135deg, #005533, #004422);
+    box-shadow: 0 4px 15px rgba(0, 119, 68, 0.3);
+}
+
+/* Card links - SOAP primary */
+body.light-theme .protocol-card.soap .card-link.primary {
+    color: #ffffff;
+    background: linear-gradient(135deg, #b36200, #8a4d00);
+    border-color: #b36200;
+    text-shadow: none;
+}
+
+body.light-theme .protocol-card.soap .card-link.primary:hover {
+    background: linear-gradient(135deg, #8a4d00, #6b3c00);
+    box-shadow: 0 4px 15px rgba(179, 98, 0, 0.3);
+}
+
+/* Card links secondary */
+body.light-theme .card-link.secondary {
+    color: #4a4a5a;
+    border-color: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.03);
+}
+
+body.light-theme .card-link.secondary:hover {
+    color: #1a1a2e;
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.35);
+}
+
+/* gRPC details panel */
+body.light-theme .grpc-details-panel {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 119, 68, 0.2);
+}
+
+body.light-theme .grpc-details-panel h4 {
+    color: #007744;
+}
+
+body.light-theme .grpc-details-panel pre,
+body.light-theme .grpc-details-panel code {
+    color: #006633;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Quicklinks section - transparent background */
+body.light-theme .quicklinks-section.glass-panel {
+    background: transparent !important;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: none;
+}
+
+body.light-theme .quicklinks-group {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+body.light-theme .quicklinks-group h4 {
+    color: #0066aa;
+    text-shadow: none;
+    font-weight: 600;
+}
+
+body.light-theme .quicklinks-list a {
+    color: #2a4a6a;
+}
+
+body.light-theme .quicklinks-list a:hover {
+    color: #0066aa;
+}
+
+body.light-theme .quicklinks-list a::before {
+    color: #0077aa;
+}
+
+body.light-theme .quicklinks-list code {
+    color: #005588;
+    background: rgba(0, 102, 170, 0.1);
+}
+
+/* Server info */
+body.light-theme .server-info-item {
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+
+body.light-theme .server-info-label {
+    color: #3a4a5a;
+    font-weight: 500;
+}
+
+body.light-theme .server-info-value {
+    color: #005588;
+    background: rgba(0, 102, 170, 0.12);
+    border: 1px solid rgba(0, 102, 170, 0.2);
+}
+
+/* Footer */
+body.light-theme .futuristic-footer {
+    border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .footer-brand .neon-text {
+    color: #0077aa;
+    text-shadow: none;
+}
+
+body.light-theme .footer-brand .version {
+    color: #4a4a5a;
+}
+
+body.light-theme .tech-badge {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #4a4a5a;
+}
+
+body.light-theme .footer-status {
+    color: #4a4a5a;
+}
+
+body.light-theme .status-dot {
+    background: #007744;
+    box-shadow: 0 0 10px rgba(0, 119, 68, 0.5);
+}
+
+/* Theme switcher button in light theme */
+body.light-theme .theme-switcher {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 100, 170, 0.4);
+}
+
+body.light-theme .theme-switcher:hover {
+    border-color: rgba(0, 100, 170, 0.7);
+    box-shadow: 0 2px 15px rgba(0, 100, 170, 0.2);
+}
+
+/* ========================================
+   LIGHT THEME - EXAMPLES PAGES
+   ======================================== */
+
+/* Schema section glass panel */
+body.light-theme .schema-section.glass-panel {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Schema type cards (ОБЗОР СХЕМЫ, ОПИСАНИЕ СУЩНОСТЕЙ) */
+body.light-theme .schema-section .schema-type-card,
+body.light-theme .schema-grid .schema-type-card {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-color: rgba(194, 40, 137, 0.3);
+}
+
+/* Type names (Query, Mutation, Product, etc.) */
+body.light-theme .type-name {
+    color: #1a1a2e !important;
+}
+
+/* Type fields list items */
+body.light-theme .type-fields li {
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Type fields code (products, customers, etc.) */
+body.light-theme .type-fields code {
+    color: #0066aa !important;
+}
+
+/* Return types ([Product!]!, Customer, etc.) */
+body.light-theme .return-type {
+    color: #c22889 !important;
+}
+
+/* Status badge (СИНХРОНИЗИРОВАНО, TYPES) */
+body.light-theme .status-badge.online {
+    background: rgba(0, 119, 68, 0.15);
+    color: #006633 !important;
+    border-color: rgba(0, 119, 68, 0.4);
+}
+
+/* Connection value (URL) */
+body.light-theme .connection-value {
+    color: #0066aa !important;
+}
+
+body.light-theme .full-path-item .connection-value {
+    color: #0055aa !important;
+    text-shadow: none;
+}
+
+/* Tab buttons - active state */
+body.light-theme .tab-btn.active {
+    color: #0066aa !important;
+    background: rgba(0, 102, 170, 0.1);
+    border-color: #0077aa;
+    box-shadow: 0 2px 10px rgba(0, 102, 170, 0.2);
+}
+
+body.light-theme .tab-btn.active .tab-number {
+    background: rgba(0, 102, 170, 0.2);
+    color: #0055aa !important;
+}
+
+body.light-theme .tab-btn:hover {
+    color: #0066aa;
+}
+
+/* Example header h3 (Продукты с наличием) */
+body.light-theme .example-header h3 {
+    color: #1a1a2e !important;
+}
+
+/* Category badges (POSTGRESQL) */
+body.light-theme .category-badge.basic {
+    background: rgba(0, 119, 68, 0.12);
+    color: #006633 !important;
+    border-color: rgba(0, 119, 68, 0.35);
+}
+
+body.light-theme .category-badge.filtered {
+    background: rgba(0, 102, 170, 0.12);
+    color: #005588 !important;
+    border-color: rgba(0, 102, 170, 0.35);
+}
+
+body.light-theme .category-badge.advanced {
+    background: rgba(194, 40, 137, 0.12);
+    color: #a01f70 !important;
+    border-color: rgba(194, 40, 137, 0.35);
+}
+
+/* Example content (Получить все продукты и др.) */
+body.light-theme .example-content,
+body.light-theme .examples-section .example-content {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Tab buttons */
+body.light-theme .tab-btn {
+    color: #4a4a5a;
+    border-color: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.03);
+}
+
+body.light-theme .tab-btn:hover {
+    color: #1a1a2e;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .tab-btn.active {
+    color: #1a1a2e;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Code blocks - keep dark for readability */
+body.light-theme .code-block {
+    background: #1e2330 !important;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme .terminal-body,
+body.light-theme pre {
+    background: rgba(30, 35, 45, 0.95);
+    color: #e0e0e0;
+}
+
+body.light-theme .code-block code,
+body.light-theme .terminal-body code {
+    color: #00ff88;
+}
+
+/* Code block labels (ЗАПРОС, ОТВЕТ) */
+body.light-theme .code-block.request .code-label {
+    background: rgba(194, 40, 137, 0.3) !important;
+    color: #e535ab !important;
+}
+
+body.light-theme .code-block.response .code-label {
+    background: rgba(0, 200, 100, 0.25) !important;
+    color: #00c864 !important;
+}
+
+/* Copy button (КОПИРОВАТЬ) */
+body.light-theme .copy-btn {
+    background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    color: #ffffff !important;
+}
+
+body.light-theme .copy-btn:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+}
+
+body.light-theme .copy-btn.copied {
+    background: rgba(0, 200, 100, 0.3) !important;
+    border-color: #00c864 !important;
+    color: #00ff88 !important;
+}
+
+/* Try button (Открыть в Playground) */
+body.light-theme .try-btn {
+    background: linear-gradient(135deg, #c22889, #a01f70);
+    border: none;
+    color: #ffffff !important;
+}
+
+body.light-theme .try-btn:hover {
+    background: linear-gradient(135deg, #a01f70, #801860);
+    box-shadow: 0 4px 15px rgba(194, 40, 137, 0.3);
+}
+
+/* Terminal header */
+body.light-theme .terminal-header {
+    background: rgba(40, 45, 55, 0.95);
+}
+
+
+/* Example cards */
+body.light-theme .example-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .example-card h3,
+body.light-theme .example-title {
+    color: #1a1a2e;
+}
+
+body.light-theme .example-description {
+    color: #4a4a5a;
+}
+
+/* Method badges */
+body.light-theme .method-badge {
+    text-shadow: none;
+}
+
+/* Response sections */
+body.light-theme .response-section {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+body.light-theme .response-header {
+    color: #1a1a2e;
+}
+
+/* Scrollbars in light theme */
+body.light-theme ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme ::-webkit-scrollbar-thumb {
+    background: rgba(0, 100, 170, 0.3);
+}
+
+body.light-theme ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 100, 170, 0.5);
+}
+
+/* ========================================
+   LIGHT THEME - GRPC / SOAP EXAMPLES
+   ======================================== */
+
+/* Connection labels (Хост, Порт, Эндпоинт, Транспорт) - dark color */
+body.light-theme .connection-label {
+    color: #1a1a2e !important;
+}
+
+/* Tabs group labels (ПРОДУКТЫ, КЛИЕНТЫ, ЗАКАЗЫ) - visible dark color */
+body.light-theme .tabs-group-label {
+    color: #1a1a2e !important;
+}
+
+/* Connection values and links - orange for SOAP style */
+body.light-theme .connection-value a {
+    color: #b36200 !important;
+}
+
+body.light-theme .connection-value a:hover {
+    color: #8a4d00 !important;
+}
+
+/* Example notes - dark green background, black text */
+body.light-theme .example-note {
+    background: rgba(0, 100, 60, 0.15) !important;
+    border-color: rgba(0, 100, 60, 0.4) !important;
+    color: #1a1a2e !important;
+}
+
+body.light-theme .example-note .note-icon {
+    color: #006644 !important;
+}
+
+body.light-theme .example-note code {
+    background: rgba(0, 100, 60, 0.2) !important;
+    color: #005533 !important;
+}
+
+/* Proto definition label (СООБЩЕНИЕ ЗАПРОСА) - blue, more prominent */
+body.light-theme .proto-label {
+    color: #0055aa !important;
+    background: rgba(0, 102, 170, 0.2) !important;
+    border-color: rgba(0, 102, 170, 0.5) !important;
+    font-weight: 700 !important;
+}
+
+/* Proto definition code content - same blue color, no gray background */
+body.light-theme .proto-definition {
+    background: transparent !important;
+}
+
+body.light-theme .proto-definition pre,
+body.light-theme .proto-definition code {
+    color: #0066aa !important;
+    background: transparent !important;
+}
+
+/* Proto tab buttons - blue */
+body.light-theme .proto-tab-btn {
+    background: rgba(0, 102, 170, 0.08) !important;
+    border-color: rgba(0, 102, 170, 0.3) !important;
+    color: #0066aa !important;
+}
+
+body.light-theme .proto-tab-btn:hover {
+    background: rgba(0, 102, 170, 0.15) !important;
+    border-color: rgba(0, 102, 170, 0.5) !important;
+}
+
+body.light-theme .proto-tab-btn.active {
+    background: rgba(0, 102, 170, 0.2) !important;
+    border-color: #0077aa !important;
+    color: #005588 !important;
+}
+
+body.light-theme .proto-tab-btn .proto-tab-icon {
+    background: rgba(0, 102, 170, 0.2) !important;
+    color: #0066aa !important;
+}
+
+/* Proto file content - same blue color as buttons, no gray background */
+body.light-theme .proto-file {
+    background: transparent !important;
+}
+
+body.light-theme .proto-file pre,
+body.light-theme .proto-file code {
+    color: #0066aa !important;
+    background: transparent !important;
+}
+
+body.light-theme .proto-tab-panel {
+    background: transparent !important;
+}
+
+/* Proto actions buttons (КОПИРОВАТЬ, СКАЧАТЬ) - blue */
+body.light-theme .proto-actions .copy-btn,
+body.light-theme .proto-actions .download-btn {
+    background: rgba(0, 102, 170, 0.1) !important;
+    border: 1px solid rgba(0, 102, 170, 0.4) !important;
+    color: #0066aa !important;
+}
+
+body.light-theme .proto-actions .copy-btn:hover,
+body.light-theme .proto-actions .download-btn:hover {
+    background: rgba(0, 102, 170, 0.2) !important;
+    border-color: #0077aa !important;
+    color: #005588 !important;
+}
+
+body.light-theme .proto-actions .copy-btn.copied {
+    background: rgba(0, 119, 68, 0.2) !important;
+    border-color: #007744 !important;
+    color: #006633 !important;
+}
+
+/* ========================================
+   LIGHT THEME - GRAPHQL PLAYGROUND
+   ======================================== */
+
+/* Navigation link */
+body.light-theme .nav-link {
+    color: #c22889 !important;
+    border-color: rgba(194, 40, 137, 0.5) !important;
+}
+
+body.light-theme .nav-link:hover {
+    background: rgba(194, 40, 137, 0.1) !important;
+    border-color: #c22889 !important;
+    box-shadow: 0 0 20px rgba(194, 40, 137, 0.3) !important;
+}
+
+/* Header subtitle */
+body.light-theme .neon-subtitle {
+    color: #a01f70 !important;
+    text-shadow: none !important;
+}
+
+/* Header buttons (ПРИМЕРЫ, GraphiQL) */
+body.light-theme .header-btn {
+    background: rgba(194, 40, 137, 0.1) !important;
+    border-color: rgba(194, 40, 137, 0.5) !important;
+    color: #c22889 !important;
+}
+
+body.light-theme .header-btn:hover {
+    background: rgba(194, 40, 137, 0.2) !important;
+    border-color: #c22889 !important;
+    box-shadow: 0 0 15px rgba(194, 40, 137, 0.3) !important;
+    color: #a01f70 !important;
+}
+
+/* Quick queries panel - transparent background */
+body.light-theme .quick-queries.glass-panel {
+    background: transparent !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-theme .quick-queries h3 {
+    color: #4a4a5a !important;
+}
+
+/* Mutations panel - transparent background */
+body.light-theme .mutations-queries.glass-panel {
+    background: transparent !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    border-top-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+body.light-theme .mutations-queries h3 {
+    color: #4a4a5a !important;
+}
+
+/* Query chips */
+body.light-theme .query-chip {
+    background: rgba(194, 40, 137, 0.1) !important;
+    border-color: rgba(194, 40, 137, 0.4) !important;
+    color: #c22889 !important;
+}
+
+body.light-theme .query-chip:hover {
+    background: rgba(194, 40, 137, 0.2) !important;
+    border-color: #c22889 !important;
+    box-shadow: 0 4px 15px rgba(194, 40, 137, 0.25) !important;
+    color: #a01f70 !important;
+}
+
+/* Mutation chips */
+body.light-theme .mutation-chip {
+    background: rgba(0, 119, 68, 0.1) !important;
+    border-color: rgba(0, 119, 68, 0.4) !important;
+    color: #007744 !important;
+}
+
+body.light-theme .mutation-chip:hover {
+    background: rgba(0, 119, 68, 0.2) !important;
+    border-color: #007744 !important;
+    box-shadow: 0 4px 15px rgba(0, 119, 68, 0.25) !important;
+    color: #005533 !important;
+}
+
+/* Panel containers - white background */
+body.light-theme .panel-container {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Panel headers - no gradient */
+body.light-theme .panel-header.query-header {
+    background: transparent !important;
+    border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-theme .panel-header.query-header h3 {
+    color: #1a1a2e !important;
+    text-shadow: none !important;
+}
+
+body.light-theme .panel-header.response-header {
+    background: transparent !important;
+    border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-theme .panel-header.response-header h3 {
+    color: #1a1a2e !important;
+    text-shadow: none !important;
+}
+
+/* Code editor - white background */
+body.light-theme .code-editor {
+    background: rgba(250, 250, 252, 0.95) !important;
+    color: #1a1a2e !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+body.light-theme .code-editor:focus {
+    background: #ffffff !important;
+    box-shadow: inset 0 0 20px rgba(194, 40, 137, 0.03) !important;
+}
+
+body.light-theme .code-editor::placeholder {
+    color: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Variables editor */
+body.light-theme .variables-editor {
+    color: #0066aa !important;
+}
+
+/* Variables section */
+body.light-theme .variables-section {
+    border-top-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-theme .variables-header {
+    background: linear-gradient(90deg, rgba(0, 102, 170, 0.08), rgba(0, 102, 170, 0.02)) !important;
+}
+
+body.light-theme .variables-header h4 {
+    color: #0077cc !important;
+    text-shadow: none !important;
+}
+
+/* Response output - white background */
+body.light-theme .response-wrapper {
+    background: rgba(250, 250, 252, 0.95) !important;
+}
+
+body.light-theme .response-output {
+    color: #007744 !important;
+    background: transparent !important;
+}
+
+body.light-theme .placeholder-text {
+    color: rgba(0, 0, 0, 0.4) !important;
+}
+
+body.light-theme .loading-text {
+    color: #0066aa !important;
+    text-shadow: none !important;
+}
+
+body.light-theme .error-text {
+    color: #cc3333 !important;
+    text-shadow: none !important;
+}
+
+/* Status indicators */
+body.light-theme .status-indicator.status-success {
+    background: rgba(0, 119, 68, 0.15) !important;
+    color: #007744 !important;
+    border-color: rgba(0, 119, 68, 0.4) !important;
+    text-shadow: none !important;
+}
+
+body.light-theme .status-indicator.status-error {
+    background: rgba(200, 50, 50, 0.15) !important;
+    color: #cc3333 !important;
+    border-color: rgba(200, 50, 50, 0.4) !important;
+    text-shadow: none !important;
+}
+
+/* Scrollbars for editors in light theme */
+body.light-theme .code-editor::-webkit-scrollbar-track,
+body.light-theme .response-wrapper::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme .code-editor::-webkit-scrollbar-thumb,
+body.light-theme .response-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(194, 40, 137, 0.3) !important;
+}
+
+body.light-theme .code-editor::-webkit-scrollbar-thumb:hover,
+body.light-theme .response-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(194, 40, 137, 0.5) !important;
+}
+
+/* Execute button - muted style */
+body.light-theme .execute-btn {
+    background: rgba(100, 100, 120, 0.12) !important;
+    border: 1px solid rgba(100, 100, 120, 0.3) !important;
+    color: #4a4a5a !important;
+    text-shadow: none !important;
+}
+
+body.light-theme .execute-btn:hover {
+    background: rgba(100, 100, 120, 0.2) !important;
+    border-color: rgba(100, 100, 120, 0.5) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    color: #1a1a2e !important;
+}
+
+/* Footer */
+body.light-theme .futuristic-footer {
+    border-top-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-theme .footer-brand .neon-text {
+    color: #c22889 !important;
+    text-shadow: none !important;
+}
+
+body.light-theme .footer-brand .version {
+    color: #4a4a5a !important;
+    background: rgba(0, 0, 0, 0.06) !important;
+}
+
+body.light-theme .footer-endpoint {
+    color: #0066aa !important;
+    background: rgba(0, 102, 170, 0.1) !important;
+    border-color: rgba(0, 102, 170, 0.3) !important;
+    text-shadow: none !important;
+}
+
+body.light-theme .footer-status {
+    color: #007744 !important;
+    text-shadow: none !important;
+}
+
+body.light-theme .status-dot {
+    background: #007744 !important;
+    box-shadow: 0 0 10px rgba(0, 119, 68, 0.6) !important;
+}
+
+/* Response time */
+body.light-theme .response-time {
+    color: #0077aa !important;
+    text-shadow: none !important;
+}
+
+/* Keyboard hint */
+body.light-theme .keyboard-hint {
+    color: #888888 !important;
+}

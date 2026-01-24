@@ -6,6 +6,7 @@
     <title>Integration Service - API Portal 2050</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/theme.css}">
 </head>
 <body class="futuristic-body">
     <!-- Animated Background -->
@@ -224,5 +225,6 @@ grpcurl -plaintext -d '{}' \
             panel.classList.toggle('show');
         }
     </script>
+    <script th:src="@{/js/theme-switcher.js}"></script>
 </body>
 </html>
