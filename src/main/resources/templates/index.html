@@ -23,21 +23,21 @@
                 <div class="glitch-wrapper">
                     <h1 class="glitch" data-text="Integration Service">Integration Service</h1>
                 </div>
-                <p class="neon-subtitle">МУЛЬТИПРОТОКОЛЬНЫЙ API ПОРТАЛ // 2050</p>
+                <p class="neon-subtitle" data-i18n="subtitle_main">МУЛЬТИПРОТОКОЛЬНЫЙ API ПОРТАЛ // 2050</p>
                 <div class="scan-line"></div>
             </div>
             <div class="header-stats">
                 <div class="stat-item">
                     <span class="stat-value neon-cyan">4</span>
-                    <span class="stat-label">ПРОТОКОЛА</span>
+                    <span class="stat-label" data-i18n="protocols_count">ПРОТОКОЛА</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-value neon-blue">3</span>
-                    <span class="stat-label">СУЩНОСТИ</span>
+                    <span class="stat-label" data-i18n="entities">СУЩНОСТИ</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-value neon-green">ОНЛАЙН</span>
-                    <span class="stat-label">СТАТУС</span>
+                    <span class="stat-value neon-green" data-i18n="online">ОНЛАЙН</span>
+                    <span class="stat-label" data-i18n="status">СТАТУС</span>
                 </div>
             </div>
         </header>
@@ -46,7 +46,7 @@
             <!-- Protocol Cards Section -->
             <section class="protocols-section glass-panel">
                 <div class="section-header">
-                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> ДОСТУПНЫЕ ПРОТОКОЛЫ</h2>
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> <span data-i18n="available_protocols">ДОСТУПНЫЕ ПРОТОКОЛЫ</span></h2>
                 </div>
 
                 <div class="protocol-cards">
@@ -56,7 +56,7 @@
                             <div class="card-icon">REST</div>
                             <h3 class="card-title">REST API</h3>
                         </div>
-                        <p class="card-description">
+                        <p class="card-description" data-i18n="rest_description">
                             Спецификация OpenAPI 3.0 с Swagger UI для интерактивного исследования и тестирования.
                         </p>
                         <div class="card-endpoint">GET /api/products</div>
@@ -73,13 +73,13 @@
                             <div class="card-icon">GQL</div>
                             <h3 class="card-title">GraphQL API</h3>
                         </div>
-                        <p class="card-description">
+                        <p class="card-description" data-i18n="graphql_description">
                             Гибкий язык запросов со встроенным GraphiQL IDE для разработки и тестирования.
                         </p>
                         <div class="card-endpoint">POST /graphql</div>
                         <div class="card-links">
                             <a th:href="@{/graphql-playground}" class="card-link primary">Playground</a>
-                            <a th:href="@{/graphql-examples}" class="card-link secondary">Примеры</a>
+                            <a th:href="@{/graphql-examples}" class="card-link secondary" data-i18n="examples">Примеры</a>
                             <a th:href="@{/graphiql}" class="card-link secondary">GraphiQL</a>
                         </div>
                     </div>
@@ -90,13 +90,13 @@
                             <div class="card-icon">gRPC</div>
                             <h3 class="card-title">gRPC API</h3>
                         </div>
-                        <p class="card-description">
+                        <p class="card-description" data-i18n="grpc_description">
                             Высокопроизводительный RPC фреймворк с Protocol Buffers для эффективной коммуникации.
                         </p>
                         <div class="card-endpoint">localhost:<span th:text="${grpcPort}">9090</span></div>
                         <div class="card-links">
-                            <button class="card-link primary" onclick="toggleGrpcInfo()">Подключение</button>
-                            <a th:href="@{/grpc-examples}" class="card-link secondary">Примеры</a>
+                            <button class="card-link primary" onclick="toggleGrpcInfo()" data-i18n="connection">Подключение</button>
+                            <a th:href="@{/grpc-examples}" class="card-link secondary" data-i18n="examples">Примеры</a>
                         </div>
                         <div id="grpc-info" class="grpc-details-panel">
                             <h4>GRPCURL КОМАНДЫ:</h4>
@@ -116,13 +116,13 @@ grpcurl -plaintext -d '{}' \
                             <div class="card-icon">SOAP</div>
                             <h3 class="card-title">SOAP Web Service</h3>
                         </div>
-                        <p class="card-description">
+                        <p class="card-description" data-i18n="soap_description">
                             XML-протокол для корпоративной интеграции с WSDL описанием контракта.
                         </p>
                         <div class="card-endpoint">POST /ws</div>
                         <div class="card-links">
                             <a th:href="@{/ws/integration.wsdl}" class="card-link primary" target="_blank">WSDL</a>
-                            <a th:href="@{/soap-examples}" class="card-link secondary">Примеры</a>
+                            <a th:href="@{/soap-examples}" class="card-link secondary" data-i18n="examples">Примеры</a>
                         </div>
                     </div>
                 </div>
@@ -131,12 +131,12 @@ grpcurl -plaintext -d '{}' \
             <!-- Quick Links Section -->
             <section class="quicklinks-section glass-panel">
                 <div class="section-header">
-                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> БЫСТРЫЕ ССЫЛКИ</h2>
+                    <h2 class="hologram-text"><span class="icon-pulse">&#9678;</span> <span data-i18n="quick_links">БЫСТРЫЕ ССЫЛКИ</span></h2>
                 </div>
 
                 <div class="quicklinks-grid">
                     <div class="quicklinks-group">
-                        <h4>API Эндпоинты</h4>
+                        <h4 data-i18n="api_endpoints">API Эндпоинты</h4>
                         <ul class="quicklinks-list">
                             <li><a th:href="@{/api/products}">GET /api/products</a></li>
                             <li><a th:href="@{/api/products?includeAvailability=true}">GET /api/products?includeAvailability=true</a></li>
@@ -148,7 +148,7 @@ grpcurl -plaintext -d '{}' \
                     </div>
 
                     <div class="quicklinks-group">
-                        <h4>Документация</h4>
+                        <h4 data-i18n="documentation">Документация</h4>
                         <ul class="quicklinks-list">
                             <li><a th:href="@{/swagger-ui.html}">Swagger UI</a></li>
                             <li><a th:href="@{/v3/api-docs}">OpenAPI Spec (JSON)</a></li>
@@ -161,14 +161,14 @@ grpcurl -plaintext -d '{}' \
                     </div>
 
                     <div class="quicklinks-group">
-                        <h4>Информация о сервере</h4>
+                        <h4 data-i18n="server_info">Информация о сервере</h4>
                         <div class="server-info">
                             <div class="server-info-item">
-                                <span class="server-info-label">HTTP Порт</span>
+                                <span class="server-info-label" data-i18n="http_port">HTTP Порт</span>
                                 <code class="server-info-value" th:text="${serverPort}">8080</code>
                             </div>
                             <div class="server-info-item">
-                                <span class="server-info-label">gRPC Порт</span>
+                                <span class="server-info-label" data-i18n="grpc_port">gRPC Порт</span>
                                 <code class="server-info-value" th:text="${grpcPort}">9090</code>
                             </div>
                             <div class="server-info-item">
@@ -197,7 +197,7 @@ grpcurl -plaintext -d '{}' \
                 </div>
                 <div class="footer-status">
                     <span class="status-dot"></span>
-                    <span>ВСЕ СИСТЕМЫ РАБОТАЮТ</span>
+                    <span data-i18n="all_systems">ВСЕ СИСТЕМЫ РАБОТАЮТ</span>
                 </div>
             </div>
         </footer>
@@ -226,5 +226,6 @@ grpcurl -plaintext -d '{}' \
         }
     </script>
     <script th:src="@{/js/theme-switcher.js}"></script>
+    <script th:src="@{/js/language-switcher.js}"></script>
 </body>
 </html>
